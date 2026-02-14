@@ -124,11 +124,20 @@ body {
     color: grey;
 }
 
+.cv-button {
+    opacity: 0;
+    transform: translateX(100px);
+    animation: slideInFromRight 1s ease forwards;
+    animation-delay: 8s;
+    /* slightly after hero image (4.8s) */
+}
+
 .stats-section {
     display: flex;
     justify-content: space-between;
     margin-top: 2rem;
 }
+
 
 .number {
     font-size: 1.5rem;
