@@ -23,9 +23,34 @@ body {
 /* NAVBAR */
 
 .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 2rem;
+    padding: 1rem 0;
+    background: white;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#logoLink {
+    text-decoration: none;
+    color: #111;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+#logoLink:hover {
+    color: rgb(108, 85, 224);
+    transform: translateY(-2px);
 }
 
 .nav-items {
@@ -34,18 +59,47 @@ body {
     gap: 3rem;
 }
 
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: black;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
 .nav-items a {
     text-decoration: none;
     color: black;
     font-weight: bold;
     padding: 8px 16px;
-    border-radius: 6px;
-    transition: 0.3s ease;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
-.nav-items a:hover {
+.nav-items a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
     background: black;
-    color: white;
+    transition: width 0.3s ease;
+}
+
+.nav-items a:hover::after {
+    width: 100%;
 }
 
 /* HERO */
@@ -120,7 +174,7 @@ body {
     border-radius: 20px;
 }
 
-.about-text { 
+.about-text {
     color: grey;
 }
 
@@ -357,7 +411,43 @@ textarea:focus {
 @media (max-width:768px) {
 
     .navbar {
-        display: none;
+        margin-top: 1rem;
+    }
+
+    .nav-items {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 60%;
+        background: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s ease;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+    }
+
+    .nav-items.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 1002;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
     }
 
     .hero {
@@ -390,7 +480,7 @@ textarea:focus {
         gap: 1.5rem;
     }
 
-    .social-items{
+    .social-items {
         display: flex;
         flex-direction: column;
         justify-content: center;

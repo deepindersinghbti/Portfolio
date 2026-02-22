@@ -15,12 +15,21 @@
 
         <!-- NAVBAR -->
         <nav class="navbar">
-            <ul class="nav-items">
+            <a href="#" class="logo" id="logoLink">DS.</a>
+
+            <ul class="nav-items" id="navItems">
                 <li><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact-sec">Contact</a></li>
             </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
+                aria-controls="navItems">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
 
         <!-- HERO -->
@@ -138,7 +147,7 @@
                         </a>
                     </span>
 
-            </div>
+                </div>
         </section>
 
 
@@ -157,6 +166,36 @@
         </section>
 
     </div>
+
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navItems = document.getElementById("navItems");
+        const navLinks = navItems.querySelectorAll("a");
+
+        function closeMenu() {
+            navItems.classList.remove("active");
+            hamburger.classList.remove("active");
+            hamburger.setAttribute("aria-expanded", "false");
+        }
+
+        function toggleMenu() {
+            const isOpen = navItems.classList.toggle("active");
+            hamburger.classList.toggle("active", isOpen);
+            hamburger.setAttribute("aria-expanded", String(isOpen));
+        }
+
+        hamburger.addEventListener("click", toggleMenu);
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!navItems.contains(event.target) && !hamburger.contains(event.target)) {
+                closeMenu();
+            }
+        });
+    </script>
 </body>
 
 </html>
