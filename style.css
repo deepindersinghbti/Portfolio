@@ -120,7 +120,7 @@ body {
     border-radius: 20px;
 }
 
-.about-text {
+.about-text { 
     color: grey;
 }
 
@@ -202,10 +202,10 @@ body {
     color: black;
 }
 
-.social-item {
+.social-items {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     font-weight: bold;
 }
 
@@ -388,6 +388,12 @@ textarea:focus {
     .social-details {
         flex-direction: column;
         gap: 1.5rem;
+    }
+
+    .social-items{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .social-details a,
