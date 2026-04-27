@@ -77,7 +77,7 @@ body {
     gap: 1rem;
     margin-top: 2rem;
     padding: 1rem 0;
-    background: var(--surface);
+    background: var(--bg-color);
     transition: background-color 0.25s ease;
 }
 
