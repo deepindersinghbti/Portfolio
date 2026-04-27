@@ -333,6 +333,10 @@ body {
     transform: translateY(-4px);
 }
 
+[data-theme="dark"] #certifications iframe {
+    filter: invert(1);
+}
+
 #certifications script {
     display: none;
 }
