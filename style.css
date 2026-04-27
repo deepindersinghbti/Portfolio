@@ -77,8 +77,7 @@ body {
     gap: 1rem;
     margin-top: 2rem;
     padding: 1rem 0;
-    /* background: var(--surface); */
-    background: var(--bg-color);
+    background: var(--surface);
     transition: background-color 0.25s ease;
 }
 
@@ -288,10 +287,54 @@ body {
 
 #skills {
     text-align: center;
+    margin: 6rem auto;
 }
 
 #skills h4 {
     color: var(--text-muted);
+}
+
+/* CERTIFICATIONS */
+
+#certifications {
+    margin: 6rem auto;
+    text-align: center;
+}
+
+#certifications h1 {
+    margin-bottom: 0.5rem;
+}
+
+#certifications h4 {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.certifications-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.certification-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--surface);
+    transition: background-color 0.25s ease, transform 0.3s ease;
+}
+
+.certification-badge:hover {
+    transform: translateY(-4px);
+}
+
+#certifications script {
+    display: none;
 }
 
 #contact-sec h4 {
@@ -578,6 +621,16 @@ textarea:focus {
 
     .theme-toggle-group {
         margin-left: auto;
+    }
+
+    .certifications-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .certification-badge {
+        width: 100%;
+        max-width: 200px;
     }
 
     #name-box,
