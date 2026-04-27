@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deepinder Singh</title>
 
+    <script>
+        (function () {
+            try {
+                const savedTheme = localStorage.getItem("theme");
+                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                const theme = savedTheme === "light" || savedTheme === "dark"
+                    ? savedTheme
+                    : (prefersDark ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+            } catch (error) {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/740474005a.js" crossorigin="anonymous"></script>
 </head>
@@ -23,6 +38,17 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact-sec">Contact</a></li>
             </ul>
+
+            <div class="theme-toggle-group" role="group" aria-label="Theme toggle buttons">
+                <button class="theme-btn" id="lightThemeBtn" type="button" aria-label="Switch to light mode"
+                    title="Switch to light mode">
+                    <i class="fa-solid fa-sun" aria-hidden="true"></i>
+                </button>
+                <button class="theme-btn" id="darkThemeBtn" type="button" aria-label="Switch to dark mode"
+                    title="Switch to dark mode">
+                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
 
             <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
                 aria-controls="navItems">
@@ -171,6 +197,50 @@
         const hamburger = document.getElementById("hamburger");
         const navItems = document.getElementById("navItems");
         const navLinks = navItems.querySelectorAll("a");
+        const lightThemeBtn = document.getElementById("lightThemeBtn");
+        const darkThemeBtn = document.getElementById("darkThemeBtn");
+
+        function readSavedTheme() {
+            try {
+                const savedTheme = localStorage.getItem("theme");
+                return savedTheme === "light" || savedTheme === "dark" ? savedTheme : null;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function writeSavedTheme(theme) {
+            try {
+                localStorage.setItem("theme", theme);
+            } catch (error) {
+                // Keep runtime stable if storage is unavailable.
+            }
+        }
+
+        function setTheme(theme, persist = true) {
+            document.documentElement.setAttribute("data-theme", theme);
+            lightThemeBtn.classList.toggle("active", theme === "light");
+            darkThemeBtn.classList.toggle("active", theme === "dark");
+            lightThemeBtn.setAttribute("aria-pressed", String(theme === "light"));
+            darkThemeBtn.setAttribute("aria-pressed", String(theme === "dark"));
+
+            if (persist) {
+                writeSavedTheme(theme);
+            }
+        }
+
+        function getInitialTheme() {
+            const savedTheme = readSavedTheme();
+            if (savedTheme) {
+                return savedTheme;
+            }
+            return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        setTheme(getInitialTheme(), false);
+
+        lightThemeBtn.addEventListener("click", () => setTheme("light"));
+        darkThemeBtn.addEventListener("click", () => setTheme("dark"));
 
         function closeMenu() {
             navItems.classList.remove("active");
