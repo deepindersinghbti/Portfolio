@@ -257,10 +257,12 @@
                     </a>
                 </div>
 
-                <form class="contact-form" action="#" method="post">
+                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="ff85283b-5e57-4b9d-b82f-a6db68789493">
+                    <input type="checkbox" name="botcheck" class="botcheck" style="display: none;">
+                    <input type="hidden" name="subject" value="New message from portfolio website">
                     <input type="text" id="name-box" name="name" placeholder="Name" autocomplete="name" required>
                     <input type="email" id="email-box" name="email" placeholder="Email" autocomplete="email" required>
-                    <input type="text" id="subject-box" name="subject" placeholder="Subject" required>
                     <textarea id="message-box" name="message" placeholder="Message" required></textarea>
                     <button type="submit" class="send-btn">
                         Send Message
