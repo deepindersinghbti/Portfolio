@@ -4,198 +4,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deepinder Singh</title>
+    <meta name="description"
+        content="Portfolio of Deepinder Singh, a frontend developer and B.Tech CSE student building clean web experiences.">
+    <title>Deepinder Singh | Portfolio</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/740474005a.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
     <div class="container">
-
         <!-- NAVBAR -->
         <nav class="navbar">
-            <a href="#" class="logo" id="logoLink">DS.</a>
+            <a href="#home" class="logo" id="logoLink" aria-label="Go to home section">DS.</a>
 
             <ul class="nav-items" id="navItems">
-                <li><a href="#">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact-sec">Contact</a></li>
             </ul>
 
-            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
-                aria-controls="navItems">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode"
+                    aria-pressed="false">
+                    <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+                        <i class="fa-solid fa-sun"></i>
+                    </span>
+                    <span class="theme-toggle__thumb" aria-hidden="true"></span>
+                    <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+                        <i class="fa-solid fa-moon"></i>
+                    </span>
+                </button>
+
+                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="navItems">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </nav>
 
         <!-- HERO -->
-        <section class="hero">
-
+        <main id="home" class="hero">
             <div class="leftCol">
+                <p class="eyebrow">B.Tech CSE Student • Web Developer</p>
                 <h1 class="typing">Hi, I am Deepinder</h1>
                 <h2 class="slideFromLeft">Frontend Developer</h2>
-                <h4>
-                    High level experience in web design and development knowledge,
-                    producing quality work.
-                </h4>
+                <p class="hero-description">
+                    I build clean, responsive and user-friendly web experiences with a focus on practical projects,
+                    modern UI design and continuous learning.
+                </p>
 
-                <div class="contactBt buttons">
-                    <a href="#">Contact Me</a>
-                    <i class="fa-solid fa-paper-plane"></i>
+                <div class="hero-actions">
+                    <a href="#contact-sec" class="buttons contactBt">
+                        Contact Me
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </a>
+                    <a href="https://github.com/deepindersinghbti" target="_blank" rel="noopener noreferrer"
+                        class="secondary-btn">
+                        View GitHub
+                        <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
             </div>
 
             <div class="rightCol">
-                <img src="img.jpg" alt="Profile image" id="heroImg" class="slideFromRight">
+                <div class="image-wrap slideFromRight">
+                    <img src="img.jpg" alt="Portrait of Deepinder Singh" id="heroImg">
+                </div>
             </div>
-
-        </section>
+        </main>
 
         <!-- ABOUT -->
-        <section id="about">
-            <h1>About Me</h1>
-            <h4>My Introduction</h4>
+        <section id="about" class="section-block">
+            <div class="section-heading">
+                <h1>About Me</h1>
+                <h4>My Introduction</h4>
+            </div>
 
             <div class="about-content">
                 <div class="about-img">
-                    <img src="img.jpg" alt="About image">
+                    <img src="img.jpg" alt="Deepinder Singh profile image">
                 </div>
 
                 <div class="about-text">
-                    Web developer with extensive knowledge and experience in
-                    web technologies and UI/UX design, delivering quality work.
+                    <p>
+                        I am a computer science student and aspiring frontend developer who enjoys turning ideas into
+                        simple, useful and polished web interfaces. I am currently building my skills through academic
+                        learning, hands-on projects, GitHub work and real-world experimentation.
+                    </p>
 
-                    <div class="stats-section">
+                    <div class="stats-section" aria-label="Portfolio highlights">
                         <div class="statBlock">
                             <p class="number">05+</p>
-                            <p>Years Experience</p>
+                            <p>Projects Built</p>
                         </div>
 
                         <div class="statBlock">
                             <p class="number">200+</p>
-                            <p>Leetcode Problems</p>
+                            <p>Problems Practiced</p>
                         </div>
 
                         <div class="statBlock">
-                            <p class="number">05+</p>
-                            <p>Completed Projects</p>
+                            <p class="number">02</p>
+                            <p>AWS Badges</p>
                         </div>
                     </div>
 
-                    <div class="cv-button buttons">
-                        <a href="#">Download CV</a>
+                    <a href="#" class="cv-button buttons">
+                        Download CV
                         <i class="fa-solid fa-arrow-down"></i>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- SKILLS -->
-        <section id="skills">
-            <h1>Skills</h1>
-            <h4>My technological level</h4>
+        <section id="skills" class="section-block">
+            <div class="section-heading">
+                <h1>Skills</h1>
+                <h4>My technological level</h4>
+            </div>
 
             <div class="skills-boxes">
                 <div class="skillBox">
                     <i class="fa-solid fa-code"></i>
-                    Frontend Developer
+                    Frontend Development
+                </div>
+
+                <div class="skillBox">
+                    <i class="fa-brands fa-html5"></i>
+                    HTML & CSS
+                </div>
+
+                <div class="skillBox">
+                    <i class="fa-brands fa-js"></i>
+                    JavaScript
                 </div>
 
                 <div class="skillBox">
                     <i class="fa-brands fa-python"></i>
                     Python
                 </div>
+
+                <div class="skillBox">
+                    <i class="fa-brands fa-aws"></i>
+                    AWS Fundamentals
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- CERTIFICATIONS -->
+        <section id="certifications" class="section-block">
+            <div class="section-heading">
+                <h1>Certifications</h1>
+                <h4>Verified credentials & cloud learning milestones</h4>
+            </div>
+
+            <div class="certification-grid">
+                <article class="certification-card">
+                    <div class="credly-badge-wrap" aria-label="AWS Academy Cloud Foundations badge">
+                        <a class="credly-link"
+                            href="https://www.credly.com/badges/afa278a8-210f-4e14-813f-d5df4f74ba07/public_url"
+                            target="_blank" rel="noopener noreferrer">
+                            <img class="credly-img"
+                                src="https://images.credly.com/size/680x680/images/e3541a0c-dd4a-4820-8052-5001006efc85/blob"
+                                alt="AWS Academy Cloud Foundations badge">
+                        </a>
+                    </div>
+
+                    <div class="certification-content">
+                        <p class="certification-provider">Amazon Web Services</p>
+                        <h3>AWS Academy Cloud Foundations</h3>
+                        <p>Completed foundational training in cloud concepts, AWS services, security, architecture,
+                            pricing and support.</p>
+                        <a href="https://www.credly.com/badges/afa278a8-210f-4e14-813f-d5df4f74ba07/public_url"
+                            target="_blank" rel="noopener noreferrer">
+                            View Credential
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="certification-card">
+                    <div class="credly-badge-wrap" aria-label="AWS Cloud Quest Cloud Practitioner badge">
+                        <a class="credly-link"
+                            href="https://www.credly.com/badges/65886e05-ff90-48a9-b8ba-aa0cb42ad43c/public_url"
+                            target="_blank" rel="noopener noreferrer">
+                            <img class="credly-img"
+                                src="https://images.credly.com/size/680x680/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob"
+                                alt="AWS Cloud Quest: Cloud Practitioner badge">
+                        </a>
+                    </div>
+
+                    <div class="certification-content">
+                        <p class="certification-provider">Amazon Web Services</p>
+                        <h3>AWS Cloud Quest: Cloud Practitioner</h3>
+                        <p>Completed hands-on cloud practitioner learning through practical AWS scenarios and
+                            service-based tasks.</p>
+                        <a href="https://www.credly.com/badges/65886e05-ff90-48a9-b8ba-aa0cb42ad43c/public_url"
+                            target="_blank" rel="noopener noreferrer">
+                            View Credential
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
             </div>
         </section>
 
         <!-- CONTACT -->
-        <section id="contact-sec">
-            <h1>Contact Me</h1>
-            <h4>Get in touch</h4>
-            <div class="social-details">
+        <section id="contact-sec" class="section-block">
+            <div class="section-heading">
+                <h1>Contact Me</h1>
+                <h4>Get in touch</h4>
+            </div>
 
-                <div class="social-items">
-                    <a href="https://github.com/deepindersinghbti">
+            <div class="contact-layout">
+                <div class="social-details">
+                    <a class="social-card" href="https://github.com/deepindersinghbti" target="_blank"
+                        rel="noopener noreferrer" aria-label="Open Deepinder's GitHub profile">
                         <i class="fa-brands fa-github social-icons"></i>
+                        <span>@deepindersinghbti</span>
                     </a>
-                    <span>
-                        <a href="https://github.com/deepindersinghbti" target="_blank">
-                            @deepindersinghbti
-                        </a>
-                    </span>
-                    <a href="https://wwwhackerrank.com/profile/deepindersinghb1">
-                        <i class="fa-brands fa-hackerrank social-icons"></i>
+
+                    <a class="social-card" href="https://www.linkedin.com/in/deepinders0627/" target="_blank"
+                        rel="noopener noreferrer" aria-label="Open Deepinder's LinkedIn profile">
+                        <i class="fa-brands fa-linkedin social-icons"></i>
+                        <span>Deepinder Singh</span>
                     </a>
-                    <span>
-                        <a href="https://www.hackerrank.com/profile/deepindersinghb1" target="_blank">
-                            @deepindersinghbti
-                        </a>
-                    </span>
-                    <a href="https://leecode.com/u/deepindersinghbti/" target="_blank">
-                        <svg class="leetcode-icon social-icons" viewBox="0 0 640 640">
+
+                    <a class="social-card" href="https://leetcode.com/u/deepindersinghbti/" target="_blank"
+                        rel="noopener noreferrer" aria-label="Open Deepinder's LeetCode profile">
+                        <svg class="leetcode-icon social-icons" viewBox="0 0 640 640" aria-hidden="true">
                             <path
                                 d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z" />
                         </svg>
+                        <span>@deepindersinghbti</span>
                     </a>
-                    <span>
-                        <a href="https://leetcode.com/u/deepindersinghbti/" target="_blank">
-                            @deepindersinghbti
-                        </a>
-                    </span>
 
+                    <a class="social-card" href="https://www.hackerrank.com/profile/deepindersinghb1" target="_blank"
+                        rel="noopener noreferrer" aria-label="Open Deepinder's HackerRank profile">
+                        <i class="fa-brands fa-hackerrank social-icons"></i>
+                        <span>@deepindersinghb1</span>
+                    </a>
                 </div>
+
+                <form class="contact-form" action="#" method="post">
+                    <input type="text" id="name-box" name="name" placeholder="Name" autocomplete="name" required>
+                    <input type="email" id="email-box" name="email" placeholder="Email" autocomplete="email" required>
+                    <input type="text" id="subject-box" name="subject" placeholder="Subject" required>
+                    <textarea id="message-box" name="message" placeholder="Message" required></textarea>
+                    <button type="submit" class="send-btn">
+                        Send Message
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
         </section>
-
-
-        <section class="contact-form">
-            <form action="">
-                <input type="text" name="" id="name-box" placeholder="Name">
-                <input type="email" name="" id="email-box" placeholder="Email">
-                <input type="text" name="" id="subject-box" placeholder="Subject">
-                <textarea name="" id="message-box" placeholder="Message"></textarea>
-                <button type="submit" class="send-btn">
-                    Send Message
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </form>
-
-        </section>
-
     </div>
-
-    <script>
-        const hamburger = document.getElementById("hamburger");
-        const navItems = document.getElementById("navItems");
-        const navLinks = navItems.querySelectorAll("a");
-
-        function closeMenu() {
-            navItems.classList.remove("active");
-            hamburger.classList.remove("active");
-            hamburger.setAttribute("aria-expanded", "false");
-        }
-
-        function toggleMenu() {
-            const isOpen = navItems.classList.toggle("active");
-            hamburger.classList.toggle("active", isOpen);
-            hamburger.setAttribute("aria-expanded", String(isOpen));
-        }
-
-        hamburger.addEventListener("click", toggleMenu);
-
-        navLinks.forEach(link => {
-            link.addEventListener("click", closeMenu);
-        });
-
-        document.addEventListener("click", (event) => {
-            if (!navItems.contains(event.target) && !hamburger.contains(event.target)) {
-                closeMenu();
-            }
-        });
-    </script>
 </body>
 
 </html>
