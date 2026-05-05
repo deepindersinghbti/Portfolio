@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
             title: 'Portfolio Website',
             description: 'Personal portfolio showcasing projects, skills and professional work',
             techs: ['HTML', 'CSS', 'JavaScript'],
-            github: 'https://github.com/deepindersinghbti/Portfolio', liveUrl: 'https://https://deepinder-singh.pages.dev',
+            github: 'https://github.com/deepindersinghbti/Portfolio', liveUrl: 'https://deepinder-singh.pages.dev',
             status: null
         },
         {
