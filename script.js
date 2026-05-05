@@ -38,6 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Theme toggle functionality
     const themeToggle = document.getElementById("themeToggle");
     const root = document.documentElement;
+    let themeTransitionTimer;
+
+    function runThemeTransitionWindow() {
+        root.classList.add("theme-transition");
+        clearTimeout(themeTransitionTimer);
+        themeTransitionTimer = setTimeout(() => {
+            root.classList.remove("theme-transition");
+        }, 360);
+    }
 
     function applyTheme(theme) {
         root.setAttribute("data-theme", theme);
@@ -47,7 +56,29 @@ document.addEventListener("DOMContentLoaded", function () {
         themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
     }
 
+    themeToggle.addEventListener("pointerdown", () => {
+        themeToggle.classList.add("is-pressing");
+    });
+
+    const clearPressState = () => themeToggle.classList.remove("is-pressing");
+    themeToggle.addEventListener("pointerup", clearPressState);
+    themeToggle.addEventListener("pointercancel", clearPressState);
+    themeToggle.addEventListener("pointerleave", clearPressState);
+
     themeToggle.addEventListener("click", () => {
+        runThemeTransitionWindow();
+        themeToggle.classList.remove("is-rippling");
+        themeToggle.classList.remove("is-popping");
+        void themeToggle.offsetWidth;
+        themeToggle.classList.add("is-rippling");
+        themeToggle.classList.add("is-popping");
+        setTimeout(() => {
+            themeToggle.classList.remove("is-rippling");
+        }, 380);
+        setTimeout(() => {
+            themeToggle.classList.remove("is-popping");
+        }, 320);
+
         const currentTheme = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
         applyTheme(currentTheme === "dark" ? "light" : "dark");
     });
