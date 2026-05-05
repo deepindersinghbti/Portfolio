@@ -1,9 +1,84 @@
 // Theme initialization
-(function () {
-    const savedTheme = localStorage.getItem("portfolio-theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.setAttribute("data-theme", savedTheme || (prefersDark ? "dark" : "light"));
-})();
+const themeStorageKey = "portfolio-theme";
+const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const root = document.documentElement;
+let userThemePreference = localStorage.getItem(themeStorageKey);
+let appliedTheme = "light";
+let themeTransitionTimer;
+let themeSelector;
+let themeButtons = {};
+
+function getSystemTheme() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+}
+
+userThemePreference = userThemePreference === "light" || userThemePreference === "dark" || userThemePreference === "system"
+    ? userThemePreference
+    : "system";
+
+function runThemeTransitionWindow() {
+    root.classList.add("theme-transition");
+    clearTimeout(themeTransitionTimer);
+    themeTransitionTimer = setTimeout(() => {
+        root.classList.remove("theme-transition");
+    }, 360);
+}
+
+function updateThemeButtons() {
+    if (!themeSelector) return;
+
+    const buttonStates = {
+        light: userThemePreference === "light",
+        dark: userThemePreference === "dark",
+        system: userThemePreference === "system"
+    };
+
+    themeButtons.light?.classList.toggle("is-active", buttonStates.light);
+    themeButtons.dark?.classList.toggle("is-active", buttonStates.dark);
+    themeButtons.system?.classList.toggle("is-active", buttonStates.system);
+
+    themeButtons.light?.setAttribute("aria-pressed", String(buttonStates.light));
+    themeButtons.dark?.setAttribute("aria-pressed", String(buttonStates.dark));
+    themeButtons.system?.setAttribute("aria-pressed", String(buttonStates.system));
+    themeSelector.dataset.themePreference = userThemePreference;
+}
+
+function applyThemePreference(preference, options = {}) {
+    const { animate = true, save = true } = options;
+
+    userThemePreference = preference;
+    appliedTheme = preference === "system" ? getSystemTheme() : preference;
+
+    if (save) {
+        localStorage.setItem(themeStorageKey, preference);
+    }
+
+    root.setAttribute("data-theme", appliedTheme);
+
+    if (animate) {
+        runThemeTransitionWindow();
+    }
+
+    updateThemeButtons();
+}
+
+applyThemePreference(userThemePreference, { animate: false });
+
+if (typeof systemThemeQuery.addEventListener === "function") {
+    systemThemeQuery.addEventListener("change", () => {
+        if (userThemePreference === "system") {
+            applyThemePreference("system", { animate: true, save: false });
+        }
+    });
+} else if (typeof systemThemeQuery.addListener === "function") {
+    systemThemeQuery.addListener(() => {
+        if (userThemePreference === "system") {
+            applyThemePreference("system", { animate: true, save: false });
+        }
+    });
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     // Hamburger menu functionality
@@ -35,55 +110,54 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Theme toggle functionality
-    const themeToggle = document.getElementById("themeToggle");
-    const root = document.documentElement;
-    let themeTransitionTimer;
+    // Theme selector functionality
+    themeSelector = document.getElementById("themeSelector");
+    themeButtons = {
+        light: document.getElementById("themeBtnLight"),
+        dark: document.getElementById("themeBtnDark"),
+        system: document.getElementById("themeBtnSystem")
+    };
 
-    function runThemeTransitionWindow() {
-        root.classList.add("theme-transition");
-        clearTimeout(themeTransitionTimer);
-        themeTransitionTimer = setTimeout(() => {
-            root.classList.remove("theme-transition");
-        }, 360);
-    }
+    const clearPressState = () => themeSelector?.classList.remove("is-pressing");
 
-    function applyTheme(theme) {
-        root.setAttribute("data-theme", theme);
-        localStorage.setItem("portfolio-theme", theme);
-        const isDark = theme === "dark";
-        themeToggle.setAttribute("aria-pressed", String(isDark));
-        themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-    }
+    function triggerThemeSelectorAnimation() {
+        if (!themeSelector) return;
 
-    themeToggle.addEventListener("pointerdown", () => {
-        themeToggle.classList.add("is-pressing");
-    });
-
-    const clearPressState = () => themeToggle.classList.remove("is-pressing");
-    themeToggle.addEventListener("pointerup", clearPressState);
-    themeToggle.addEventListener("pointercancel", clearPressState);
-    themeToggle.addEventListener("pointerleave", clearPressState);
-
-    themeToggle.addEventListener("click", () => {
-        runThemeTransitionWindow();
-        themeToggle.classList.remove("is-rippling");
-        themeToggle.classList.remove("is-popping");
-        void themeToggle.offsetWidth;
-        themeToggle.classList.add("is-rippling");
-        themeToggle.classList.add("is-popping");
+        themeSelector.classList.remove("is-rippling");
+        themeSelector.classList.remove("is-popping");
+        void themeSelector.offsetWidth;
+        themeSelector.classList.add("is-rippling");
+        themeSelector.classList.add("is-popping");
         setTimeout(() => {
-            themeToggle.classList.remove("is-rippling");
+            themeSelector.classList.remove("is-rippling");
         }, 380);
         setTimeout(() => {
-            themeToggle.classList.remove("is-popping");
+            themeSelector.classList.remove("is-popping");
         }, 320);
+    }
 
-        const currentTheme = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
-        applyTheme(currentTheme === "dark" ? "light" : "dark");
+    const themeOptions = [
+        [themeButtons.light, "light"],
+        [themeButtons.dark, "dark"],
+        [themeButtons.system, "system"]
+    ];
+
+    themeOptions.forEach(([button, preference]) => {
+        if (!button) return;
+
+        button.addEventListener("pointerdown", () => {
+            themeSelector?.classList.add("is-pressing");
+        });
+        button.addEventListener("pointerup", clearPressState);
+        button.addEventListener("pointercancel", clearPressState);
+        button.addEventListener("pointerleave", clearPressState);
+        button.addEventListener("click", () => {
+            triggerThemeSelectorAnimation();
+            applyThemePreference(preference);
+        });
     });
 
-    applyTheme(root.getAttribute("data-theme") || "light");
+    updateThemeButtons();
 
     const year = document.getElementById("year");
     if (year) {
