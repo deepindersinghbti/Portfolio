@@ -97,8 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
             title: 'Portfolio Website',
             description: 'Personal portfolio showcasing projects, skills and professional work',
             techs: ['HTML', 'CSS', 'JavaScript'],
-            github: 'https://github.com/deepindersinghbti/Portfolio', // TODO: Replace with actual GitHub URL
-            liveUrl: 'https://deepinderportfolio.netlify.app/',
+            github: 'https://github.com/deepindersinghbti/Portfolio',             liveUrl: 'https://deepinderportfolio.netlify.app/',
             status: null
         },
         {

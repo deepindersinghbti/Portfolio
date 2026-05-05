@@ -929,6 +929,22 @@ textarea:focus {
         width: min(92%, 1200px);
     }
 
+    /* Fix typing animation on mobile */
+    .typing {
+        max-width: 100%;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    /* Fix slide animation on mobile */
+    .slideFromLeft {
+        transform: translateX(-30px);
+    }
+
+    .slideFromRight {
+        transform: translateX(30px);
+    }
+
     .navbar {
         top: 0.7rem;
         margin-top: 0.8rem;
