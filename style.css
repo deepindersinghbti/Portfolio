@@ -848,8 +848,10 @@ textarea:focus {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 240ms ease-out, transform 240ms ease-out;
-    margin-top: -0.6rem; /* pull closer to the form */
-    max-width: 720px; /* keep the card visually connected to the form */
+    margin-top: -0.6rem;
+    /* pull closer to the form */
+    max-width: 720px;
+    /* keep the card visually connected to the form */
 }
 
 .send-btn .btn-icon {
