@@ -268,4 +268,137 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Call render on DOM ready
     renderProjects();
+
+    const contactForm = document.querySelector(".contact-form");
+    const contactStatus = document.getElementById("contactStatus");
+    const sendButton = document.querySelector(".send-btn");
+
+    if (contactForm && contactStatus && sendButton) {
+        const originalButtonHTML = sendButton.innerHTML;
+        let isSubmitting = false;
+        let hideStatusTimer;
+        let buttonResetTimer;
+
+        const statusIcon = contactStatus.querySelector(".contact-status-card__icon i");
+        const statusEyebrow = contactStatus.querySelector(".contact-status-card__eyebrow");
+        const statusTitle = contactStatus.querySelector(".contact-status-card__title");
+        const statusText = contactStatus.querySelector(".contact-status-card__text");
+
+        function setButtonState({ disabled, html }) {
+            sendButton.disabled = disabled;
+            sendButton.setAttribute("aria-disabled", String(disabled));
+            if (html !== undefined) {
+                sendButton.innerHTML = html;
+            }
+        }
+
+        function clearStatusTimers() {
+            clearTimeout(hideStatusTimer);
+            clearTimeout(buttonResetTimer);
+        }
+
+        function setStatusVisible(isVisible) {
+            contactStatus.hidden = false;
+            contactStatus.classList.toggle("is-visible", isVisible);
+            contactStatus.classList.toggle("is-hiding", !isVisible);
+        }
+
+        function hideStatusCard() {
+            contactStatus.classList.remove("is-visible");
+            contactStatus.classList.add("is-hiding");
+            clearTimeout(hideStatusTimer);
+            hideStatusTimer = setTimeout(() => {
+                contactStatus.hidden = true;
+            }, 260);
+        }
+
+        function showStatus(type) {
+            contactStatus.dataset.state = type;
+            setStatusVisible(true);
+
+            if (type === "loading") {
+                statusIcon.className = "fa-solid fa-circle-notch fa-spin";
+                statusEyebrow.textContent = "Sending";
+                statusTitle.textContent = "Sending your message";
+                statusText.textContent = "Please wait while we deliver it securely.";
+                return;
+            }
+
+            if (type === "success") {
+                statusIcon.className = "fa-solid fa-circle-check";
+                statusEyebrow.textContent = "Success";
+                statusTitle.textContent = "Message sent successfully 🚀";
+                statusText.textContent = "Thanks for reaching out! I’ll get back to you soon.";
+                return;
+            }
+
+            statusIcon.className = "fa-solid fa-triangle-exclamation";
+            statusEyebrow.textContent = "Error";
+            statusTitle.textContent = "Something went wrong";
+            statusText.textContent = "Please try again. Your message is still saved in the form.";
+        }
+
+        function restoreButton() {
+            setButtonState({ disabled: false, html: originalButtonHTML });
+            contactForm.setAttribute("aria-busy", "false");
+            isSubmitting = false;
+        }
+
+        function scheduleHideStatus(delay) {
+            clearTimeout(hideStatusTimer);
+            hideStatusTimer = setTimeout(() => {
+                hideStatusCard();
+            }, delay);
+        }
+
+        contactForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            if (isSubmitting) {
+                return;
+            }
+
+            clearStatusTimers();
+            isSubmitting = true;
+            contactForm.setAttribute("aria-busy", "true");
+            setButtonState({
+                disabled: true,
+                html: '<i class="fa-solid fa-circle-notch fa-spin btn-icon btn-icon--left" aria-hidden="true"></i> Sending...'
+            });
+
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: new FormData(contactForm)
+                });
+
+                const result = await response.json().catch(() => ({}));
+
+                if (!response.ok || result.success === false) {
+                    throw new Error(result.message || "Something went wrong. Please try again.");
+                }
+
+                contactForm.reset();
+                // Show success card
+                showStatus("success");
+                // Temporarily show 'Sent' on the button, then restore
+                clearTimeout(buttonResetTimer);
+                setButtonState({
+                    disabled: true,
+                    html: '<i class="fa-solid fa-circle-check btn-icon btn-icon--left" aria-hidden="true"></i> Sent'
+                });
+                // Auto-hide success card after ~3.8s
+                scheduleHideStatus(3800);
+                // Restore button after 1s
+                buttonResetTimer = setTimeout(() => {
+                    restoreButton();
+                }, 1000);
+            } catch (error) {
+                showStatus("error");
+                statusText.textContent = error.message || "Something went wrong. Please try again.";
+                clearTimeout(buttonResetTimer);
+                restoreButton();
+            }
+        });
+    }
 });
