@@ -46,6 +46,26 @@ body {
         linear-gradient(180deg, var(--page-start, #ffffff) 0%, var(--page-end, #fbfbff) 100%);
     line-height: 1.6;
     transition: background-color 0.25s ease, color 0.25s ease;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 800px 600px at 80% 20%, rgba(108, 85, 224, 0.08), transparent 40%),
+        radial-gradient(ellipse 600px 500px at 20% 80%, rgba(139, 116, 255, 0.06), transparent 50%);
+    opacity: 0.6;
+}
+
+[data-theme="dark"] body::before {
+    opacity: 0.4;
 }
 
 :root {
@@ -93,6 +113,22 @@ a {
 
     isolation: isolate;
     overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar.scrolled {
+    padding: 0.75rem 1rem;
+    box-shadow:
+        0 18px 50px rgba(17, 24, 39, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(36px) saturate(180%);
+    -webkit-backdrop-filter: blur(36px) saturate(180%);
+}
+
+[data-theme="dark"] .navbar.scrolled {
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .navbar::before {
@@ -455,17 +491,30 @@ html.theme-transition *::after {
     text-decoration: none;
     font-weight: 700;
     transition: 0.3s ease;
+    position: relative;
 }
 
 .buttons {
     background: var(--primary);
     color: white;
     box-shadow: 0 12px 25px rgba(108, 85, 224, 0.25);
+    border: 1px solid transparent;
 }
 
 .buttons:hover {
     background: var(--primary-dark);
     transform: translateY(-3px);
+    box-shadow: 0 16px 32px rgba(108, 85, 224, 0.32);
+}
+
+.buttons:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 8px 16px rgba(108, 85, 224, 0.2);
+}
+
+.buttons:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .secondary-btn {
@@ -478,6 +527,16 @@ html.theme-transition *::after {
     color: var(--primary);
     border-color: rgba(108, 85, 224, 0.35);
     transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(108, 85, 224, 0.12);
+}
+
+.secondary-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.secondary-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 /* GENERAL SECTIONS */
@@ -591,21 +650,48 @@ html.theme-transition *::after {
     align-items: center;
     justify-content: center;
     gap: 0.65rem;
-    transition: 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     user-select: none;
     cursor: default;
     font-weight: 700;
+    position: relative;
+    overflow: hidden;
+}
+
+.skillBox::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(108, 85, 224, 0.3), rgba(108, 85, 224, 0.05));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.skillBox:hover::before {
+    opacity: 1;
 }
 
 .skillBox i {
     color: var(--primary);
     font-size: 1.25rem;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .skillBox:hover {
     transform: translateY(-6px);
     border-color: rgba(108, 85, 224, 0.35);
-    box-shadow: 0 16px 35px rgba(108, 85, 224, 0.12);
+    box-shadow: 0 16px 40px rgba(108, 85, 224, 0.15);
+}
+
+.skillBox:hover i {
+    transform: translateY(-3px);
 }
 
 
@@ -632,13 +718,35 @@ html.theme-transition *::after {
     border-radius: var(--radius);
     box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
     text-align: left;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.certification-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: var(--radius);
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(108, 85, 224, 0.2), rgba(108, 85, 224, 0.03));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.certification-card:hover::before {
+    opacity: 1;
 }
 
 .certification-card:hover {
     transform: translateY(-6px);
     border-color: rgba(108, 85, 224, 0.35);
-    box-shadow: 0 18px 40px rgba(108, 85, 224, 0.12);
+    box-shadow: 0 18px 45px rgba(108, 85, 224, 0.15);
 }
 
 .credly-badge-wrap {
@@ -651,6 +759,11 @@ html.theme-transition *::after {
     border: 1px solid rgba(108, 85, 224, 0.12);
     border-radius: 16px;
     overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.certification-card:hover .credly-badge-wrap {
+    transform: scale(1.03);
 }
 
 .credly-link {
@@ -696,10 +809,18 @@ html.theme-transition *::after {
     color: var(--primary);
     font-weight: 800;
     text-decoration: none;
+    transition: opacity 0.3s ease;
 }
 
 .certification-content a:hover {
     text-decoration: underline;
+    opacity: 0.8;
+}
+
+.certification-content a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 /* CONTACT */
@@ -730,19 +851,52 @@ html.theme-transition *::after {
     border: 1px solid var(--border);
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(17, 24, 39, 0.04);
-    transition: 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
     font-weight: 700;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(108, 85, 224, 0.2), rgba(108, 85, 224, 0.05));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.social-card:hover::before {
+    opacity: 1;
 }
 
 .social-card:hover {
     color: var(--primary);
     transform: translateY(-4px);
     border-color: rgba(108, 85, 224, 0.35);
+    box-shadow: 0 14px 32px rgba(108, 85, 224, 0.12);
+}
+
+.social-card:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .social-icons {
     font-size: 2rem;
     flex: 0 0 auto;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.social-card:hover .social-icons {
+    transform: translateY(-2px);
 }
 
 .leetcode-icon {
@@ -776,7 +930,7 @@ textarea {
     border-radius: 12px;
     outline: none;
     background-color: var(--surface-soft);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     font-family: inherit;
     color: var(--text);
 }
@@ -793,6 +947,12 @@ textarea:focus {
     background-color: white;
 }
 
+input:focus-visible,
+textarea:focus-visible {
+    outline: none;
+    border-color: var(--primary);
+}
+
 .send-btn {
     justify-self: start;
     display: inline-flex;
@@ -807,55 +967,24 @@ textarea:focus {
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 12px 25px rgba(108, 85, 224, 0.22);
 }
 
 .send-btn:hover {
     background-color: var(--primary-dark);
     transform: translateY(-3px);
+    box-shadow: 0 16px 32px rgba(108, 85, 224, 0.28);
 }
 
 .send-btn:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 8px 16px rgba(108, 85, 224, 0.18);
 }
 
-.resume-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Glass icon button */
-.download-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-
-    color: var(--text-color);
-    font-size: 16px;
-
-    transition: all 0.25s ease;
-    cursor: pointer;
-}
-
-/* Hover effect */
-.download-icon:hover {
-    transform: translateY(-2px) scale(1.05);
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Click feedback */
-.download-icon:active {
-    transform: scale(0.95);
+.send-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .send-btn:disabled {
@@ -1011,6 +1140,28 @@ textarea:focus {
 }
 
 /* ================= ANIMATIONS ================= */
+
+/* SCROLL REVEAL ANIMATIONS */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays for groups */
+.reveal.stagger-1 { transition-delay: 0ms; }
+.reveal.stagger-2 { transition-delay: 80ms; }
+.reveal.stagger-3 { transition-delay: 160ms; }
+.reveal.stagger-4 { transition-delay: 240ms; }
+.reveal.stagger-5 { transition-delay: 320ms; }
+
+/* TYPING ANIMATION */
 .typing {
     display: block;
     max-width: max-content;
@@ -1091,6 +1242,36 @@ textarea:focus {
     .theme-btn,
     .theme-selector__thumb {
         transition: none !important;
+    }
+
+    /* Disable scroll reveal animations but keep content visible */
+    .reveal,
+    .reveal.is-visible {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* Disable hover animations */
+    .buttons:hover,
+    .secondary-btn:hover,
+    .skillBox:hover,
+    .skillBox:hover i,
+    .social-card:hover,
+    .social-card:hover .social-icons,
+    .project-card:hover,
+    .certification-card:hover,
+    .certification-card:hover .credly-badge-wrap {
+        transform: none !important;
+    }
+
+    /* Disable stagger delays */
+    .reveal.stagger-1,
+    .reveal.stagger-2,
+    .reveal.stagger-3,
+    .reveal.stagger-4,
+    .reveal.stagger-5 {
+        transition-delay: 0 !important;
     }
 }
 
@@ -1283,8 +1464,30 @@ textarea:focus {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 10px 25px rgba(17, 24, 39, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(108, 85, 224, 0.3), rgba(108, 85, 224, 0.05));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 [data-theme="dark"] .project-card {
@@ -1294,11 +1497,11 @@ textarea:focus {
 .project-card:hover {
     transform: translateY(-6px);
     border-color: rgba(108, 85, 224, 0.35);
-    box-shadow: 0 16px 35px rgba(108, 85, 224, 0.12);
+    box-shadow: 0 16px 40px rgba(108, 85, 224, 0.15);
 }
 
 [data-theme="dark"] .project-card:hover {
-    box-shadow: 0 16px 35px rgba(139, 116, 255, 0.12);
+    box-shadow: 0 16px 40px rgba(139, 116, 255, 0.15);
 }
 
 .project-header {
@@ -1381,12 +1584,24 @@ textarea:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
     color: var(--text);
+    position: relative;
 }
 
 .icon-btn:hover:not(:disabled) {
-    opacity: 0.7;
+    transform: translateY(-2px) scale(1.1);
+    color: var(--primary);
+}
+
+.icon-btn:active:not(:disabled) {
+    transform: translateY(0) scale(0.95);
+}
+
+.icon-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 8px;
 }
 
 .icon-btn:disabled,
