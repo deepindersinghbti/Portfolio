@@ -81,8 +81,79 @@ if (typeof systemThemeQuery.addEventListener === "function") {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Hamburger menu functionality
-    const hamburger = document.getElementById("hamburger");
+    // ================= SCROLL REVEAL ANIMATIONS =================
+    // Intersection Observer for scroll reveal animations
+    const revealElements = () => {
+        // Check if user prefers reduced motion
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (prefersReducedMotion) {
+            // If reduced motion is preferred, just show all elements immediately
+            document.querySelectorAll('.reveal').forEach(el => {
+                el.classList.add('is-visible');
+            });
+            return;
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optionally unobserve to prevent re-triggering
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Add reveal class and observe elements
+        const elementsToReveal = [
+            '.section-heading',
+            '.about-img',
+            '.about-text',
+            '.statBlock',
+            '.project-card',
+            '.skillBox',
+            '.certification-card',
+            '.social-card',
+            '.contact-form'
+        ];
+
+        elementsToReveal.forEach(selector => {
+            document.querySelectorAll(selector).forEach((el, index) => {
+                el.classList.add('reveal');
+                // Add stagger delay classes for groups (0-4 index)
+                el.classList.add(`stagger-${(index % 5) + 1}`);
+                observer.observe(el);
+            });
+        });
+    };
+
+    // Call after DOM is ready
+    revealElements();
+
+    // ================= NAVBAR SCROLL BEHAVIOR =================
+    const navbar = document.querySelector('.navbar');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Add 'scrolled' class when scrolled down more than a threshold
+        if (currentScroll > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, { passive: true });
+
+    // ================= HAMBURGER MENU FUNCTIONALITY =================
     const navItems = document.getElementById("navItems");
     const navLinks = navItems.querySelectorAll("a");
 
@@ -268,6 +339,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Call render on DOM ready
     renderProjects();
+
+    // Apply reveal animations to dynamically rendered project cards
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!prefersReducedMotion) {
+        const projectCards = document.querySelectorAll('.project-card');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const projectObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    projectObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        projectCards.forEach((card, index) => {
+            card.classList.add('reveal', `stagger-${(index % 5) + 1}`);
+            projectObserver.observe(card);
+        });
+    } else {
+        // If reduced motion, just show all project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.classList.add('is-visible');
+        });
+    }
 
     const contactForm = document.querySelector(".contact-form");
     const contactStatus = document.getElementById("contactStatus");
