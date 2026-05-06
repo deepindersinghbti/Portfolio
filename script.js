@@ -363,7 +363,7 @@ document.addEventListener("DOMContentLoaded", function () {
             contactForm.setAttribute("aria-busy", "true");
             setButtonState({
                 disabled: true,
-                html: '<i class="fa-solid fa-circle-notch fa-spin btn-icon btn-icon--left" aria-hidden="true"></i> Sending...'
+                html: '<i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> Sending...'
             });
 
             try {
@@ -382,17 +382,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Show success card
                 showStatus("success");
                 // Temporarily show 'Sent' on the button, then restore
-                clearTimeout(buttonResetTimer);
                 setButtonState({
                     disabled: true,
-                    html: '<i class="fa-solid fa-circle-check btn-icon btn-icon--left" aria-hidden="true"></i> Sent'
+                    html: '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Sent'
                 });
                 // Auto-hide success card after ~3.8s
                 scheduleHideStatus(3800);
-                // Restore button after 1s
+                // Restore button after 1.2s
+                clearTimeout(buttonResetTimer);
                 buttonResetTimer = setTimeout(() => {
                     restoreButton();
-                }, 1000);
+                }, 1200);
             } catch (error) {
                 showStatus("error");
                 statusText.textContent = error.message || "Something went wrong. Please try again.";
