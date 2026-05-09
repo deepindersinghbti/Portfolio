@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
             description: 'A LeetCode progress tracker to visualize your coding problem-solving journey',
             techs: ['JavaScript', 'HTML', 'CSS', 'REST API'],
             github: 'https://github.com/deepindersinghbti/TrackLeet',
-            liveUrl: 'https://trackleet.netlify.app/',
+            liveUrl: 'https://trackleet.pages.dev/',
             status: null
         },
         {
@@ -260,8 +260,8 @@ document.addEventListener("DOMContentLoaded", function () {
             description: 'An AI-powered platform for detecting bias and fairness in decision systems',
             techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
             github: 'https://github.com/deepindersinghbti/FairLens',
-            liveUrl: null, // No live deployment yet
-            status: 'In Progress'
+            liveUrl: 'https://deepinder-fairlens.vercel.app/', // No live deployment yet
+            status: null
         }
     ];
 
