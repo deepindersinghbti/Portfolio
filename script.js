@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
             description: 'A LeetCode progress tracker to visualize your coding problem-solving journey',
             techs: ['JavaScript', 'HTML', 'CSS', 'REST API'],
             github: 'https://github.com/deepindersinghbti/TrackLeet',
-            liveUrl: 'https://trackleet.netlify.app/',
+            liveUrl: 'https://trackleet.pages.dev/',
             status: null
         },
         {
