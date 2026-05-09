@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
             '.about-img',
             '.about-text',
             '.statBlock',
+            '.achievement-card',
             '.project-card',
             '.skillBox',
             '.certification-card',
@@ -316,8 +317,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 `;
             }
 
+            const badgeIcon = project.status === 'In Progress' ? '🚧' : '🏆';
+            const badgeClass = project.status === 'Ideathon Winner' ? 'project-badge project-badge--winner' : 'project-badge';
             const badgeHtml = project.status
-                ? `<span class="project-badge">🚧 ${project.status}</span>`
+                ? `<span class="${badgeClass}">${badgeIcon} ${project.status}</span>`
                 : '';
 
             return `
