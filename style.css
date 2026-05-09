@@ -36,7 +36,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 body {
@@ -48,7 +48,7 @@ body {
     line-height: 1.6;
     transition: background-color 0.25s ease, color 0.25s ease;
     position: relative;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 body::before {
@@ -120,6 +120,7 @@ a {
 
 .navbar.scrolled {
     padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.75);
     box-shadow:
         0 18px 50px rgba(17, 24, 39, 0.14),
         inset 0 1px 0 rgba(255, 255, 255, 0.45);
@@ -128,6 +129,7 @@ a {
 }
 
 [data-theme="dark"] .navbar.scrolled {
+    background: rgba(15, 23, 42, 0.85);
     box-shadow:
         0 18px 50px rgba(0, 0, 0, 0.32),
         inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -2142,6 +2144,7 @@ textarea:focus-visible {
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
+
     /* Fix typing animation on mobile */
     .typing {
         max-width: 100%;
