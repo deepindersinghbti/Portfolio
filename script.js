@@ -261,8 +261,8 @@ document.addEventListener("DOMContentLoaded", function () {
             description: 'An AI-powered platform for detecting bias and fairness in decision systems',
             techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
             github: 'https://github.com/deepindersinghbti/FairLens',
-            liveUrl: null, // No live deployment yet
-            status: 'In Progress'
+            liveUrl: 'https://deepinder-fairlens.vercel.app/',
+            status: null
         }
     ];
 
