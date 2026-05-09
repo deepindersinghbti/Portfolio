@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
             '.about-img',
             '.about-text',
             '.statBlock',
+            '.achievement-card',
             '.project-card',
             '.skillBox',
             '.certification-card',
@@ -260,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
             description: 'An AI-powered platform for detecting bias and fairness in decision systems',
             techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
             github: 'https://github.com/deepindersinghbti/FairLens',
-            liveUrl: 'https://deepinder-fairlens.vercel.app/', // No live deployment yet
+            liveUrl: 'https://deepinder-fairlens.vercel.app/',
             status: null
         }
     ];
@@ -316,8 +317,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 `;
             }
 
+            const badgeIcon = project.status === 'In Progress' ? '🚧' : '🏆';
+            const badgeClass = project.status === 'Ideathon Winner' ? 'project-badge project-badge--winner' : 'project-badge';
             const badgeHtml = project.status
-                ? `<span class="project-badge">🚧 ${project.status}</span>`
+                ? `<span class="${badgeClass}">${badgeIcon} ${project.status}</span>`
                 : '';
 
             return `
