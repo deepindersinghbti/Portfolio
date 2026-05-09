@@ -36,6 +36,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
+    overflow-x: hidden;
 }
 
 body {
@@ -47,6 +48,7 @@ body {
     line-height: 1.6;
     transition: background-color 0.25s ease, color 0.25s ease;
     position: relative;
+    overflow-x: hidden;
 }
 
 body::before {
@@ -1061,6 +1063,32 @@ html.theme-transition *::after {
     box-shadow: 0 8px 18px rgba(245, 158, 11, 0.08);
 }
 
+@media (max-width: 1024px) {
+    .achievement-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .achievement-card__content,
+    .achievement-card__details,
+    .proof-validation-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .achievement-card h2,
+    .achievement-card__subtitle,
+    .achievement-card__explanation,
+    .achievement-list li,
+    .evidence-placeholder span,
+    .evidence-placeholder small,
+    .evidence-link {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+}
+
 @media (max-width: 768px) {
     .achievement-card {
         grid-template-columns: 1fr;
@@ -1406,17 +1434,15 @@ html.theme-transition *::after {
 
 .certification-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
 .certification-card {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5rem;
-    align-items: center;
-    min-height: 19rem;
-    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.8rem 1.5rem;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -1425,6 +1451,7 @@ html.theme-transition *::after {
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    height: 100%;
 }
 
 .certification-card::before {
@@ -1448,26 +1475,26 @@ html.theme-transition *::after {
 }
 
 .certification-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     border-color: rgba(108, 85, 224, 0.35);
-    box-shadow: 0 18px 45px rgba(108, 85, 224, 0.15);
+    box-shadow: 0 16px 40px rgba(108, 85, 224, 0.12);
 }
 
 .credly-badge-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 10rem;
-    padding: 0.8rem;
-    background: var(--surface);
-    border: 1px solid rgba(108, 85, 224, 0.12);
+    width: 100%;
+    padding: 1.5rem;
+    background: rgba(108, 85, 224, 0.04);
+    border: 1px solid rgba(108, 85, 224, 0.08);
     border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background-color 0.3s ease;
 }
 
 .certification-card:hover .credly-badge-wrap {
-    transform: scale(1.03);
+    background: rgba(108, 85, 224, 0.08);
 }
 
 .credly-link {
@@ -1475,56 +1502,83 @@ html.theme-transition *::after {
 }
 
 .credly-img {
-    width: 140px;
+    width: 120px;
     height: auto;
     display: block;
     border-radius: 12px;
     background: transparent;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.certification-card:hover .credly-img {
+    transform: scale(1.05);
+}
+
+.certification-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .certification-content h3 {
     color: var(--text);
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     line-height: 1.3;
-    margin: 0.35rem 0 0.65rem;
+    margin: 0 0 0.75rem;
+    font-weight: 700;
 }
 
 .certification-provider {
     display: inline-flex;
     align-items: center;
     width: fit-content;
-    padding: 0.25rem 0.65rem;
+    padding: 0.3rem 0.75rem;
     color: var(--primary);
     background: rgba(108, 85, 224, 0.10);
     border-radius: 999px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
 }
 
 .certification-content p:not(.certification-provider) {
     color: var(--muted);
-    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
 }
 
 .certification-content a {
+    margin-top: auto;
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
+    justify-content: center;
+    gap: 0.5rem;
     color: var(--primary);
-    font-weight: 800;
+    font-weight: 700;
+    font-size: 0.95rem;
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    padding: 0.75rem 1.25rem;
+    background: rgba(108, 85, 224, 0.08);
+    border: 1px solid rgba(108, 85, 224, 0.15);
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 .certification-content a:hover {
-    text-decoration: underline;
-    opacity: 0.8;
+    background: rgba(108, 85, 224, 0.15);
+    border-color: rgba(108, 85, 224, 0.3);
+    text-decoration: none;
+    transform: translateY(-2px);
 }
 
 .certification-content a:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 
 /* CONTACT */
@@ -1997,26 +2051,10 @@ textarea:focus-visible {
     }
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
+/* ================= TABLET ================= */
+@media (max-width: 1024px) {
     .container {
         width: min(92%, 1200px);
-    }
-
-    /* Fix typing animation on mobile */
-    .typing {
-        max-width: 100%;
-        width: fit-content;
-        margin: 0 auto;
-    }
-
-    /* Fix slide animation on mobile */
-    .slideFromLeft {
-        transform: translateX(-30px);
-    }
-
-    .slideFromRight {
-        transform: translateX(30px);
     }
 
     .navbar {
@@ -2100,6 +2138,25 @@ textarea:focus-visible {
     .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
     }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+    /* Fix typing animation on mobile */
+    .typing {
+        max-width: 100%;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    /* Fix slide animation on mobile */
+    .slideFromLeft {
+        transform: translateX(-30px);
+    }
+
+    .slideFromRight {
+        transform: translateX(30px);
+    }
 
     .hero {
         min-height: auto;
@@ -2139,19 +2196,8 @@ textarea:focus-visible {
         align-items: stretch;
     }
 
-    .certification-grid,
-    .certification-card {
+    .certification-grid {
         grid-template-columns: 1fr;
-    }
-
-    .certification-card {
-        text-align: center;
-        justify-items: center;
-    }
-
-    .certification-content a,
-    .certification-provider {
-        margin-inline: auto;
     }
 
     .contact-form {
