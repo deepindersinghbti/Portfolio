@@ -167,7 +167,7 @@ a {
             rgba(108, 85, 224, 0.12));
 }
 
-.navbar > * {
+.navbar>* {
     position: relative;
     z-index: 1;
 }
@@ -2233,7 +2233,7 @@ textarea:focus-visible {
 /* PROJECTS SECTION */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }

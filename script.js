@@ -239,11 +239,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const projects = [
         {
-            id: 'portfolio',
-            title: 'Portfolio Website',
-            description: 'Personal portfolio showcasing projects, skills and professional work',
-            techs: ['HTML', 'CSS', 'JavaScript'],
-            github: 'https://github.com/deepindersinghbti/Portfolio', liveUrl: 'https://deepinder-singh.pages.dev',
+            id: 'vibeguard-ai',
+            title: 'VibeGuard AI',
+            description: 'AI-powered code security scanner that detects vulnerabilities in GitHub repositories and ZIP uploads with clear explanations and severity-based results.',
+            techs: ['Next.js', 'FastAPI', 'Python', 'AI', 'Security'],
+            github: 'https://github.com/deepindersinghbti/VibeGuard-AI',
+            liveUrl: 'https://vibeguard-ai.vercel.app/',
+            status: null
+        },
+        {
+            id: 'fairlens',
+            title: 'FairLens',
+            description: 'An AI-powered platform for detecting bias and fairness in decision systems',
+            techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
+            github: 'https://github.com/deepindersinghbti/FairLens',
+            liveUrl: 'https://deepinder-fairlens.vercel.app/',
             status: null
         },
         {
@@ -256,12 +266,11 @@ document.addEventListener("DOMContentLoaded", function () {
             status: null
         },
         {
-            id: 'fairlens',
-            title: 'FairLens',
-            description: 'An AI-powered platform for detecting bias and fairness in decision systems',
-            techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
-            github: 'https://github.com/deepindersinghbti/FairLens',
-            liveUrl: 'https://deepinder-fairlens.vercel.app/',
+            id: 'portfolio',
+            title: 'Portfolio Website',
+            description: 'Personal portfolio showcasing projects, skills and professional work',
+            techs: ['HTML', 'CSS', 'JavaScript'],
+            github: 'https://github.com/deepindersinghbti/Portfolio', liveUrl: 'https://deepinder-singh.pages.dev',
             status: null
         }
     ];
