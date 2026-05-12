@@ -1433,6 +1433,18 @@ html.theme-transition *::after {
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.skillBox .nextjs-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), filter 0.25s ease;
+}
+
+[data-theme="dark"] .skillBox .nextjs-icon {
+    filter: invert(1);
+}
+
 .skillBox:hover {
     transform: translateY(-6px);
     border-color: rgba(108, 85, 224, 0.35);
@@ -1440,6 +1452,10 @@ html.theme-transition *::after {
 }
 
 .skillBox:hover i {
+    transform: translateY(-3px);
+}
+
+.skillBox:hover .nextjs-icon {
     transform: translateY(-3px);
 }
 
