@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
             liveUrl: 'https://vibeguard-ai.vercel.app/',
             status: null,
             details: {
-                subtitle: 'AI-powered code security scanner for GitHub repositories and ZIP uploads.',
+                subtitle: 'AI-powered code security scanner for GitHub repositories and ZIP file uploads.',
                 overview: 'VibeGuard AI is a full-stack security scanning platform that helps developers detect risky code patterns, exposed secrets, insecure configurations, and common vulnerability indicators in GitHub repositories and uploaded ZIP files.',
                 whatItDoes: [
                     'Scans public GitHub repositories using a repository URL',
