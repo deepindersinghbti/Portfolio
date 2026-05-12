@@ -1791,7 +1791,8 @@ textarea:focus-visible {
 }
 
 .contact-status-card {
-    grid-column: 1 / -1;
+    grid-column: 2;
+    width: 100%;
     display: flex;
     align-items: flex-start;
     gap: 0.8rem;
@@ -1806,10 +1807,8 @@ textarea:focus-visible {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 240ms ease-out, transform 240ms ease-out;
-    margin-top: -0.6rem;
-    /* pull closer to the form */
-    max-width: 720px;
-    /* keep the card visually connected to the form */
+    margin-top: 1rem;
+    text-align: left;
 }
 
 .send-btn .btn-icon {
@@ -2236,6 +2235,11 @@ textarea:focus-visible {
 
     .contact-form {
         grid-template-columns: 1fr;
+    }
+
+    .contact-status-card {
+        grid-column: 1 / -1;
+        width: 100%;
     }
 
     #name-box,
