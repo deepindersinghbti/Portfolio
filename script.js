@@ -81,6 +81,59 @@ if (typeof systemThemeQuery.addEventListener === "function") {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    const skills = [
+        { name: "Frontend Development", iconClass: "fa-solid fa-code" },
+        { name: "HTML & CSS", iconClass: "fa-brands fa-html5" },
+        { name: "JavaScript", iconClass: "fa-brands fa-js" },
+        { name: "Next.js", iconType: "asset", assetPath: "assets/nextjs.svg" },
+        { name: "Python", iconClass: "fa-brands fa-python" },
+        { name: "FastAPI", iconClass: "fa-solid fa-server" },
+        { name: "REST APIs", iconClass: "fa-solid fa-network-wired" },
+        { name: "Git & GitHub", iconClass: "fa-brands fa-github" },
+        { name: "Deployment", iconClass: "fa-solid fa-cloud-arrow-up" },
+        { name: "AWS Fundamentals", iconClass: "fa-brands fa-aws" }
+    ];
+
+    function createSkillIcon(skill) {
+        if (skill.iconType === "asset") {
+            const iconAsset = document.createElement("span");
+            iconAsset.className = "nextjs-icon";
+            iconAsset.setAttribute("aria-hidden", "true");
+            iconAsset.style.setProperty("--skill-icon-asset", `url("${skill.assetPath}")`);
+            return iconAsset;
+        }
+
+        const icon = document.createElement("i");
+        icon.className = skill.iconClass;
+        icon.setAttribute("aria-hidden", "true");
+        return icon;
+    }
+
+    function renderSkills() {
+        const skillsContainer = document.getElementById("skillsContainer");
+        if (!skillsContainer) return;
+
+        const fragment = document.createDocumentFragment();
+
+        skills.forEach((skill) => {
+            const skillCard = document.createElement("div");
+            skillCard.className = "skillBox";
+
+            const label = document.createElement("span");
+            label.className = "skill-label";
+            label.textContent = skill.name;
+
+            skillCard.appendChild(createSkillIcon(skill));
+            skillCard.appendChild(label);
+            fragment.appendChild(skillCard);
+        });
+
+        skillsContainer.innerHTML = "";
+        skillsContainer.appendChild(fragment);
+    }
+
+    renderSkills();
+
     // ================= SCROLL REVEAL ANIMATIONS =================
     // Intersection Observer for scroll reveal animations
     const revealElements = () => {
