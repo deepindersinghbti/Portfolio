@@ -312,6 +312,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const projectModalId = 'projectDetailsModal';
     let activeProject = null;
     let previouslyFocusedElement = null;
+    let modalScrollLockState = null;
+
+    function lockBodyScroll() {
+        if (modalScrollLockState || !document.body || !document.documentElement) return;
+
+        modalScrollLockState = {
+            overflow: document.body.style.overflow,
+            htmlOverflow: document.documentElement.style.overflow
+        };
+
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+    }
+
+    function unlockBodyScroll() {
+        if (!modalScrollLockState || !document.body || !document.documentElement) return;
+
+        const { overflow, htmlOverflow } = modalScrollLockState;
+
+        document.body.style.overflow = overflow;
+        document.documentElement.style.overflow = htmlOverflow;
+
+        modalScrollLockState = null;
+    }
+
+    function cleanupProjectModalState() {
+        const modal = document.getElementById(projectModalId);
+
+        if (modal) {
+            modal.classList.remove('is-open');
+            modal.hidden = true;
+        }
+
+        document.removeEventListener('keydown', handleProjectModalKeydown);
+        unlockBodyScroll();
+        activeProject = null;
+    }
 
     function createProjectModal() {
         if (document.getElementById(projectModalId)) return;
@@ -431,7 +468,7 @@ document.addEventListener("DOMContentLoaded", function () {
         renderProjectModalContent(project);
 
         modal.hidden = false;
-        document.body.classList.add('modal-open');
+        lockBodyScroll();
         document.addEventListener('keydown', handleProjectModalKeydown);
 
         requestAnimationFrame(() => {
@@ -446,12 +483,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modal.classList.remove('is-open');
         modal.hidden = true;
-        document.body.classList.remove('modal-open');
         document.removeEventListener('keydown', handleProjectModalKeydown);
+        unlockBodyScroll();
         activeProject = null;
 
         if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
-            previouslyFocusedElement.focus();
+            previouslyFocusedElement.focus({ preventScroll: true });
         }
     }
 
@@ -516,6 +553,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Call render on DOM ready
     renderProjects();
     createProjectModal();
+    window.addEventListener('pagehide', cleanupProjectModalState);
+    window.addEventListener('beforeunload', cleanupProjectModalState);
 
     document.getElementById('projects-container')?.addEventListener('click', (event) => {
         const detailsButton = event.target.closest('[data-project-details]');

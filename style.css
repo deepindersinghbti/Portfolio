@@ -2458,6 +2458,7 @@ textarea:focus-visible {
     display: grid;
     place-items: center;
     padding: 1.25rem;
+    overscroll-behavior: contain;
 }
 
 .project-modal__overlay {
@@ -2488,6 +2489,8 @@ textarea:focus-visible {
     transition: opacity 0.24s ease, transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
     scrollbar-width: thin;
     scrollbar-color: var(--soft-muted) transparent;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .project-modal.is-open .project-modal__dialog {
@@ -2519,6 +2522,12 @@ textarea:focus-visible {
     line-height: 1;
     transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     z-index: 2;
+}
+
+.project-modal__close span {
+    display: block;
+    line-height: 1;
+    transform: translateY(-1px);
 }
 
 .project-modal__close:hover {
@@ -2590,7 +2599,7 @@ textarea:focus-visible {
     padding-left: 1.25rem;
 }
 
-.project-modal__section li + li {
+.project-modal__section li+li {
     margin-top: 0.35rem;
 }
 
