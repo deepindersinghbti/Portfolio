@@ -245,7 +245,22 @@ document.addEventListener("DOMContentLoaded", function () {
             techs: ['Next.js', 'FastAPI', 'Python', 'AI', 'Security'],
             github: 'https://github.com/deepindersinghbti/VibeGuard-AI',
             liveUrl: 'https://vibeguard-ai.vercel.app/',
-            status: null
+            status: null,
+            details: {
+                subtitle: 'AI-powered code security scanner for GitHub repositories and ZIP uploads.',
+                overview: 'VibeGuard AI is a full-stack security scanning platform that helps developers detect risky code patterns, exposed secrets, insecure configurations, and common vulnerability indicators in GitHub repositories and uploaded ZIP files.',
+                whatItDoes: [
+                    'Scans public GitHub repositories using a repository URL',
+                    'Supports ZIP file upload with drag-and-drop',
+                    'Detects security issues using rule-based scanners',
+                    'Displays severity-based findings',
+                    'Provides clear explanations for detected issues',
+                    'Uses AI-assisted explanations to help developers understand vulnerabilities faster'
+                ],
+                whyBuilt: 'I originally built VibeGuard AI during a hackathon attempt, but the first version was incomplete and not polished enough. I later rebuilt it from scratch as a serious portfolio project to create a cleaner, more useful, and production-ready security tool.',
+                techStack: ['Next.js', 'FastAPI', 'Python', 'AI Integration', 'Security Scanning', 'Vercel', 'Render'],
+                keyLearning: 'This project helped me improve my understanding of full-stack development, API integration, deployment, code security, file upload handling, and building polished user-facing developer tools.'
+            }
         },
         {
             id: 'fairlens',
@@ -294,6 +309,152 @@ document.addEventListener("DOMContentLoaded", function () {
         </svg>`;
     }
 
+    const projectModalId = 'projectDetailsModal';
+    let activeProject = null;
+    let previouslyFocusedElement = null;
+
+    function createProjectModal() {
+        if (document.getElementById(projectModalId)) return;
+
+        const modal = document.createElement('div');
+        modal.id = projectModalId;
+        modal.className = 'project-modal';
+        modal.hidden = true;
+        modal.innerHTML = `
+            <div class="project-modal__overlay" data-project-modal-close></div>
+            <section class="project-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle" aria-describedby="projectModalSubtitle" tabindex="-1">
+                <button class="project-modal__close" type="button" aria-label="Close VibeGuard AI details" data-project-modal-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="project-modal__content"></div>
+            </section>
+        `;
+
+        document.body.appendChild(modal);
+
+        modal.addEventListener('click', (event) => {
+            if (event.target.closest('[data-project-modal-close]')) {
+                closeProjectModal();
+            }
+        });
+    }
+
+    function renderProjectModalContent(project) {
+        const details = project.details;
+        const modalContent = document.querySelector(`#${projectModalId} .project-modal__content`);
+        if (!details || !modalContent) return;
+
+        const whatItDoesHtml = details.whatItDoes.map(item => `<li>${item}</li>`).join('');
+        const techStackHtml = details.techStack.map(tech => `<span class="modal-tech-tag">${tech}</span>`).join('');
+
+        modalContent.innerHTML = `
+            <div class="project-modal__header">
+                <h2 id="projectModalTitle">${project.title}</h2>
+                <p id="projectModalSubtitle">${details.subtitle}</p>
+            </div>
+
+            <div class="project-modal__body">
+                <section class="project-modal__section">
+                    <h3>Overview</h3>
+                    <p>${details.overview}</p>
+                </section>
+
+                <section class="project-modal__section">
+                    <h3>What it does</h3>
+                    <ul>${whatItDoesHtml}</ul>
+                </section>
+
+                <section class="project-modal__section">
+                    <h3>Why I built it</h3>
+                    <p>${details.whyBuilt}</p>
+                </section>
+
+                <section class="project-modal__section">
+                    <h3>Tech stack</h3>
+                    <div class="modal-tech-list">${techStackHtml}</div>
+                </section>
+
+                <section class="project-modal__section">
+                    <h3>Key learning</h3>
+                    <p>${details.keyLearning}</p>
+                </section>
+            </div>
+
+            <div class="project-modal__actions">
+                <a class="project-modal__button project-modal__button--primary" href="${project.github}" target="_blank" rel="noopener noreferrer">View GitHub</a>
+                <a class="project-modal__button" href="${project.liveUrl}" target="_blank" rel="noopener noreferrer">Visit Live Project</a>
+            </div>
+        `;
+    }
+
+    function getFocusableModalElements() {
+        const modal = document.getElementById(projectModalId);
+        if (!modal || modal.hidden) return [];
+
+        return Array.from(modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+            .filter(element => element.offsetParent !== null);
+    }
+
+    function handleProjectModalKeydown(event) {
+        if (!activeProject) return;
+
+        if (event.key === 'Escape') {
+            closeProjectModal();
+            return;
+        }
+
+        if (event.key !== 'Tab') return;
+
+        const focusableElements = getFocusableModalElements();
+        if (!focusableElements.length) return;
+
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstFocusable) {
+            event.preventDefault();
+            lastFocusable.focus();
+        } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+            event.preventDefault();
+            firstFocusable.focus();
+        }
+    }
+
+    function openProjectModal(projectId, triggerElement) {
+        const project = projects.find(item => item.id === projectId && item.details);
+        const modal = document.getElementById(projectModalId);
+        const dialog = modal?.querySelector('.project-modal__dialog');
+        if (!project || !modal || !dialog) return;
+
+        activeProject = project;
+        previouslyFocusedElement = triggerElement || document.activeElement;
+        renderProjectModalContent(project);
+
+        modal.hidden = false;
+        document.body.classList.add('modal-open');
+        document.addEventListener('keydown', handleProjectModalKeydown);
+
+        requestAnimationFrame(() => {
+            modal.classList.add('is-open');
+            dialog.focus();
+        });
+    }
+
+    function closeProjectModal() {
+        const modal = document.getElementById(projectModalId);
+        if (!modal || !activeProject) return;
+
+        modal.classList.remove('is-open');
+        modal.hidden = true;
+        document.body.classList.remove('modal-open');
+        document.removeEventListener('keydown', handleProjectModalKeydown);
+        activeProject = null;
+
+        if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+            previouslyFocusedElement.focus();
+        }
+    }
+
     // Render projects
     function renderProjects() {
         const container = document.getElementById('projects-container');
@@ -331,6 +492,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const badgeHtml = project.status
                 ? `<span class="${badgeClass}">${badgeIcon} ${project.status}</span>`
                 : '';
+            const detailButtonHtml = project.details
+                ? `<button class="project-details-btn" type="button" data-project-details="${project.id}">View Details</button>`
+                : '';
 
             return `
                 <article class="project-card" data-project-id="${project.id}">
@@ -341,7 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="project-description">${project.description}</p>
                     <div class="project-techs">${techTagsHtml}</div>
                     <div class="project-footer">
-                        <div></div>
+                        <div class="project-footer__detail">${detailButtonHtml}</div>
                         <div class="project-actions">${actionIconsHtml}</div>
                     </div>
                 </article>
@@ -351,6 +515,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Call render on DOM ready
     renderProjects();
+    createProjectModal();
+
+    document.getElementById('projects-container')?.addEventListener('click', (event) => {
+        const detailsButton = event.target.closest('[data-project-details]');
+        if (!detailsButton) return;
+
+        openProjectModal(detailsButton.dataset.projectDetails, detailsButton);
+    });
 
     // Apply reveal animations to dynamically rendered project cards
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
