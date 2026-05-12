@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     'Provides clear explanations for detected issues',
                     'Uses AI-assisted explanations to help developers understand vulnerabilities faster'
                 ],
-                whyBuilt: 'I originally built VibeGuard AI during a hackathon attempt, but the first version was incomplete and not polished enough. I later rebuilt it from scratch as a serious portfolio project to create a cleaner, more useful, and production-ready security tool.',
+                whyBuilt: 'VibeGuard AI began as a hackathon project, but I later rebuilt it from scratch to turn the idea into a cleaner, more reliable, and production-ready security tool. The rebuild helped me focus deeply on UX, deployment, file upload handling, API design, and practical code security scanning.',
                 techStack: ['Next.js', 'FastAPI', 'Python', 'AI Integration', 'Security Scanning', 'Vercel', 'Render'],
                 keyLearning: 'This project helped me improve my understanding of full-stack development, API integration, deployment, code security, file upload handling, and building polished user-facing developer tools.'
             }
