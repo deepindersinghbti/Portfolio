@@ -294,7 +294,21 @@ document.addEventListener("DOMContentLoaded", function () {
             techs: ['JavaScript', 'HTML', 'CSS', 'REST API'],
             github: 'https://github.com/deepindersinghbti/TrackLeet',
             liveUrl: 'https://trackleet.pages.dev/',
-            status: null
+            status: null,
+            details: {
+                subtitle: 'A simple LeetCode stats tracker built while learning frontend web development.',
+                overview: 'TrackLeet is a beginner-friendly web project that allows users to enter a LeetCode username and view basic coding statistics fetched from an external API. It was built using vanilla HTML, CSS, and JavaScript as one of my early projects while learning responsive UI design, API usage, and DOM manipulation.',
+                whatItDoes: [
+                    'Takes a LeetCode username as input',
+                    'Fetches user statistics from an API',
+                    'Displays coding profile data in a simple UI',
+                    'Provides a responsive layout for different screen sizes',
+                    'Demonstrates basic frontend interaction using JavaScript'
+                ],
+                whyBuilt: 'I built TrackLeet while learning web development to practice creating a responsive interface and working with APIs. It was not intended to be a complex or production-level application, but it helped me understand how real websites can fetch data dynamically and update the UI based on user input.',
+                techStack: ['HTML', 'CSS', 'JavaScript', 'API Integration', 'Responsive Design', 'Cloudflare Pages'],
+                keyLearning: 'This project helped me strengthen my fundamentals in frontend development, especially handling user input, making API requests, updating the DOM, designing a simple responsive layout, and deploying a static website online.'
+            }
         },
         {
             id: 'portfolio',
@@ -302,7 +316,23 @@ document.addEventListener("DOMContentLoaded", function () {
             description: 'Personal portfolio showcasing projects, skills and professional work',
             techs: ['HTML', 'CSS', 'JavaScript'],
             github: 'https://github.com/deepindersinghbti/Portfolio', liveUrl: 'https://deepinder-singh.pages.dev',
-            status: null
+            status: null,
+            details: {
+                subtitle: 'A responsive personal portfolio built to showcase my projects, skills, and developer journey.',
+                overview: 'This portfolio website is my personal space on the web, designed to showcase my projects, technical skills, learning journey, and contact information in a clean and accessible way. It was built with vanilla HTML, CSS, and JavaScript, with a strong focus on responsive design, theme support, smooth interactions, and a polished user experience.',
+                whatItDoes: [
+                    'Showcases my featured projects',
+                    'Provides GitHub and live project links',
+                    'Includes detailed project modals',
+                    'Supports light, dark, and system theme modes',
+                    'Uses a responsive layout for mobile, tablet, and desktop',
+                    'Includes a contact form for reaching out',
+                    'Presents my skills and developer profile in one place'
+                ],
+                whyBuilt: 'I built this portfolio to create a professional online presence and present my work beyond just GitHub repositories. It also became a practical project where I could improve my frontend fundamentals, experiment with UI design, polish responsive layouts, and gradually evolve the site as I build better projects.',
+                techStack: ['HTML', 'CSS', 'JavaScript', 'Responsive Design', 'Theme Switching', 'Web3Forms', 'Cloudflare Pages'],
+                keyLearning: 'This project helped me improve my understanding of layout design, responsive navigation, theme handling, accessibility, deployment, contact form integration, and presenting projects in a way that feels clean, professional, and easy to explore.'
+            }
         }
     ];
 
