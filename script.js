@@ -269,7 +269,23 @@ document.addEventListener("DOMContentLoaded", function () {
             techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
             github: 'https://github.com/deepindersinghbti/FairLens',
             liveUrl: 'https://deepinder-fairlens.vercel.app/',
-            status: null
+            status: null,
+            details: {
+                subtitle: 'AI-powered bias and fairness analysis platform for datasets and machine learning outputs.',
+                overview: 'FairLens is a full-stack web application that helps detect and explain bias in datasets and model predictions. It allows users to upload CSV files, choose target and sensitive columns, visualize fairness-related metrics, and generate AI-assisted insights to better understand potential unfairness in decision-making systems.',
+                whatItDoes: [
+                    'Accepts CSV dataset uploads',
+                    'Allows users to select target, sensitive, and optional prediction columns',
+                    'Supports dataset-level and model-output fairness analysis',
+                    'Calculates group-wise fairness metrics',
+                    'Visualizes bias patterns using charts',
+                    'Generates AI-assisted fairness insights',
+                    'Provides downloadable reports for analysis results'
+                ],
+                whyBuilt: 'I built FairLens for an online hackathon focused on using AI to solve meaningful problems. The goal was to create a practical tool that makes fairness analysis easier to understand for students, developers, and non-experts working with datasets or machine learning systems.',
+                techStack: ['Next.js', 'FastAPI', 'Python', 'Machine Learning', 'Gemini API', 'Recharts', 'CSV Processing', 'Vercel', 'Render'],
+                keyLearning: 'This project helped me understand how fairness metrics can be applied in real applications. It also improved my skills in full-stack development, CSV handling, data visualization, AI integration, frontend validation, API design, deployment, and building user-friendly explanations for technical concepts.'
+            }
         },
         {
             id: 'trackleet',
@@ -379,7 +395,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function renderProjectModalContent(project) {
         const details = project.details;
         const modalContent = document.querySelector(`#${projectModalId} .project-modal__content`);
+        const modalCloseButton = document.querySelector(`#${projectModalId} .project-modal__close`);
         if (!details || !modalContent) return;
+
+        if (modalCloseButton) {
+            modalCloseButton.setAttribute('aria-label', `Close ${project.title} details`);
+        }
 
         const whatItDoesHtml = details.whatItDoes.map(item => `<li>${item}</li>`).join('');
         const techStackHtml = details.techStack.map(tech => `<span class="modal-tech-tag">${tech}</span>`).join('');
