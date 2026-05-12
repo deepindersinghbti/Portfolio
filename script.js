@@ -245,7 +245,22 @@ document.addEventListener("DOMContentLoaded", function () {
             techs: ['Next.js', 'FastAPI', 'Python', 'AI', 'Security'],
             github: 'https://github.com/deepindersinghbti/VibeGuard-AI',
             liveUrl: 'https://vibeguard-ai.vercel.app/',
-            status: null
+            status: null,
+            details: {
+                subtitle: 'AI-powered code security scanner for GitHub repositories and ZIP file uploads.',
+                overview: 'VibeGuard AI is a full-stack security scanning platform that helps developers detect risky code patterns, exposed secrets, insecure configurations, and common vulnerability indicators in GitHub repositories and uploaded ZIP files.',
+                whatItDoes: [
+                    'Scans public GitHub repositories using a repository URL',
+                    'Supports ZIP file upload with drag-and-drop',
+                    'Detects security issues using rule-based scanners',
+                    'Displays severity-based findings',
+                    'Provides clear explanations for detected issues',
+                    'Uses AI-assisted explanations to help developers understand vulnerabilities faster'
+                ],
+                whyBuilt: 'VibeGuard AI began as a hackathon project, but I later rebuilt it from scratch to turn the idea into a cleaner, more reliable, and production-ready security tool. The rebuild helped me focus deeply on UX, deployment, file upload handling, API design, and practical code security scanning.',
+                techStack: ['Next.js', 'FastAPI', 'Python', 'AI Integration', 'Security Scanning', 'Vercel', 'Render'],
+                keyLearning: 'This project helped me improve my understanding of full-stack development, API integration, deployment, code security, file upload handling, and building polished user-facing developer tools.'
+            }
         },
         {
             id: 'fairlens',
@@ -254,7 +269,23 @@ document.addEventListener("DOMContentLoaded", function () {
             techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
             github: 'https://github.com/deepindersinghbti/FairLens',
             liveUrl: 'https://deepinder-fairlens.vercel.app/',
-            status: null
+            status: null,
+            details: {
+                subtitle: 'AI-powered bias and fairness analysis platform for datasets and machine learning outputs.',
+                overview: 'FairLens is a full-stack web application that helps detect and explain bias in datasets and model predictions. It allows users to upload CSV files, choose target and sensitive columns, visualize fairness-related metrics, and generate AI-assisted insights to better understand potential unfairness in decision-making systems.',
+                whatItDoes: [
+                    'Accepts CSV dataset uploads',
+                    'Allows users to select target, sensitive, and optional prediction columns',
+                    'Supports dataset-level and model-output fairness analysis',
+                    'Calculates group-wise fairness metrics',
+                    'Visualizes bias patterns using charts',
+                    'Generates AI-assisted fairness insights',
+                    'Provides downloadable reports for analysis results'
+                ],
+                whyBuilt: 'I built FairLens for an online hackathon focused on using AI to solve meaningful problems. The goal was to create a practical tool that makes fairness analysis easier to understand for students, developers, and non-experts working with datasets or machine learning systems.',
+                techStack: ['Next.js', 'FastAPI', 'Python', 'Machine Learning', 'Gemini API', 'Recharts', 'CSV Processing', 'Vercel', 'Render'],
+                keyLearning: 'This project helped me understand how fairness metrics can be applied in real applications. It also improved my skills in full-stack development, CSV handling, data visualization, AI integration, frontend validation, API design, deployment, and building user-friendly explanations for technical concepts.'
+            }
         },
         {
             id: 'trackleet',
@@ -263,7 +294,21 @@ document.addEventListener("DOMContentLoaded", function () {
             techs: ['JavaScript', 'HTML', 'CSS', 'REST API'],
             github: 'https://github.com/deepindersinghbti/TrackLeet',
             liveUrl: 'https://trackleet.pages.dev/',
-            status: null
+            status: null,
+            details: {
+                subtitle: 'A simple LeetCode stats tracker built while learning frontend web development.',
+                overview: 'TrackLeet is a beginner-friendly web project that allows users to enter a LeetCode username and view basic coding statistics fetched from an external API. It was built using vanilla HTML, CSS, and JavaScript as one of my early projects while learning responsive UI design, API usage, and DOM manipulation.',
+                whatItDoes: [
+                    'Takes a LeetCode username as input',
+                    'Fetches user statistics from an API',
+                    'Displays coding profile data in a simple UI',
+                    'Provides a responsive layout for different screen sizes',
+                    'Demonstrates basic frontend interaction using JavaScript'
+                ],
+                whyBuilt: 'I built TrackLeet while learning web development to practice creating a responsive interface and working with APIs. It was not intended to be a complex or production-level application, but it helped me understand how real websites can fetch data dynamically and update the UI based on user input.',
+                techStack: ['HTML', 'CSS', 'JavaScript', 'API Integration', 'Responsive Design', 'Cloudflare Pages'],
+                keyLearning: 'This project helped me strengthen my fundamentals in frontend development, especially handling user input, making API requests, updating the DOM, designing a simple responsive layout, and deploying a static website online.'
+            }
         },
         {
             id: 'portfolio',
@@ -271,7 +316,23 @@ document.addEventListener("DOMContentLoaded", function () {
             description: 'Personal portfolio showcasing projects, skills and professional work',
             techs: ['HTML', 'CSS', 'JavaScript'],
             github: 'https://github.com/deepindersinghbti/Portfolio', liveUrl: 'https://deepinder-singh.pages.dev',
-            status: null
+            status: null,
+            details: {
+                subtitle: 'A responsive personal portfolio built to showcase my projects, skills, and developer journey.',
+                overview: 'This portfolio website is my personal space on the web, designed to showcase my projects, technical skills, learning journey, and contact information in a clean and accessible way. It was built with vanilla HTML, CSS, and JavaScript, with a strong focus on responsive design, theme support, smooth interactions, and a polished user experience.',
+                whatItDoes: [
+                    'Showcases my featured projects',
+                    'Provides GitHub and live project links',
+                    'Includes detailed project modals',
+                    'Supports light, dark, and system theme modes',
+                    'Uses a responsive layout for mobile, tablet, and desktop',
+                    'Includes a contact form for reaching out',
+                    'Presents my skills and developer profile in one place'
+                ],
+                whyBuilt: 'I built this portfolio to create a professional online presence and present my work beyond just GitHub repositories. It also became a practical project where I could improve my frontend fundamentals, experiment with UI design, polish responsive layouts, and gradually evolve the site as I build better projects.',
+                techStack: ['HTML', 'CSS', 'JavaScript', 'Responsive Design', 'Theme Switching', 'Web3Forms', 'Cloudflare Pages'],
+                keyLearning: 'This project helped me improve my understanding of layout design, responsive navigation, theme handling, accessibility, deployment, contact form integration, and presenting projects in a way that feels clean, professional, and easy to explore.'
+            }
         }
     ];
 
@@ -292,6 +353,194 @@ document.addEventListener("DOMContentLoaded", function () {
         return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
         </svg>`;
+    }
+
+    const projectModalId = 'projectDetailsModal';
+    let activeProject = null;
+    let previouslyFocusedElement = null;
+    let modalScrollLockState = null;
+
+    function lockBodyScroll() {
+        if (modalScrollLockState || !document.body || !document.documentElement) return;
+
+        modalScrollLockState = {
+            overflow: document.body.style.overflow,
+            htmlOverflow: document.documentElement.style.overflow
+        };
+
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+    }
+
+    function unlockBodyScroll() {
+        if (!modalScrollLockState || !document.body || !document.documentElement) return;
+
+        const { overflow, htmlOverflow } = modalScrollLockState;
+
+        document.body.style.overflow = overflow;
+        document.documentElement.style.overflow = htmlOverflow;
+
+        modalScrollLockState = null;
+    }
+
+    function cleanupProjectModalState() {
+        const modal = document.getElementById(projectModalId);
+
+        if (modal) {
+            modal.classList.remove('is-open');
+            modal.hidden = true;
+        }
+
+        document.removeEventListener('keydown', handleProjectModalKeydown);
+        unlockBodyScroll();
+        activeProject = null;
+    }
+
+    function createProjectModal() {
+        if (document.getElementById(projectModalId)) return;
+
+        const modal = document.createElement('div');
+        modal.id = projectModalId;
+        modal.className = 'project-modal';
+        modal.hidden = true;
+        modal.innerHTML = `
+            <div class="project-modal__overlay" data-project-modal-close></div>
+            <section class="project-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle" aria-describedby="projectModalSubtitle" tabindex="-1">
+                <button class="project-modal__close" type="button" aria-label="Close VibeGuard AI details" data-project-modal-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="project-modal__content"></div>
+            </section>
+        `;
+
+        document.body.appendChild(modal);
+
+        modal.addEventListener('click', (event) => {
+            if (event.target.closest('[data-project-modal-close]')) {
+                closeProjectModal();
+            }
+        });
+    }
+
+    function renderProjectModalContent(project) {
+        const details = project.details;
+        const modalContent = document.querySelector(`#${projectModalId} .project-modal__content`);
+        const modalCloseButton = document.querySelector(`#${projectModalId} .project-modal__close`);
+        if (!details || !modalContent) return;
+
+        if (modalCloseButton) {
+            modalCloseButton.setAttribute('aria-label', `Close ${project.title} details`);
+        }
+
+        const whatItDoesHtml = details.whatItDoes.map(item => `<li>${item}</li>`).join('');
+        const techStackHtml = details.techStack.map(tech => `<span class="modal-tech-tag">${tech}</span>`).join('');
+
+        modalContent.innerHTML = `
+            <div class="project-modal__header">
+                <h2 id="projectModalTitle">${project.title}</h2>
+                <p id="projectModalSubtitle">${details.subtitle}</p>
+            </div>
+
+            <div class="project-modal__body">
+                <section class="project-modal__section">
+                    <h3>Overview</h3>
+                    <p>${details.overview}</p>
+                </section>
+
+                <section class="project-modal__section">
+                    <h3>What it does</h3>
+                    <ul>${whatItDoesHtml}</ul>
+                </section>
+
+                <section class="project-modal__section">
+                    <h3>Why I built it</h3>
+                    <p>${details.whyBuilt}</p>
+                </section>
+
+                <section class="project-modal__section">
+                    <h3>Tech stack</h3>
+                    <div class="modal-tech-list">${techStackHtml}</div>
+                </section>
+
+                <section class="project-modal__section">
+                    <h3>Key learning</h3>
+                    <p>${details.keyLearning}</p>
+                </section>
+            </div>
+
+            <div class="project-modal__actions">
+                <a class="project-modal__button project-modal__button--primary" href="${project.github}" target="_blank" rel="noopener noreferrer">View GitHub</a>
+                <a class="project-modal__button" href="${project.liveUrl}" target="_blank" rel="noopener noreferrer">Visit Live Project</a>
+            </div>
+        `;
+    }
+
+    function getFocusableModalElements() {
+        const modal = document.getElementById(projectModalId);
+        if (!modal || modal.hidden) return [];
+
+        return Array.from(modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+            .filter(element => element.offsetParent !== null);
+    }
+
+    function handleProjectModalKeydown(event) {
+        if (!activeProject) return;
+
+        if (event.key === 'Escape') {
+            closeProjectModal();
+            return;
+        }
+
+        if (event.key !== 'Tab') return;
+
+        const focusableElements = getFocusableModalElements();
+        if (!focusableElements.length) return;
+
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstFocusable) {
+            event.preventDefault();
+            lastFocusable.focus();
+        } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+            event.preventDefault();
+            firstFocusable.focus();
+        }
+    }
+
+    function openProjectModal(projectId, triggerElement) {
+        const project = projects.find(item => item.id === projectId && item.details);
+        const modal = document.getElementById(projectModalId);
+        const dialog = modal?.querySelector('.project-modal__dialog');
+        if (!project || !modal || !dialog) return;
+
+        activeProject = project;
+        previouslyFocusedElement = triggerElement || document.activeElement;
+        renderProjectModalContent(project);
+
+        modal.hidden = false;
+        lockBodyScroll();
+        document.addEventListener('keydown', handleProjectModalKeydown);
+
+        requestAnimationFrame(() => {
+            modal.classList.add('is-open');
+            dialog.focus();
+        });
+    }
+
+    function closeProjectModal() {
+        const modal = document.getElementById(projectModalId);
+        if (!modal || !activeProject) return;
+
+        modal.classList.remove('is-open');
+        modal.hidden = true;
+        document.removeEventListener('keydown', handleProjectModalKeydown);
+        unlockBodyScroll();
+        activeProject = null;
+
+        if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+            previouslyFocusedElement.focus({ preventScroll: true });
+        }
     }
 
     // Render projects
@@ -331,6 +580,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const badgeHtml = project.status
                 ? `<span class="${badgeClass}">${badgeIcon} ${project.status}</span>`
                 : '';
+            const detailButtonHtml = project.details
+                ? `<button class="project-details-btn" type="button" data-project-details="${project.id}">View Details</button>`
+                : '';
 
             return `
                 <article class="project-card" data-project-id="${project.id}">
@@ -341,7 +593,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="project-description">${project.description}</p>
                     <div class="project-techs">${techTagsHtml}</div>
                     <div class="project-footer">
-                        <div></div>
+                        <div class="project-footer__detail">${detailButtonHtml}</div>
                         <div class="project-actions">${actionIconsHtml}</div>
                     </div>
                 </article>
@@ -351,6 +603,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Call render on DOM ready
     renderProjects();
+    createProjectModal();
+    window.addEventListener('pagehide', cleanupProjectModalState);
+    window.addEventListener('beforeunload', cleanupProjectModalState);
+
+    document.getElementById('projects-container')?.addEventListener('click', (event) => {
+        const detailsButton = event.target.closest('[data-project-details]');
+        if (!detailsButton) return;
+
+        openProjectModal(detailsButton.dataset.projectDetails, detailsButton);
+    });
 
     // Apply reveal animations to dynamically rendered project cards
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
