@@ -411,6 +411,67 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         },
         {
+            id: 'pixel-sankalp',
+            title: 'PIXEL / SANKALP Collaboration Platform',
+            cardTitleHtml: '<span class="project-title-nowrap">PIXEL / SANKALP</span><span>Collaboration Platform</span>',
+            description: 'A role-based project collaboration platform enabling proposal submission, voting, approvals, task tracking, and developer ecosystem features.',
+            techs: ['Next.js', 'MongoDB', 'Supabase Auth', 'RBAC', 'Project Management'],
+            github: 'https://github.com/S-A-N-K-A-L-P/project_collab_sankalap',
+            liveUrl: 'https://project-syncroo.netlify.app/',
+            linkedin: 'https://www.linkedin.com/company/sankalp001/',
+            status: 'Collaborative Project',
+            actions: [
+                { label: 'GitHub', url: 'https://github.com/S-A-N-K-A-L-P/project_collab_sankalap', icon: 'github' },
+                { label: 'Live Demo', url: 'https://project-syncroo.netlify.app/', icon: 'external', primary: true },
+                { label: 'LinkedIn', url: 'https://www.linkedin.com/company/sankalp001/', icon: 'linkedin' }
+            ],
+            details: {
+                subtitle: 'Role-based project collaboration platform for proposals, approvals, task tracking, and developer ecosystem workflows.',
+                sections: [
+                    {
+                        title: 'Overview',
+                        content: 'PIXEL is a full lifecycle project management system where users can submit proposals, vote, get approvals from leadership, and collaborate on projects through structured workflows and role-based access.'
+                    },
+                    {
+                        title: 'My Contributions',
+                        items: [
+                            'Implemented UI/UX improvements across the platform',
+                            'Added theme switching system (light/dark/system)',
+                            'Built and improved comment and interaction features',
+                            'Refined role-based display logic and user experience',
+                            'Contributed to frontend architecture cleanup and feature enhancements'
+                        ]
+                    },
+                    {
+                        title: 'Core Features',
+                        items: [
+                            'Proposal submission and voting system',
+                            'Role-based access (Admin, Pixel Head, Member, User)',
+                            'Project approval -> Priority project pipeline',
+                            'Task assignment and progress tracking',
+                            'Points and certification system',
+                            'Social + GitHub integration layer'
+                        ]
+                    },
+                    {
+                        title: 'Tech Stack',
+                        tags: [
+                            'Next.js (App Router), TypeScript',
+                            'Material UI + ShadCN',
+                            'Next.js API Routes',
+                            'Supabase Authentication',
+                            'MongoDB',
+                            'Netlify'
+                        ]
+                    },
+                    {
+                        title: 'Credits',
+                        content: 'Original architecture and system design by senior (SANKALP team). Contributed as a developer by implementing features, UI improvements, and system enhancements.'
+                    }
+                ]
+            }
+        },
+        {
             id: 'trackleet',
             title: 'TrackLeet',
             description: 'A LeetCode progress tracker to visualize your coding problem-solving journey',
@@ -472,10 +533,39 @@ document.addEventListener("DOMContentLoaded", function () {
         </svg>`;
     }
 
+    function getSvgLinkedIn() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.53V8.98H7.1v11.47ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/>
+        </svg>`;
+    }
+
     function getSvgWrench() {
         return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
         </svg>`;
+    }
+
+    function getProjectActionIcon(icon) {
+        if (icon === 'github') return getSvgGithub();
+        if (icon === 'linkedin') return getSvgLinkedIn();
+        return getSvgExternalLink();
+    }
+
+    function getActionTooltip(icon) {
+        if (icon === 'github') return 'View Code';
+        if (icon === 'linkedin') return 'Project LinkedIn Page';
+        return 'Live Demo';
+    }
+
+    function getProjectActions(project) {
+        if (project.actions) {
+            return project.actions;
+        }
+
+        return [
+            { label: 'View GitHub', url: project.github, icon: 'github', primary: true },
+            { label: 'Visit Live Project', url: project.liveUrl, icon: 'external' }
+        ];
     }
 
     const projectModalId = 'projectDetailsModal';
@@ -512,6 +602,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (modal) {
             modal.classList.remove('is-open', 'is-closing');
+            modal.removeAttribute('data-active-project');
             modal.hidden = true;
         }
 
@@ -557,16 +648,22 @@ document.addEventListener("DOMContentLoaded", function () {
             modalCloseButton.setAttribute('aria-label', `Close ${project.title} details`);
         }
 
-        const whatItDoesHtml = details.whatItDoes.map(item => `<li>${item}</li>`).join('');
-        const techStackHtml = details.techStack.map(tech => `<span class="modal-tech-tag">${tech}</span>`).join('');
+        const sectionsHtml = details.sections
+            ? details.sections.map((section) => {
+                const bodyHtml = section.tags
+                    ? `<div class="modal-tech-list">${section.tags.map(tech => `<span class="modal-tech-tag">${tech}</span>`).join('')}</div>`
+                    : section.items
+                        ? `<ul>${section.items.map(item => `<li>${item}</li>`).join('')}</ul>`
+                        : `<p>${section.content}</p>`;
 
-        modalContent.innerHTML = `
-            <div class="project-modal__header">
-                <h2 id="projectModalTitle">${project.title}</h2>
-                <p id="projectModalSubtitle">${details.subtitle}</p>
-            </div>
-
-            <div class="project-modal__body">
+                return `
+                    <section class="project-modal__section">
+                        <h3>${section.title}</h3>
+                        ${bodyHtml}
+                    </section>
+                `;
+            }).join('')
+            : `
                 <section class="project-modal__section">
                     <h3>Overview</h3>
                     <p>${details.overview}</p>
@@ -574,7 +671,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <section class="project-modal__section">
                     <h3>What it does</h3>
-                    <ul>${whatItDoesHtml}</ul>
+                    <ul>${details.whatItDoes.map(item => `<li>${item}</li>`).join('')}</ul>
                 </section>
 
                 <section class="project-modal__section">
@@ -584,18 +681,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <section class="project-modal__section">
                     <h3>Tech stack</h3>
-                    <div class="modal-tech-list">${techStackHtml}</div>
+                    <div class="modal-tech-list">${details.techStack.map(tech => `<span class="modal-tech-tag">${tech}</span>`).join('')}</div>
                 </section>
 
                 <section class="project-modal__section">
                     <h3>Key learning</h3>
                     <p>${details.keyLearning}</p>
                 </section>
+            `;
+        const modalActionsHtml = getProjectActions(project)
+            .map(action => `<a class="project-modal__button${action.primary ? ' project-modal__button--primary' : ''}" href="${action.url}" target="_blank" rel="noopener noreferrer">${action.label}</a>`)
+            .join('');
+
+        modalContent.innerHTML = `
+            <div class="project-modal__header">
+                <h2 id="projectModalTitle">${project.title}</h2>
+                <p id="projectModalSubtitle">${details.subtitle}</p>
+            </div>
+
+            <div class="project-modal__body">
+                ${sectionsHtml}
             </div>
 
             <div class="project-modal__actions">
-                <a class="project-modal__button project-modal__button--primary" href="${project.github}" target="_blank" rel="noopener noreferrer">View GitHub</a>
-                <a class="project-modal__button" href="${project.liveUrl}" target="_blank" rel="noopener noreferrer">Visit Live Project</a>
+                ${modalActionsHtml}
             </div>
         `;
     }
@@ -659,6 +768,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         clearTimeout(modalCloseTimer);
         modal.classList.remove('is-closing');
+        modal.dataset.activeProject = project.id;
         activeProject = project;
         previouslyFocusedElement = triggerElement || document.activeElement;
         renderProjectModalContent(project);
@@ -688,6 +798,7 @@ document.addEventListener("DOMContentLoaded", function () {
             clearTimeout(modalCloseTimer);
             dialog.removeEventListener('transitionend', handleDialogTransitionEnd);
             modal.classList.remove('is-open', 'is-closing');
+            modal.removeAttribute('data-active-project');
             modal.hidden = true;
             document.removeEventListener('keydown', handleProjectModalKeydown);
             unlockBodyScroll();
@@ -714,41 +825,40 @@ document.addEventListener("DOMContentLoaded", function () {
                 .map(tech => `<span class="tech-tag">${tech}</span>`)
                 .join('');
 
-            let actionIconsHtml = `
-                <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="View on GitHub">
+            const actionIconsHtml = project.actions
+                ? project.actions.map(action => `
+                    <a href="${action.url}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="${getActionTooltip(action.icon)}" title="${getActionTooltip(action.icon)}">
+                        ${getProjectActionIcon(action.icon)}
+                    </a>
+                `).join('')
+                : `
+                <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="View Code" title="View Code">
                     ${getSvgGithub()}
                 </a>
+                ${project.status === 'In Progress'
+                    ? `<button class="icon-btn" disabled aria-disabled="true" title="Live demo coming soon">${getSvgWrench()}</button>`
+                    : `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Live Demo" title="Live Demo">${getSvgExternalLink()}</a>`
+                }
             `;
 
-            if (project.status) {
-                // Show disabled wrench only for projects in progress
-                actionIconsHtml += `
-                    <button class="icon-btn" disabled aria-disabled="true" title="Live demo coming soon">
-                        ${getSvgWrench()}
-                    </button>
-                `;
-            } else {
-                // Show external link arrow for all others
-                actionIconsHtml += `
-                    <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="View live demo">
-                        ${getSvgExternalLink()}
-                    </a>
-                `;
-            }
-
             const badgeIcon = project.status === 'In Progress' ? '🚧' : '🏆';
-            const badgeClass = project.status === 'Ideathon Winner' ? 'project-badge project-badge--winner' : 'project-badge';
+            const badgeClass = project.status === 'Ideathon Winner'
+                ? 'project-badge project-badge--winner'
+                : project.status === 'Collaborative Project'
+                    ? 'project-badge project-badge--collaborative'
+                    : 'project-badge';
             const badgeHtml = project.status
-                ? `<span class="${badgeClass}">${badgeIcon} ${project.status}</span>`
+                ? `<span class="${badgeClass}">${project.status === 'Collaborative Project' ? '<i class="fa-solid fa-users"></i><span>Collaborative Project</span>' : `${badgeIcon} ${project.status}`}</span>`
                 : '';
             const detailButtonHtml = project.details
                 ? `<button class="project-details-btn" type="button" data-project-details="${project.id}">View Details</button>`
                 : '';
+            const cardTitleHtml = project.cardTitleHtml || project.title;
 
             return `
                 <article class="project-card" data-project-id="${project.id}">
                     <div class="project-header">
-                        <h3 class="project-title">${project.title}</h3>
+                        <h3 class="project-title">${cardTitleHtml}</h3>
                         ${badgeHtml}
                     </div>
                     <p class="project-description">${project.description}</p>

@@ -1239,6 +1239,34 @@ html.theme-transition *::after {
     color: #fbbf24;
 }
 
+.project-badge--collaborative {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(108, 85, 224, 0.09);
+    border: 1px solid rgba(108, 85, 224, 0.14);
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    padding: 4px 10px;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.project-badge--collaborative i {
+    color: var(--primary);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+[data-theme="dark"] .project-badge--collaborative {
+    background: rgba(139, 116, 255, 0.1);
+    border-color: rgba(139, 116, 255, 0.16);
+}
+
 /* BUTTONS */
 .buttons,
 .secondary-btn {
@@ -1419,7 +1447,7 @@ html.theme-transition *::after {
     text-align: left;
 }
 
-.skill-category + .skill-category {
+.skill-category+.skill-category {
     margin-top: 1.8rem;
 }
 
@@ -2433,11 +2461,25 @@ textarea:focus-visible {
     gap: 1rem;
 }
 
+.project-card[data-project-id="pixel-sankalp"] .project-header {
+    display: block;
+    min-height: 0;
+    padding-right: 0;
+}
+
 .project-title {
     font-size: 1.25rem;
     font-weight: 600;
     margin: 0;
     flex: 1;
+}
+
+.project-card[data-project-id="pixel-sankalp"] .project-title span {
+    display: block;
+}
+
+.project-card[data-project-id="pixel-sankalp"] .project-title-nowrap {
+    white-space: nowrap;
 }
 
 .project-badge {
@@ -2449,6 +2491,11 @@ textarea:focus-visible {
     font-weight: 600;
     white-space: nowrap;
     flex-shrink: 0;
+}
+
+.project-card[data-project-id="pixel-sankalp"] .project-badge {
+    position: static;
+    max-width: 100%;
 }
 
 [data-theme="dark"] .project-badge {
@@ -2540,8 +2587,9 @@ textarea:focus-visible {
 
 .project-actions {
     display: flex;
-    gap: 1rem;
     align-items: center;
+    gap: 12px;
+    margin-right: 6px;
 }
 
 .icon-btn {
@@ -2817,6 +2865,7 @@ textarea:focus-visible {
 
 /* Responsive */
 @media (max-width: 768px) {
+
     .skills-boxes,
     .skills-boxes--count-1,
     .skills-boxes--count-2 {
@@ -2883,6 +2932,7 @@ textarea:focus-visible {
 
     .project-actions {
         gap: 0.65rem;
+        margin-right: 0;
     }
 
     .project-details-btn {
