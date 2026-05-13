@@ -1928,7 +1928,8 @@ textarea:focus-visible {
 }
 
 .contact-status-card {
-    grid-column: 1 / -1;
+    grid-column: 2;
+    width: 100%;
     display: flex;
     align-items: flex-start;
     gap: 0.8rem;
@@ -2382,6 +2383,11 @@ textarea:focus-visible {
 
     .contact-form {
         grid-template-columns: 1fr;
+    }
+
+    .contact-status-card {
+        grid-column: 1 / -1;
+        max-width: 100%;
     }
 
     #name-box,
