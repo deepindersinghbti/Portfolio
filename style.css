@@ -2299,6 +2299,7 @@ textarea:focus-visible {
     flex-direction: column;
     height: 100%;
     gap: 1rem;
+    height: 100%;
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 10px 25px rgba(17, 24, 39, 0.04);
     position: relative;
@@ -2516,6 +2517,8 @@ textarea:focus-visible {
     background: rgba(15, 23, 42, 0.48);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    transition: opacity 0.22s ease;
 }
 
 [data-theme="dark"] .project-modal__overlay {
@@ -2534,17 +2537,25 @@ textarea:focus-visible {
     box-shadow: var(--shadow);
     color: var(--text);
     opacity: 0;
-    transform: translateY(14px) scale(0.98);
-    transition: opacity 0.24s ease, transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: scale(0.96);
+    transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
     scrollbar-width: thin;
     scrollbar-color: var(--soft-muted) transparent;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
 }
 
+.project-modal.is-open .project-modal__overlay {
+    opacity: 1;
+}
+
 .project-modal.is-open .project-modal__dialog {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: scale(1);
+}
+
+.project-modal.is-closing {
+    pointer-events: none;
 }
 
 .project-modal__dialog:focus {
