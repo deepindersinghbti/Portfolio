@@ -228,13 +228,14 @@ a {
     content: "";
     position: absolute;
     left: 10px;
-    right: 10px;
     bottom: 2px;
+    width: calc(100% - 20px);
     height: 2px;
     background: var(--primary);
     transform: scaleX(0);
-    transform-origin: left;
+    transform-origin: left center;
     transition: transform 0.3s ease;
+    will-change: transform;
 }
 
 .nav-items a:hover {
@@ -1944,10 +1945,8 @@ textarea:focus-visible {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 240ms ease-out, transform 240ms ease-out;
-    margin-top: -0.6rem;
-    /* pull closer to the form */
-    max-width: 720px;
-    /* keep the card visually connected to the form */
+    margin-top: 1rem;
+    text-align: left;
 }
 
 .send-btn .btn-icon {
@@ -2387,7 +2386,7 @@ textarea:focus-visible {
 
     .contact-status-card {
         grid-column: 1 / -1;
-        max-width: 100%;
+        width: 100%;
     }
 
     #name-box,
@@ -2418,6 +2417,7 @@ textarea:focus-visible {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    height: 100%;
     gap: 1rem;
     height: 100%;
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
