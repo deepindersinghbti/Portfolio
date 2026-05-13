@@ -81,23 +81,62 @@ if (typeof systemThemeQuery.addEventListener === "function") {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const skills = [
-        { name: "Frontend Development", iconClass: "fa-solid fa-code" },
-        { name: "HTML & CSS", iconClass: "fa-brands fa-html5" },
-        { name: "JavaScript", iconClass: "fa-brands fa-js" },
-        { name: "Next.js", iconType: "asset", assetPath: "assets/nextjs.svg" },
-        { name: "Python", iconClass: "fa-brands fa-python" },
-        { name: "FastAPI", iconClass: "fa-solid fa-server" },
-        { name: "REST APIs", iconClass: "fa-solid fa-network-wired" },
-        { name: "Git & GitHub", iconClass: "fa-brands fa-github" },
-        { name: "Deployment", iconClass: "fa-solid fa-cloud-arrow-up" },
-        { name: "AWS Fundamentals", iconClass: "fa-brands fa-aws" }
+    const skillCategories = [
+        {
+            name: "Frontend",
+            skills: [
+                { name: "HTML & CSS", iconClasses: ["fa-brands fa-html5", "fa-brands fa-css3-alt"] },
+                { name: "JavaScript", iconClass: "fa-brands fa-js" },
+                { name: "Next.js", iconType: "asset", assetPath: "assets/nextjs.svg" }
+            ]
+        },
+        {
+            name: "Backend",
+            skills: [
+                { name: "Python", iconClass: "fa-brands fa-python" },
+                { name: "FastAPI", iconClass: "fa-solid fa-server", context: "Used in VibeGuard & FairLens" },
+                { name: "REST APIs", iconClass: "fa-solid fa-network-wired" }
+            ]
+        },
+        {
+            name: "Database",
+            skills: [
+                { name: "MongoDB", iconType: "asset", assetPath: "assets/mongodb.svg", context: "Used in PIXEL project" }
+            ]
+        },
+        {
+            name: "DevOps / Deployment",
+            skills: [
+                { name: "Cloud & Deployment", iconClass: "fa-solid fa-cloud-arrow-up", context: "Deployed on Cloudflare, Vercel & Render" },
+                { name: "AWS Fundamentals", iconClass: "fa-brands fa-aws" }
+            ]
+        },
+        {
+            name: "Tools",
+            skills: [
+                { name: "Git & GitHub", iconClass: "fa-brands fa-github" }
+            ]
+        }
     ];
 
     function createSkillIcon(skill) {
+        if (skill.iconClasses) {
+            const iconGroup = document.createElement("span");
+            iconGroup.className = "skill-icon-group";
+            iconGroup.setAttribute("aria-hidden", "true");
+
+            skill.iconClasses.forEach((iconClass) => {
+                const icon = document.createElement("i");
+                icon.className = iconClass;
+                iconGroup.appendChild(icon);
+            });
+
+            return iconGroup;
+        }
+
         if (skill.iconType === "asset") {
             const iconAsset = document.createElement("span");
-            iconAsset.className = "nextjs-icon";
+            iconAsset.className = "skill-asset-icon";
             iconAsset.setAttribute("aria-hidden", "true");
             iconAsset.style.setProperty("--skill-icon-asset", `url("${skill.assetPath}")`);
             return iconAsset;
@@ -115,17 +154,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const fragment = document.createDocumentFragment();
 
-        skills.forEach((skill) => {
-            const skillCard = document.createElement("div");
-            skillCard.className = "skillBox";
+        skillCategories.forEach((category) => {
+            const categorySection = document.createElement("section");
+            categorySection.className = "skill-category";
 
-            const label = document.createElement("span");
-            label.className = "skill-label";
-            label.textContent = skill.name;
+            const headingId = `skill-category-${category.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+            const heading = document.createElement("h2");
+            heading.className = "skill-category-title";
+            heading.id = headingId;
+            heading.textContent = category.name;
 
-            skillCard.appendChild(createSkillIcon(skill));
-            skillCard.appendChild(label);
-            fragment.appendChild(skillCard);
+            const grid = document.createElement("div");
+            grid.className = `skills-boxes skills-boxes--count-${category.skills.length}`;
+            grid.setAttribute("aria-labelledby", headingId);
+
+            category.skills.forEach((skill) => {
+                const skillCard = document.createElement("div");
+                skillCard.className = "skillBox";
+
+                const text = document.createElement("span");
+                text.className = "skill-text";
+
+                const label = document.createElement("span");
+                label.className = "skill-label";
+                label.textContent = skill.name;
+
+                text.appendChild(label);
+
+                if (skill.context) {
+                    const context = document.createElement("span");
+                    context.className = "skill-context";
+                    context.textContent = skill.context;
+                    text.appendChild(context);
+                }
+
+                skillCard.appendChild(createSkillIcon(skill));
+                skillCard.appendChild(text);
+                grid.appendChild(skillCard);
+            });
+
+            categorySection.appendChild(heading);
+            categorySection.appendChild(grid);
+            fragment.appendChild(categorySection);
         });
 
         skillsContainer.innerHTML = "";
