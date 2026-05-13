@@ -699,6 +699,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const contactForm = document.querySelector(".contact-form");
     const contactStatus = document.getElementById("contactStatus");
     const sendButton = document.querySelector(".send-btn");
+    const messageTextarea = document.getElementById("message-box");
+
+    function resizeMessageTextarea() {
+        if (!messageTextarea) return;
+
+        messageTextarea.style.height = "auto";
+        messageTextarea.style.height = Math.min(messageTextarea.scrollHeight, 340) + "px";
+    }
+
+    if (messageTextarea) {
+        messageTextarea.addEventListener("input", resizeMessageTextarea);
+        window.addEventListener("load", resizeMessageTextarea);
+        resizeMessageTextarea();
+    }
 
     if (contactForm && contactStatus && sendButton) {
         const originalButtonHTML = sendButton.innerHTML;

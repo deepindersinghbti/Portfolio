@@ -1742,6 +1742,9 @@ textarea {
 textarea {
     resize: vertical;
     min-height: 140px;
+    max-height: 340px;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 input:focus,
