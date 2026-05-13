@@ -412,6 +412,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let activeProject = null;
     let previouslyFocusedElement = null;
     let modalScrollLockState = null;
+    let modalCloseTimer = null;
 
     function lockBodyScroll() {
         if (modalScrollLockState || !document.body || !document.documentElement) return;
@@ -440,10 +441,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const modal = document.getElementById(projectModalId);
 
         if (modal) {
-            modal.classList.remove('is-open');
+            modal.classList.remove('is-open', 'is-closing');
             modal.hidden = true;
         }
 
+        clearTimeout(modalCloseTimer);
         document.removeEventListener('keydown', handleProjectModalKeydown);
         unlockBodyScroll();
         activeProject = null;
@@ -536,6 +538,24 @@ document.addEventListener("DOMContentLoaded", function () {
             .filter(element => element.offsetParent !== null);
     }
 
+    function getProjectModalTransitionDuration(element) {
+        const styles = window.getComputedStyle(element);
+        const durations = styles.transitionDuration.split(',');
+        const delays = styles.transitionDelay.split(',');
+
+        return durations.reduce((longestDuration, duration, index) => {
+            const delay = delays[index] || delays[delays.length - 1] || '0s';
+            const totalDuration = parseCssTime(duration) + parseCssTime(delay);
+            return Math.max(longestDuration, totalDuration);
+        }, 0);
+    }
+
+    function parseCssTime(value) {
+        const time = Number.parseFloat(value);
+        if (Number.isNaN(time)) return 0;
+        return value.trim().endsWith('ms') ? time : time * 1000;
+    }
+
     function handleProjectModalKeydown(event) {
         if (!activeProject) return;
 
@@ -567,6 +587,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const dialog = modal?.querySelector('.project-modal__dialog');
         if (!project || !modal || !dialog) return;
 
+        clearTimeout(modalCloseTimer);
+        modal.classList.remove('is-closing');
         activeProject = project;
         previouslyFocusedElement = triggerElement || document.activeElement;
         renderProjectModalContent(project);
@@ -583,17 +605,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function closeProjectModal() {
         const modal = document.getElementById(projectModalId);
-        if (!modal || !activeProject) return;
+        const dialog = modal?.querySelector('.project-modal__dialog');
+        if (!modal || !dialog || !activeProject || modal.classList.contains('is-closing')) return;
 
+        const handleDialogTransitionEnd = (event) => {
+            if (event.target === dialog && event.propertyName === 'transform') {
+                finishClose();
+            }
+        };
+
+        const finishClose = () => {
+            clearTimeout(modalCloseTimer);
+            dialog.removeEventListener('transitionend', handleDialogTransitionEnd);
+            modal.classList.remove('is-open', 'is-closing');
+            modal.hidden = true;
+            document.removeEventListener('keydown', handleProjectModalKeydown);
+            unlockBodyScroll();
+            activeProject = null;
+
+            if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+                previouslyFocusedElement.focus({ preventScroll: true });
+            }
+        };
+
+        modal.classList.add('is-closing');
         modal.classList.remove('is-open');
-        modal.hidden = true;
-        document.removeEventListener('keydown', handleProjectModalKeydown);
-        unlockBodyScroll();
-        activeProject = null;
-
-        if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
-            previouslyFocusedElement.focus({ preventScroll: true });
-        }
+        dialog.addEventListener('transitionend', handleDialogTransitionEnd);
+        modalCloseTimer = setTimeout(finishClose, getProjectModalTransitionDuration(dialog) + 50);
     }
 
     // Render projects
