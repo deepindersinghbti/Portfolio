@@ -457,6 +457,7 @@ html.theme-transition *::after {
     margin-top: 0.7rem;
     color: var(--muted);
     font-size: clamp(1.3rem, 2.5vw, 2rem);
+    overflow-wrap: anywhere;
 }
 
 .hero-description {
