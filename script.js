@@ -430,47 +430,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 { label: 'LinkedIn', url: 'https://www.linkedin.com/company/sankalp001/', icon: 'linkedin' }
             ],
             details: {
-                subtitle: 'Role-based project collaboration platform for proposals, approvals, task tracking, and developer ecosystem workflows.',
+                title: 'PIXEL Project Management System',
+                subtitle: 'A collaborative project management platform for PIXEL, designed to manage student project proposals, discussions, and team workflow. I contributed by improving the existing system through new interaction features, editing functionality, bug fixes, and UI customization.',
                 sections: [
                     {
                         title: 'Overview',
-                        content: 'PIXEL is a full lifecycle project management system where users can submit proposals, vote, get approvals from leadership, and collaborate on projects through structured workflows and role-based access.'
+                        content: 'PIXEL was originally designed and architected by a senior as a project management system for student project proposals, discussions, and team workflow. My role was to improve and extend the existing platform through focused feature additions, bug fixes, and UI customization.'
                     },
                     {
                         title: 'My Contributions',
                         items: [
-                            'Implemented UI/UX improvements across the platform',
-                            'Added theme switching system (light/dark/system)',
-                            'Built and improved comment and interaction features',
-                            'Refined role-based display logic and user experience',
-                            'Contributed to frontend architecture cleanup and feature enhancements'
+                            'Fixed the logout button issue so users could reliably sign out of the platform.',
+                            'Added a proposal comment system to support discussion and feedback.',
+                            'Implemented nested replies on comments, supporting up to 3 levels of replies.',
+                            'Added an edit proposal feature so users could update submitted proposals.',
+                            'Fixed a bug where the original comment disappeared while attempting to edit it.',
+                            'Added a theme switcher to improve personalization and user experience.'
                         ]
                     },
                     {
-                        title: 'Core Features',
-                        items: [
-                            'Proposal submission and voting system',
-                            'Role-based access (Admin, Pixel Head, Member, User)',
-                            'Project approval -> Priority project pipeline',
-                            'Task assignment and progress tracking',
-                            'Points and certification system',
-                            'Social + GitHub integration layer'
-                        ]
-                    },
-                    {
-                        title: 'Tech Stack',
-                        tags: [
-                            'Next.js (App Router), TypeScript',
-                            'Material UI + ShadCN',
-                            'Next.js API Routes',
-                            'Supabase Authentication',
-                            'MongoDB',
-                            'Netlify'
-                        ]
-                    },
-                    {
-                        title: 'Credits',
-                        content: 'Original architecture and system design by senior (SANKALP team). Contributed as a developer by implementing features, UI improvements, and system enhancements.'
+                        title: 'Tech/Context',
+                        content: 'Built on an existing Next.js and MongoDB-based project management system. My work focused on feature development, bug fixing, UI improvements, and improving collaboration workflows.'
                     }
                 ]
             }
@@ -647,9 +627,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const modalContent = document.querySelector(`#${projectModalId} .project-modal__content`);
         const modalCloseButton = document.querySelector(`#${projectModalId} .project-modal__close`);
         if (!details || !modalContent) return;
+        const modalTitle = details.title || project.title;
 
         if (modalCloseButton) {
-            modalCloseButton.setAttribute('aria-label', `Close ${project.title} details`);
+            modalCloseButton.setAttribute('aria-label', `Close ${modalTitle} details`);
         }
 
         const sectionsHtml = details.sections
@@ -699,7 +680,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modalContent.innerHTML = `
             <div class="project-modal__header">
-                <h2 id="projectModalTitle">${project.title}</h2>
+                <h2 id="projectModalTitle">${modalTitle}</h2>
                 <p id="projectModalSubtitle">${details.subtitle}</p>
             </div>
 
