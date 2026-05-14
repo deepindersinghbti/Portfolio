@@ -362,30 +362,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const projects = [
         {
-            id: 'vibeguard-ai',
-            title: 'VibeGuard AI',
-            description: 'AI-powered code security scanner that detects vulnerabilities in GitHub repositories and ZIP uploads with clear explanations and severity-based results.',
-            techs: ['Next.js', 'FastAPI', 'Python', 'AI', 'Security'],
-            github: 'https://github.com/deepindersinghbti/VibeGuard-AI',
-            liveUrl: 'https://vibeguard-ai.vercel.app/',
-            status: null,
-            details: {
-                subtitle: 'AI-powered code security scanner for GitHub repositories and ZIP file uploads.',
-                overview: 'VibeGuard AI is a full-stack security scanning platform that helps developers detect risky code patterns, exposed secrets, insecure configurations, and common vulnerability indicators in GitHub repositories and uploaded ZIP files.',
-                whatItDoes: [
-                    'Scans public GitHub repositories using a repository URL',
-                    'Supports ZIP file upload with drag-and-drop',
-                    'Detects security issues using rule-based scanners',
-                    'Displays severity-based findings',
-                    'Provides clear explanations for detected issues',
-                    'Uses AI-assisted explanations to help developers understand vulnerabilities faster'
-                ],
-                whyBuilt: 'VibeGuard AI began as a hackathon project, but I later rebuilt it from scratch to turn the idea into a cleaner, more reliable, and production-ready security tool. The rebuild helped me focus deeply on UX, deployment, file upload handling, API design, and practical code security scanning.',
-                techStack: ['Next.js', 'FastAPI', 'Python', 'AI Integration', 'Security Scanning', 'Vercel', 'Render'],
-                keyLearning: 'This project helped me improve my understanding of full-stack development, API integration, deployment, code security, file upload handling, and building polished user-facing developer tools.'
-            }
-        },
-        {
             id: 'fairlens',
             title: 'FairLens',
             description: "Identifies bias in datasets and machine learning models with visual analytics and AI-driven insights.",
@@ -393,6 +369,8 @@ document.addEventListener("DOMContentLoaded", function () {
             github: 'https://github.com/deepindersinghbti/FairLens',
             liveUrl: 'https://deepinder-fairlens.vercel.app/',
             status: null,
+            featuredLabel: 'Flagship Project',
+            featuredLevel: 'primary',
             details: {
                 subtitle: 'AI-powered bias and fairness analysis platform for datasets and machine learning outputs.',
                 overview: 'FairLens is a full-stack web application that helps detect and explain bias in datasets and model predictions. It allows users to upload CSV files, choose target and sensitive columns, visualize fairness-related metrics, and generate AI-assisted insights to better understand potential unfairness in decision-making systems.',
@@ -408,6 +386,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 whyBuilt: 'I built FairLens for an online hackathon focused on using AI to solve meaningful problems. The goal was to create a practical tool that makes fairness analysis easier to understand for students, developers, and non-experts working with datasets or machine learning systems.',
                 techStack: ['Next.js', 'FastAPI', 'Python', 'Machine Learning', 'Gemini API', 'Recharts', 'CSV Processing', 'Vercel', 'Render'],
                 keyLearning: 'This project helped me understand how fairness metrics can be applied in real applications. It also improved my skills in full-stack development, CSV handling, data visualization, AI integration, frontend validation, API design, deployment, and building user-friendly explanations for technical concepts.'
+            }
+        },
+        {
+            id: 'vibeguard-ai',
+            title: 'VibeGuard AI',
+            description: 'AI-powered code security scanner that detects vulnerabilities in GitHub repositories and ZIP uploads with clear explanations and severity-based results.',
+            techs: ['Next.js', 'FastAPI', 'Python', 'AI', 'Security'],
+            github: 'https://github.com/deepindersinghbti/VibeGuard-AI',
+            liveUrl: 'https://vibeguard-ai.vercel.app/',
+            status: null,
+            featuredLabel: 'Featured',
+            featuredLevel: 'secondary',
+            details: {
+                subtitle: 'AI-powered code security scanner for GitHub repositories and ZIP file uploads.',
+                overview: 'VibeGuard AI is a full-stack security scanning platform that helps developers detect risky code patterns, exposed secrets, insecure configurations, and common vulnerability indicators in GitHub repositories and uploaded ZIP files.',
+                whatItDoes: [
+                    'Scans public GitHub repositories using a repository URL',
+                    'Supports ZIP file upload with drag-and-drop',
+                    'Detects security issues using rule-based scanners',
+                    'Displays severity-based findings',
+                    'Provides clear explanations for detected issues',
+                    'Uses AI-assisted explanations to help developers understand vulnerabilities faster'
+                ],
+                whyBuilt: 'VibeGuard AI began as a hackathon project, but I later rebuilt it from scratch to turn the idea into a cleaner, more reliable, and production-ready security tool. The rebuild helped me focus deeply on UX, deployment, file upload handling, API design, and practical code security scanning.',
+                techStack: ['Next.js', 'FastAPI', 'Python', 'AI Integration', 'Security Scanning', 'Vercel', 'Render'],
+                keyLearning: 'This project helped me improve my understanding of full-stack development, API integration, deployment, code security, file upload handling, and building polished user-facing developer tools.'
             }
         },
         {
@@ -850,15 +854,20 @@ document.addEventListener("DOMContentLoaded", function () {
             const badgeHtml = project.status
                 ? `<span class="${badgeClass}">${project.status === 'Collaborative Project' ? '<i class="fa-solid fa-users"></i><span>Collaborative Project</span>' : `${badgeIcon} ${project.status}`}</span>`
                 : '';
+            const featuredBadgeHtml = project.featuredLabel
+                ? `<span class="project-badge project-badge--featured">${project.featuredLabel}</span>`
+                : '';
             const detailButtonHtml = project.details
                 ? `<button class="project-details-btn" type="button" data-project-details="${project.id}">View Details</button>`
                 : '';
             const cardTitleHtml = project.cardTitleHtml || project.title;
+            const featuredLevelAttr = project.featuredLevel ? ` data-featured-level="${project.featuredLevel}"` : '';
 
             return `
-                <article class="project-card" data-project-id="${project.id}">
+                <article class="project-card" data-project-id="${project.id}"${featuredLevelAttr}>
                     <div class="project-header">
                         <h3 class="project-title">${cardTitleHtml}</h3>
+                        ${featuredBadgeHtml}
                         ${badgeHtml}
                     </div>
                     <p class="project-description">${project.description}</p>

@@ -2493,6 +2493,56 @@ textarea:focus-visible {
     box-shadow: 0 16px 40px rgba(139, 116, 255, 0.15);
 }
 
+.project-card[data-featured-level] {
+    border-color: rgba(108, 85, 224, 0.28);
+}
+
+.project-card[data-featured-level]::before {
+    opacity: 0.38;
+}
+
+.project-card[data-featured-level="primary"] {
+    box-shadow: 0 18px 42px rgba(108, 85, 224, 0.13);
+}
+
+.project-card[data-featured-level="secondary"] {
+    box-shadow: 0 14px 32px rgba(108, 85, 224, 0.09);
+}
+
+.project-card[data-featured-level="primary"]:hover {
+    transform: translateY(-8px);
+    border-color: rgba(108, 85, 224, 0.45);
+    box-shadow: 0 22px 52px rgba(108, 85, 224, 0.18);
+}
+
+.project-card[data-featured-level="secondary"]:hover {
+    transform: translateY(-7px);
+    border-color: rgba(108, 85, 224, 0.4);
+    box-shadow: 0 18px 44px rgba(108, 85, 224, 0.16);
+}
+
+[data-theme="dark"] .project-card[data-featured-level="primary"] {
+    box-shadow: 0 18px 42px rgba(139, 116, 255, 0.13);
+}
+
+[data-theme="dark"] .project-card[data-featured-level="secondary"] {
+    box-shadow: 0 14px 32px rgba(139, 116, 255, 0.1);
+}
+
+[data-theme="dark"] .project-card[data-featured-level="primary"]:hover {
+    box-shadow: 0 22px 52px rgba(139, 116, 255, 0.18);
+}
+
+[data-theme="dark"] .project-card[data-featured-level="secondary"]:hover {
+    box-shadow: 0 18px 44px rgba(139, 116, 255, 0.17);
+}
+
+@media (min-width: 768px) {
+    .project-card[data-project-id="fairlens"] {
+        grid-column: span 2;
+    }
+}
+
 .project-header {
     display: flex;
     justify-content: space-between;
@@ -2539,6 +2589,23 @@ textarea:focus-visible {
 
 [data-theme="dark"] .project-badge {
     background: rgba(139, 116, 255, 0.15);
+}
+
+.project-badge--featured {
+    background: rgba(108, 85, 224, 0.12);
+    border: 1px solid rgba(108, 85, 224, 0.2);
+    box-shadow: 0 8px 20px rgba(108, 85, 224, 0.08);
+}
+
+.project-card[data-featured-level="primary"] .project-badge--featured {
+    background: rgba(108, 85, 224, 0.16);
+    border-color: rgba(108, 85, 224, 0.28);
+}
+
+[data-theme="dark"] .project-badge--featured {
+    background: rgba(139, 116, 255, 0.14);
+    border-color: rgba(139, 116, 255, 0.24);
+    box-shadow: 0 8px 20px rgba(139, 116, 255, 0.08);
 }
 
 .project-description {
