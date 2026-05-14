@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: 'fairlens',
             title: 'FairLens',
-            description: 'An AI-powered platform for detecting bias and fairness in decision systems',
+            description: "Identifies bias in datasets and machine learning models with visual analytics and AI-driven insights.",
             techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
             github: 'https://github.com/deepindersinghbti/FairLens',
             liveUrl: 'https://deepinder-fairlens.vercel.app/',
@@ -414,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
             id: 'pixel-sankalp',
             title: 'PIXEL / SANKALP Collaboration Platform',
             cardTitleHtml: '<span class="project-title-nowrap">PIXEL / SANKALP</span><span>Collaboration Platform</span>',
-            description: 'A role-based project collaboration platform enabling proposal submission, voting, approvals, task tracking, and developer ecosystem features.',
+            description: "A full-stack collaboration platform for managing proposals, voting, and project workflows within a developer community.",
             techs: ['Next.js', 'MongoDB', 'Supabase Auth', 'RBAC', 'Project Management'],
             github: 'https://github.com/S-A-N-K-A-L-P/project_collab_sankalap',
             liveUrl: 'https://project-syncroo.netlify.app/',
@@ -480,7 +480,7 @@ document.addEventListener("DOMContentLoaded", function () {
             liveUrl: 'https://trackleet.pages.dev/',
             status: null,
             details: {
-                subtitle: 'A simple LeetCode stats tracker built while learning frontend web development.',
+                subtitle: "Tracks and visualizes LeetCode progress with clean analytics to monitor consistency and performance.",
                 overview: 'TrackLeet is a beginner-friendly web project that allows users to enter a LeetCode username and view basic coding statistics fetched from an external API. It was built using vanilla HTML, CSS, and JavaScript as one of my early projects while learning responsive UI design, API usage, and DOM manipulation.',
                 whatItDoes: [
                     'Takes a LeetCode username as input',
@@ -502,7 +502,7 @@ document.addEventListener("DOMContentLoaded", function () {
             github: 'https://github.com/deepindersinghbti/Portfolio', liveUrl: 'https://deepinder-singh.pages.dev',
             status: null,
             details: {
-                subtitle: 'A responsive personal portfolio built to showcase my projects, skills, and developer journey.',
+                subtitle: "A responsive developer portfolio showcasing projects, skills, and interactive UI with modern design principles.",
                 overview: 'This portfolio website is my personal space on the web, designed to showcase my projects, technical skills, learning journey, and contact information in a clean and accessible way. It was built with vanilla HTML, CSS, and JavaScript, with a strong focus on responsive design, theme support, smooth interactions, and a polished user experience.',
                 whatItDoes: [
                     'Showcases my featured projects',
