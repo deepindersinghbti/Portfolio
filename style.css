@@ -2404,10 +2404,22 @@ textarea:focus-visible {
 /* PROJECTS SECTION */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: 1fr;
     align-items: stretch;
     gap: 2rem;
     margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 .project-card {
@@ -2880,7 +2892,6 @@ textarea:focus-visible {
     }
 
     .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
     }
 
