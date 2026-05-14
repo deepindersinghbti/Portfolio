@@ -476,6 +476,46 @@ html.theme-transition *::after {
     margin-top: 1.6rem;
 }
 
+.hero-proof-line {
+    margin: 0.7rem 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.hero .eyebrow,
+.hero-description,
+.hero-achievement-pill,
+.hero-actions,
+.hero-proof-line {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: heroRevealUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero .eyebrow {
+    transform: translateX(-14px);
+    animation-name: heroRevealLeft;
+    animation-delay: 0.12s;
+}
+
+.hero-description {
+    animation-delay: 2.85s;
+}
+
+.hero-achievement-pill {
+    animation-delay: 3.05s;
+}
+
+.hero-actions {
+    animation-delay: 3.25s;
+}
+
+.hero-proof-line {
+    animation-delay: 3.45s;
+}
+
 .rightCol {
     display: flex;
     justify-content: center;
@@ -2158,16 +2198,30 @@ textarea:focus-visible {
 
 .slideFromLeft {
     opacity: 0;
-    transform: translateX(-60px);
-    animation: slideInFromLeft 0.8s ease forwards;
-    animation-delay: 2.5s;
+    transform: translateY(18px);
+    animation: heroRevealUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 2.35s;
 }
 
 .slideFromRight {
     opacity: 0;
     transform: translateX(60px);
-    animation: slideInFromRight 0.8s ease forwards;
-    animation-delay: 2.8s;
+    animation: slideInFromRight 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.85s;
+}
+
+@keyframes heroRevealUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroRevealLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes slideInFromLeft {
@@ -2198,6 +2252,18 @@ textarea:focus-visible {
     .typing {
         max-width: 100%;
         border-right: 0;
+    }
+
+    .hero .eyebrow,
+    .hero .slideFromLeft,
+    .hero .slideFromRight,
+    .hero-description,
+    .hero-achievement-pill,
+    .hero-actions,
+    .hero-proof-line {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
     }
 
     .theme-selector,
@@ -2344,11 +2410,11 @@ textarea:focus-visible {
     }
 
     /* Fix slide animation on mobile */
-    .slideFromLeft {
-        transform: translateX(-30px);
+    .hero .slideFromLeft {
+        transform: translateY(18px);
     }
 
-    .slideFromRight {
+    .hero .slideFromRight {
         transform: translateX(30px);
     }
 
