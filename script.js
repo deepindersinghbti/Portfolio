@@ -368,6 +368,7 @@ document.addEventListener("DOMContentLoaded", function () {
             techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
             github: 'https://github.com/deepindersinghbti/FairLens',
             liveUrl: 'https://deepinder-fairlens.vercel.app/',
+            caseStudyUrl: 'projects/fairlens-case-study.html',
             status: null,
             featuredLabel: 'Flagship Project',
             featuredLevel: 'primary',
@@ -546,10 +547,16 @@ document.addEventListener("DOMContentLoaded", function () {
             return project.actions;
         }
 
-        return [
+        const actions = [
             { label: 'View GitHub', url: project.github, icon: 'github', primary: true },
             { label: 'Visit Live Project', url: project.liveUrl, icon: 'external' }
         ];
+
+        if (project.caseStudyUrl) {
+            actions.push({ label: 'Read Case Study', url: project.caseStudyUrl, icon: 'external' });
+        }
+
+        return actions;
     }
 
     const projectModalId = 'projectDetailsModal';
@@ -841,6 +848,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const detailButtonHtml = project.details
                 ? `<button class="project-details-btn" type="button" data-project-details="${project.id}">View Details</button>`
                 : '';
+            const caseStudyButtonHtml = project.caseStudyUrl
+                ? `<a class="project-details-btn project-details-btn--secondary" href="${project.caseStudyUrl}">Read Case Study</a>`
+                : '';
             const cardTitleHtml = project.cardTitleHtml || project.title;
             const featuredLevelAttr = project.featuredLevel ? ` data-featured-level="${project.featuredLevel}"` : '';
 
@@ -854,7 +864,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="project-description">${project.description}</p>
                     <div class="project-techs">${techTagsHtml}</div>
                     <div class="project-footer">
-                        <div class="project-footer__detail">${detailButtonHtml}</div>
+                        <div class="project-footer__detail">${detailButtonHtml}${caseStudyButtonHtml}</div>
                         <div class="project-actions">${actionIconsHtml}</div>
                     </div>
                 </article>
