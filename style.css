@@ -529,9 +529,27 @@ html.theme-transition *::after {
     place-items: center;
     width: 1.45rem;
     height: 1.45rem;
-    background: var(--surface);
-    border-radius: 50%;
-    box-shadow: 0 6px 12px rgba(17, 24, 39, 0.08);
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.hero-achievement-pill__icon,
+.achievement-kicker__icon,
+.hero-achievement-pill__icon::before,
+.achievement-kicker__icon::before {
+    color: #d99600;
+    background: linear-gradient(135deg, #ffe08a 8%, #f5b301 48%, #c98600 92%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 1px rgba(120, 79, 0, 0.22));
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.hero-achievement-pill:hover .hero-achievement-pill__icon,
+.achievement-kicker:hover .achievement-kicker__icon {
+    transform: translateY(-1px);
+    filter: brightness(1.06) drop-shadow(0 1px 1px rgba(120, 79, 0, 0.24));
 }
 
 [data-theme="dark"] .hero-achievement-pill {
@@ -612,6 +630,9 @@ html.theme-transition *::after {
 }
 
 .achievement-kicker__icon {
+    display: inline-grid;
+    place-items: center;
+    font-size: 1rem;
     line-height: 1;
 }
 
