@@ -3272,7 +3272,7 @@ textarea:focus-visible {
 
 .case-section h2,
 .case-final-cta h2 {
-    margin: 0.35rem 0 0;
+    margin: 0.35rem 0 1.3rem;
     color: var(--text);
     font-size: clamp(1.45rem, 3vw, 2.25rem);
     line-height: 1.12;
