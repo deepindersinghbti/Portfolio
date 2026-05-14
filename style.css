@@ -2229,10 +2229,6 @@ textarea:focus-visible {
         width: min(92%, 1200px);
     }
 
-    .projects-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .navbar {
         top: 0.7rem;
         margin-top: 0.8rem;
@@ -2408,10 +2404,22 @@ textarea:focus-visible {
 /* PROJECTS SECTION */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     align-items: stretch;
     gap: 2rem;
     margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 .project-card {
@@ -2903,12 +2911,6 @@ textarea:focus-visible {
     .project-modal__content {
         padding: 1.35rem;
         padding-top: 1rem;
-    }
-}
-
-@media (max-width: 640px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
     }
 }
 
