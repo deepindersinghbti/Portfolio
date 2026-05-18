@@ -3279,6 +3279,14 @@ textarea:focus-visible {
     letter-spacing: -0.04em;
 }
 
+.case-section__intro {
+    max-width: 760px;
+    margin: -0.45rem 0 1.6rem;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
 .case-copy-grid,
 .case-feature-grid,
 .case-challenge-grid,
@@ -3392,6 +3400,30 @@ textarea:focus-visible {
 
 .case-list li::marker {
     color: var(--primary);
+}
+
+.case-architecture__frame {
+    margin: 0;
+    padding: clamp(0.85rem, 2vw, 1.35rem);
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(108, 85, 224, 0.14);
+    border-radius: 18px;
+    box-shadow: 0 16px 34px rgba(17, 24, 39, 0.06);
+}
+
+[data-theme="dark"] .case-architecture__frame {
+    background: rgba(15, 23, 42, 0.58);
+    border-color: rgba(139, 116, 255, 0.18);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.16);
+}
+
+.case-architecture__frame img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid rgba(108, 85, 224, 0.12);
+    border-radius: 12px;
 }
 
 /* Responsive */
