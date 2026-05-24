@@ -2443,6 +2443,7 @@ textarea:focus-visible {
         grid-template-columns: 1fr;
         text-align: center;
         padding-top: 4rem;
+        gap: 2.5rem;
     }
 
     .hero-description {
@@ -2453,8 +2454,12 @@ textarea:focus-visible {
         justify-content: center;
     }
 
+    .leftCol {
+        order: 1;
+    }
+
     .rightCol {
-        order: -1;
+        order: 2;
     }
 
     .contact-layout {
