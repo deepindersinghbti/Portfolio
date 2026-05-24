@@ -1453,33 +1453,48 @@ html.theme-transition *::after {
 }
 
 .cv-button {
-    margin-top: 1.7rem;
+    margin-top: 1.3rem;
 }
 
 .stats-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1.4rem;
 }
 
 .statBlock {
-    padding: 1rem;
+    padding: 0.8rem 0.6rem;
     text-align: center;
     background: var(--surface-soft);
     border: 1px solid rgba(108, 85, 224, 0.12);
-    border-radius: 14px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.statBlock:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    box-shadow: 0 4px 20px rgba(108, 85, 224, 0.08);
 }
 
 .number {
-    font-size: 1.6rem;
-    color: var(--text);
+    font-size: 2.3rem;
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary), #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .statBlock p:last-child {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    line-height: 1.25;
 }
 
 /* SKILLS */
@@ -2452,7 +2467,8 @@ textarea:focus-visible {
     }
 
     .stats-section {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
     }
 
     .skills-boxes {
