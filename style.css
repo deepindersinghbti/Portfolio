@@ -1429,32 +1429,27 @@ html.theme-transition *::after {
 
 /* ABOUT */
 .about-content {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.about-img {
-    display: flex;
-    justify-content: center;
-}
-
-.about-content img {
-    width: min(18rem, 80vw);
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    max-width: 75ch;
+    margin-inline: auto;
 }
 
 .about-text {
-    color: var(--muted);
+    color: var(--text);
     background: var(--surface);
-    padding: 2rem;
+    padding: 2.2rem 2.4rem;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
+}
+
+.about-text p {
+    font-size: 1.12rem;
+    line-height: 1.78;
+    color: var(--muted);
+}
+
+.about-text p + p {
+    margin-top: 1.1rem;
 }
 
 .cv-button {
@@ -2447,14 +2442,13 @@ textarea:focus-visible {
         order: -1;
     }
 
-    .about-content,
     .contact-layout {
         grid-template-columns: 1fr;
         text-align: center;
     }
 
     .about-text {
-        padding: 1.35rem;
+        padding: 1.5rem 1.35rem;
     }
 
     .stats-section {
