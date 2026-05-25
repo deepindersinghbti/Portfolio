@@ -1448,7 +1448,7 @@ html.theme-transition *::after {
     color: var(--muted);
 }
 
-.about-text p + p {
+.about-text p+p {
     margin-top: 1.1rem;
 }
 
