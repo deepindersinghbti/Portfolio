@@ -1440,6 +1440,7 @@ html.theme-transition *::after {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
+    text-align: justify;
 }
 
 .about-text p {
@@ -2227,7 +2228,7 @@ textarea:focus-visible {
     opacity: 0;
     transform: translateX(60px);
     animation: slideInFromRight 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: 0.85s;
+    animation-delay: 3.2s;
 }
 
 @keyframes heroRevealUp {
@@ -2436,6 +2437,7 @@ textarea:focus-visible {
 
     .hero .slideFromRight {
         transform: translateX(30px);
+        animation-delay: 3.55s;
     }
 
     .hero {
