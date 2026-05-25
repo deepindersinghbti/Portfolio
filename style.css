@@ -388,6 +388,10 @@ a {
     --theme-selector-thumb-x: 3.9rem;
 }
 
+.theme-selector .fa-display {
+    transform: translateX(1px) translateY(1px);
+}
+
 html.theme-transition *,
 html.theme-transition *::before,
 html.theme-transition *::after {
