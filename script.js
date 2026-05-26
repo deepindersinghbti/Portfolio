@@ -1019,6 +1019,15 @@ document.addEventListener("DOMContentLoaded", function () {
             clearStatusTimers();
             isSubmitting = true;
             contactForm.setAttribute("aria-busy", "true");
+
+            const nameInput = contactForm.elements.name;
+            const subjectInput = contactForm.elements.subject;
+            const name = nameInput && typeof nameInput.value === "string" ? nameInput.value.trim() : "";
+
+            if (subjectInput && typeof subjectInput.value === "string") {
+                subjectInput.value = `[Portfolio] ${name} sent a message`;
+            }
+
             setButtonState({
                 disabled: true,
                 html: '<i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> Sending...'
