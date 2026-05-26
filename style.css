@@ -1449,7 +1449,7 @@ html.theme-transition *::after {
     color: var(--muted);
 }
 
-.about-text p + p {
+.about-text p+p {
     margin-top: 1.1rem;
 }
 
@@ -1486,6 +1486,7 @@ html.theme-transition *::after {
     margin-bottom: 0.25rem;
     color: var(--primary);
     background: linear-gradient(135deg, var(--primary), #c084fc);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
