@@ -1479,8 +1479,8 @@ html.theme-transition *::after {
     box-shadow: 0 4px 20px rgba(108, 85, 224, 0.08);
 }
 
-.number {
-    font-size: 2.3rem;
+.statBlock .number {
+    font-size: 1.6rem;
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 0.25rem;
@@ -2152,38 +2152,44 @@ textarea:focus-visible {
 
 /* ================= ANIMATIONS ================= */
 
-/* SCROLL REVEAL ANIMATIONS */
+/* SCROLL REVEAL ANIMATIONS (use animation to avoid interfering with hover transitions) */
 .reveal {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 600ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
 }
 
-.reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes revealUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Stagger delays for groups */
+.reveal.is-visible {
+    animation: revealUp 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--reveal-delay, 0ms);
+}
+
+/* Staggered delays exposed via CSS variable so hover/transform transitions remain independent */
 .reveal.stagger-1 {
-    transition-delay: 0ms;
+    --reveal-delay: 0ms;
 }
 
 .reveal.stagger-2 {
-    transition-delay: 80ms;
+    --reveal-delay: 80ms;
 }
 
 .reveal.stagger-3 {
-    transition-delay: 160ms;
+    --reveal-delay: 160ms;
 }
 
 .reveal.stagger-4 {
-    transition-delay: 240ms;
+    --reveal-delay: 240ms;
 }
 
 .reveal.stagger-5 {
-    transition-delay: 320ms;
+    --reveal-delay: 320ms;
 }
 
 /* TYPING ANIMATION */
@@ -2322,13 +2328,13 @@ textarea:focus-visible {
         transform: none !important;
     }
 
-    /* Disable stagger delays */
+    /* Disable stagger delays (use variable) */
     .reveal.stagger-1,
     .reveal.stagger-2,
     .reveal.stagger-3,
     .reveal.stagger-4,
     .reveal.stagger-5 {
-        transition-delay: 0 !important;
+        --reveal-delay: 0 !important;
     }
 }
 
@@ -2547,10 +2553,34 @@ textarea:focus-visible {
     height: 100%;
     gap: 1rem;
     height: 100%;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 260ms ease,
+        border-color 260ms ease,
+        opacity 200ms ease;
     box-shadow: 0 10px 25px rgba(17, 24, 39, 0.04);
     position: relative;
     overflow: hidden;
+    will-change: transform, box-shadow;
+}
+
+.project-card.reveal {
+    opacity: 0;
+    transform: none;
+}
+
+.project-card.reveal.is-visible {
+    animation: projectCardFadeIn 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes projectCardFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .project-card::before {
@@ -2581,6 +2611,12 @@ textarea:focus-visible {
     transform: translateY(-6px);
     border-color: rgba(108, 85, 224, 0.35);
     box-shadow: 0 16px 40px rgba(108, 85, 224, 0.15);
+}
+
+/* Ensure hover transform overrides reveal animation post-fill */
+.project-card.reveal.is-visible:hover {
+    /* Hover lift should animate independently from the reveal fade. */
+    transform: translateY(-6px);
 }
 
 [data-theme="dark"] .project-card:hover {
