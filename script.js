@@ -419,7 +419,7 @@ document.addEventListener("DOMContentLoaded", function () {
             title: 'PIXEL / SANKALP Collaboration Platform',
             cardTitleHtml: '<span class="project-title-nowrap">PIXEL / SANKALP</span><span>Collaboration Platform</span>',
             description: "A full-stack collaboration platform for managing proposals, voting, and project workflows within a developer community.",
-            techs: ['Next.js', 'MongoDB', 'Supabase Auth', 'RBAC', 'Project Management'],
+            techs: ['Next.js', 'MongoDB', 'Comments & replies', 'Proposal editing', 'Theme switcher'],
             github: 'https://github.com/S-A-N-K-A-L-P/project_collab_sankalap',
             liveUrl: 'https://project-syncroo.netlify.app/',
             linkedin: 'https://www.linkedin.com/company/sankalp001/',
