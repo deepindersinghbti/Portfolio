@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
             '.ongoing-card',
             '.project-card',
             '.skill-group',
-            '.certification-card',
+            '.honours-list',
             '.social-card',
             '.contact-form'
         ];
