@@ -302,8 +302,8 @@ a {
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
-    width: 6.15rem;
-    height: 2.35rem;
+    width: 7rem;
+    height: 2.6rem;
     padding: 0.25rem;
     border: 1px solid var(--border);
     border-radius: 999px;
@@ -356,8 +356,8 @@ a {
     align-items: center;
     justify-content: center;
     z-index: 2;
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 2rem;
+    height: 2rem;
     border: 0;
     border-radius: 50%;
     background: transparent;
@@ -387,8 +387,8 @@ a {
     position: absolute;
     z-index: 1;
     left: 0.25rem;
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
     background: var(--surface);
     box-shadow: 0 6px 16px rgba(17, 24, 39, 0.18);
@@ -425,11 +425,11 @@ a {
 }
 
 .theme-selector[data-theme-preference="dark"] {
-    --theme-selector-thumb-x: 1.95rem;
+    --theme-selector-thumb-x: 2.2rem;
 }
 
 .theme-selector[data-theme-preference="system"] {
-    --theme-selector-thumb-x: 3.9rem;
+    --theme-selector-thumb-x: 4.4rem;
 }
 
 .theme-selector .icon-display {
@@ -993,6 +993,7 @@ html.theme-transition *::after {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
+    padding: 0.4rem 0;
     flex-shrink: 0;
     color: var(--primary);
     font-size: 0.9rem;
@@ -1506,33 +1507,6 @@ textarea:focus-visible {
         overflow: visible;
     }
 
-    .theme-selector {
-        width: 5.7rem;
-        height: 2.2rem;
-    }
-
-    .theme-btn {
-        width: 1.6rem;
-        height: 1.6rem;
-    }
-
-    .theme-selector__thumb {
-        width: 1.6rem;
-        height: 1.6rem;
-    }
-
-    .theme-selector[data-theme-preference="light"] {
-        --theme-selector-thumb-x: 0rem;
-    }
-
-    .theme-selector[data-theme-preference="dark"] {
-        --theme-selector-thumb-x: 1.8rem;
-    }
-
-    .theme-selector[data-theme-preference="system"] {
-        --theme-selector-thumb-x: 3.6rem;
-    }
-
     .nav-items {
         position: fixed;
         top: 0;
@@ -1952,7 +1926,7 @@ textarea:focus-visible {
 .project-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 4px;
     margin-right: 6px;
 }
 
@@ -1960,7 +1934,7 @@ textarea:focus-visible {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
