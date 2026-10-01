@@ -1527,6 +1527,143 @@ html.theme-transition *::after {
     line-height: 1.25;
 }
 
+/* RESEARCH */
+.research-layout {
+    max-width: 900px;
+    margin-inline: auto;
+}
+
+.research-intro {
+    padding: 1.6rem 1.8rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
+}
+
+.research-intro p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.research-intro .research-role {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+.research-role strong {
+    color: var(--text);
+}
+
+.research-subheading {
+    margin: 2.4rem 0 1rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.paper-list,
+.ongoing-list {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.paper-card,
+.ongoing-card {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(17, 24, 39, 0.04);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.paper-card:hover,
+.ongoing-card:hover {
+    border-color: rgba(108, 85, 224, 0.35);
+    box-shadow: 0 16px 40px rgba(108, 85, 224, 0.12);
+}
+
+.paper-card:target {
+    border-color: var(--primary);
+}
+
+.paper-status {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.7rem;
+    color: var(--primary);
+    background: rgba(108, 85, 224, 0.12);
+    border: 1px solid rgba(108, 85, 224, 0.2);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+[data-theme="dark"] .paper-status {
+    background: rgba(139, 116, 255, 0.14);
+    border-color: rgba(139, 116, 255, 0.24);
+}
+
+.paper-title {
+    font-size: 1.12rem;
+    line-height: 1.4;
+}
+
+.paper-authors,
+.paper-venue {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.paper-authors strong {
+    color: var(--text);
+}
+
+.paper-venue {
+    margin-top: 0.2rem;
+    font-style: italic;
+}
+
+.paper-summary,
+.ongoing-card p {
+    margin-top: 0.75rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.paper-note {
+    margin-top: 0.6rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.ongoing-card h4 {
+    font-size: 1.02rem;
+}
+
+@media (min-width: 768px) {
+    .ongoing-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .research-intro,
+    .paper-card,
+    .ongoing-card {
+        padding: 1.25rem;
+        text-align: left;
+    }
+}
+
 /* SKILLS */
 #skills {
     text-align: center;

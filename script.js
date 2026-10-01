@@ -236,9 +236,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add reveal class and observe elements
         const elementsToReveal = [
             '.section-heading',
-            '.about-text',
-            '.statBlock',
-            '.achievement-card',
+            '.research-intro',
+            '.paper-card',
+            '.ongoing-card',
             '.project-card',
             '.skillBox',
             '.certification-card',
