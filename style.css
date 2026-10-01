@@ -8,6 +8,9 @@
 :root {
     --primary: rgb(108, 85, 224);
     --primary-dark: rgb(84, 63, 190);
+    /* Backgrounds behind white text; same in both themes so white stays readable */
+    --button-bg: rgb(108, 85, 224);
+    --button-bg-hover: rgb(84, 63, 190);
     --text: #111827;
     --muted: #6b7280;
     --soft-muted: #9ca3af;
@@ -493,6 +496,10 @@ html.theme-transition *::after {
     font-weight: 700;
 }
 
+[data-theme="dark"] .eyebrow {
+    color: #a78bfa;
+}
+
 .leftCol h1 {
     font-size: clamp(2.2rem, 6vw, 4.6rem);
     line-height: 1.08;
@@ -666,14 +673,14 @@ html.theme-transition *::after {
 }
 
 .buttons {
-    background: var(--primary);
+    background: var(--button-bg);
     color: white;
     box-shadow: 0 12px 25px rgba(108, 85, 224, 0.25);
     border: 1px solid transparent;
 }
 
 .buttons:hover {
-    background: var(--primary-dark);
+    background: var(--button-bg-hover);
     transform: translateY(-3px);
     box-shadow: 0 16px 32px rgba(108, 85, 224, 0.32);
 }
@@ -815,7 +822,12 @@ html.theme-transition *::after {
     font-weight: 700;
 }
 
+[data-theme="light"] .paper-status {
+    color: var(--primary-dark);
+}
+
 [data-theme="dark"] .paper-status {
+    color: #a78bfa;
     background: rgba(139, 116, 255, 0.14);
     border-color: rgba(139, 116, 255, 0.24);
 }
@@ -934,6 +946,7 @@ html.theme-transition *::after {
 }
 
 [data-theme="dark"] .skill-chips li {
+    color: #a78bfa;
     background: rgba(139, 116, 255, 0.12);
 }
 
@@ -1144,7 +1157,7 @@ textarea:focus-visible {
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    background-color: var(--primary);
+    background-color: var(--button-bg);
     color: white;
     padding: 0.9rem 1.5rem;
     font-size: 1rem;
@@ -1157,7 +1170,7 @@ textarea:focus-visible {
 }
 
 .send-btn:hover {
-    background-color: var(--primary-dark);
+    background-color: var(--button-bg-hover);
     transform: translateY(-3px);
     box-shadow: 0 16px 32px rgba(108, 85, 224, 0.28);
 }
@@ -1181,7 +1194,7 @@ textarea:focus-visible {
 
 .send-btn:disabled:hover {
     transform: none;
-    background-color: var(--primary);
+    background-color: var(--button-bg);
 }
 
 .contact-status-card {
@@ -2184,8 +2197,8 @@ textarea:focus-visible {
 }
 
 .project-modal__button--primary {
-    background: var(--primary);
-    border-color: var(--primary);
+    background: var(--button-bg);
+    border-color: var(--button-bg);
     color: #ffffff;
 }
 
@@ -2195,8 +2208,8 @@ textarea:focus-visible {
 }
 
 .project-modal__button--primary:hover {
-    background: var(--primary-dark);
-    border-color: var(--primary-dark);
+    background: var(--button-bg-hover);
+    border-color: var(--button-bg-hover);
 }
 
 .project-modal__button:focus-visible {
@@ -2504,7 +2517,7 @@ textarea:focus-visible {
     width: 1.85rem;
     height: 1.85rem;
     color: #ffffff;
-    background: var(--primary);
+    background: var(--button-bg);
     border-radius: 50%;
     font-size: 0.85rem;
     font-weight: 850;
