@@ -2,49 +2,81 @@
 <html lang="en">
 
 <head>
+    <!-- Icons: Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com, licensed CC BY 4.0 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Deepinder Singh, B.Tech CSE student at Amity University Mohali. Research in LLM interpretability, AI agent security and medical imaging; builds full-stack AI tools.">
-    <title>Deepinder Singh | Portfolio</title>
+    <title>Deepinder Singh: AI research and full-stack development</title>
+    <link rel="canonical" href="https://deepinder-singh.pages.dev/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Deepinder Singh: AI research and full-stack development">
+    <meta property="og:description"
+        content="B.Tech CSE student at Amity University Mohali. Papers at IEEE INDISCON 2026 and OCIT 2026.">
+    <meta property="og:url" content="https://deepinder-singh.pages.dev/">
+    <meta property="og:image" content="https://deepinder-singh.pages.dev/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Deepinder Singh: AI research and full-stack development">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Deepinder Singh",
+        "url": "https://deepinder-singh.pages.dev/",
+        "affiliation": { "@type": "CollegeOrUniversity", "name": "Amity University Mohali" },
+        "knowsAbout": ["LLM interpretability", "AI agent security", "Medical imaging"],
+        "sameAs": [
+            "https://github.com/deepindersinghbti",
+            "https://www.linkedin.com/in/deepinders0627/"
+        ]
+    }
+    </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/740474005a.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script>
+        (function () {
+            try {
+                var p = localStorage.getItem("portfolio-theme") || "system";
+                var dark = p === "dark" || (p === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+                document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+            } catch (e) { }
+        })();
+    </script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
     <div class="container">
         <!-- NAVBAR -->
         <nav class="navbar">
-            <a href="#home" class="logo" id="logoLink" aria-label="Go to home section">DS.</a>
+            <a href="#home" class="logo" id="logoLink" aria-label="DS. Deepinder Singh, back to top">DS.</a>
 
             <ul class="nav-items" id="navItems">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#research">Research</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#certifications">Certifications &amp; training</a></li>
                 <li><a href="#contact-sec">Contact</a></li>
+                <li><a href="assets/resume/Deepinder_Singh_resume.pdf" class="nav-cv" target="_blank"
+                        rel="noopener noreferrer">CV</a></li>
             </ul>
 
             <div class="nav-actions">
                 <div class="theme-selector" id="themeSelector" role="group" aria-label="Theme selector">
                     <button class="theme-btn theme-btn--light" id="themeBtnLight" type="button" aria-label="Light theme"
                         aria-pressed="false">
-                        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+                        <svg class="icon icon-sun" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"/></svg>
                     </button>
                     <button class="theme-btn theme-btn--dark" id="themeBtnDark" type="button" aria-label="Dark theme"
                         aria-pressed="false">
-                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                        <svg class="icon icon-moon" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"/></svg>
                     </button>
                     <button class="theme-btn theme-btn--system" id="themeBtnSystem" type="button"
                         aria-label="System theme" aria-pressed="false">
-                        <i class="fa-solid fa-display" aria-hidden="true"></i>
+                        <svg class="icon icon-display" viewBox="0 0 576 512" aria-hidden="true" focusable="false"><path d="M64 0C28.7 0 0 28.7 0 64L0 352c0 35.3 28.7 64 64 64l176 0-10.7 32L160 448c-17.7 0-32 14.3-32 32s14.3 32 32 32l256 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-69.3 0L336 416l176 0c35.3 0 64-28.7 64-64l0-288c0-35.3-28.7-64-64-64L64 0zM512 64l0 288L64 352 64 64l448 0z"/></svg>
                     </button>
                     <span class="theme-selector__thumb" aria-hidden="true"></span>
                 </div>
@@ -58,42 +90,49 @@
             </div>
         </nav>
 
+        <main id="main">
         <!-- HERO -->
-        <main id="home" class="hero">
+        <section id="home" class="hero">
             <div class="leftCol">
-                <p class="eyebrow">B.Tech CSE Student • Full-Stack Developer</p>
-                <h1 class="typing">Hi, I am Deepinder</h1>
-                <h2 class="slideFromLeft">Full-Stack Developer<br>Building AI systems that analyze, explain, and improve
-                    real-world software</h2>
-                <p class="hero-description">
-                    I build full-stack web applications and AI-powered tools with a focus on real-world problem
-                    solving, clean design, and scalable systems.
-                </p>
+                <p class="eyebrow">B.Tech CSE, Amity University Mohali</p>
+                <h1>Deepinder Singh</h1>
+                <p class="hero-tagline slideFromLeft">I study how language models and AI agents behave, and build tools that make
+                    them safer and easier to understand.</p>
+                <ul class="hero-focus" aria-label="Research focus">
+                    <li>LLM interpretability</li>
+                    <li>AI agent security</li>
+                    <li>Medical imaging</li>
+                </ul>
 
-                <a class="hero-achievement-pill" href="#achievements"
-                    aria-label="View Re-ignite 2.0 Ideathon achievement">
-                    <i class="fa-solid fa-trophy hero-achievement-pill__icon" aria-hidden="true"></i>
-                    <span>Re-ignite 2.0 Ideathon Winner</span>
+                <a class="hero-achievement-pill" href="#indiscon-paper">
+                    <svg class="icon icon-file-lines" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path d="M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-288-128 0c-17.7 0-32-14.3-32-32L224 0 64 0zM256 0l0 128 128 0L256 0zM112 256l160 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-160 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l160 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-160 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l160 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-160 0c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
+                    <span>First-author paper · IEEE INDISCON 2026</span>
                 </a>
 
                 <div class="hero-actions">
-                    <a href="#contact-sec" class="buttons contactBt">
-                        Contact Me
-                        <i class="fa-solid fa-paper-plane"></i>
+                    <a href="#research" class="buttons">
+                        View research
+                        <svg class="icon icon-arrow-down" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+                    </a>
+                    <a href="assets/resume/Deepinder_Singh_resume.pdf" class="secondary-btn" download>
+                        Download CV
+                        <svg class="icon icon-download" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg>
                     </a>
                     <a href="https://github.com/deepindersinghbti" target="_blank" rel="noopener noreferrer"
                         class="secondary-btn">
-                        View GitHub
-                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                        <svg class="icon icon-github" viewBox="0 0 496 512" aria-hidden="true" focusable="false"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
                     </a>
                 </div>
-                <p class="hero-proof-line">First-author paper, IEEE INDISCON 2026 • Paper accepted, OCIT 2026 • 200+ LeetCode problems</p>
+                <p class="hero-proof-line">Paper accepted, OCIT 2026 · Research Intern 2026 · 200+ LeetCode problems</p>
+                <p class="hero-now">Currently: trust scores for multimodal activity recognition; continual learning for
+                    language models.</p>
             </div>
 
             <div class="rightCol">
                 <div class="terminal-wrap slideFromRight">
                     <svg role="img"
-                        aria-label="Animated Linux terminal window showing developer commands and system information"
+                        aria-label="Terminal window listing my research focus, projects, stack and current work"
                         class="terminal-svg" viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="termBg" x1="0" y1="0" x2="1" y2="1">
@@ -215,15 +254,15 @@
                             </text>
                             <text x="20" y="84" class="term-output">deepinder</text>
 
-                            <!-- Line 2: cat role.txt -->
+                            <!-- Line 2: cat focus.txt -->
                             <text x="20" y="112">
                                 <tspan class="term-user">deepinder@ubuntu</tspan>
                                 <tspan class="term-prompt">:</tspan>
                                 <tspan class="term-path">~</tspan>
                                 <tspan class="term-prompt">$ </tspan>
-                                <tspan class="term-cmd">cat role.txt</tspan>
+                                <tspan class="term-cmd">cat focus.txt</tspan>
                             </text>
-                            <text x="20" y="132" class="term-output">Full-Stack Developer &amp; CS Student</text>
+                            <text x="20" y="132" class="term-output">LLMs · AI agent security · medical imaging</text>
 
                             <!-- Line 3: ls projects/ -->
                             <text x="20" y="160">
@@ -234,30 +273,30 @@
                                 <tspan class="term-cmd">ls projects/</tspan>
                             </text>
                             <text x="20" y="180">
+                                <tspan class="term-dir">kaarigar/ </tspan>
                                 <tspan class="term-dir">fairlens/ </tspan>
-                                <tspan class="term-dir">vibeguard/ </tspan>
-                                <tspan class="term-dir">trackleet/</tspan>
+                                <tspan class="term-dir">vibeguard/</tspan>
                             </text>
 
-                            <!-- Line 4: echo with skills -->
+                            <!-- Line 4: echo stack -->
                             <text x="20" y="208">
                                 <tspan class="term-user">deepinder@ubuntu</tspan>
                                 <tspan class="term-prompt">:</tspan>
                                 <tspan class="term-path">~</tspan>
                                 <tspan class="term-prompt">$ </tspan>
-                                <tspan class="term-cmd">echo $SKILLS</tspan>
+                                <tspan class="term-cmd">echo $STACK</tspan>
                             </text>
-                            <text x="20" y="228" class="term-output">Python · PyTorch · FastAPI · Next.js · MongoDB</text>
+                            <text x="20" y="228" class="term-output">PyTorch · FastAPI · Next.js · MongoDB</text>
 
-                            <!-- Line 5: neofetch status -->
+                            <!-- Line 5: current work -->
                             <text x="20" y="256">
                                 <tspan class="term-user">deepinder@ubuntu</tspan>
                                 <tspan class="term-prompt">:</tspan>
                                 <tspan class="term-path">~</tspan>
                                 <tspan class="term-prompt">$ </tspan>
-                                <tspan class="term-cmd">echo "Open to opportunities 🚀"</tspan>
+                                <tspan class="term-cmd">cat now.txt</tspan>
                             </text>
-                            <text x="20" y="276" class="term-output">Open to opportunities 🚀</text>
+                            <text x="20" y="276" class="term-output">trust scores · continual learning</text>
 
                             <!-- Line 6: Active prompt with blinking cursor -->
                             <text x="20" y="304">
@@ -275,288 +314,355 @@
                     </svg>
                 </div>
             </div>
-        </main>
-
-        <!-- ABOUT -->
-        <section id="about" class="section-block">
-            <div class="section-heading">
-                <h1>About Me</h1>
-                <h4>My Introduction</h4>
-            </div>
-
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I am a Computer Science student and Full-Stack Developer passionate about building intelligent,
-                        scalable web
-                        applications. From designing modern, polished frontends to developing secure AI-driven backends,
-                        I love turning complex
-                        problems into simple, impactful digital solutions.
-                    </p>
-                    <p>
-                        Currently, I am refining my skills through real-world projects,
-                        competitive problem-solving, and continuous cloud learning.
-                    </p>
-
-                    <div class="stats-section" aria-label="Portfolio highlights">
-                        <div class="statBlock">
-                            <p class="number">2</p>
-                            <p>Conference papers</p>
-                        </div>
-
-                        <div class="statBlock">
-                            <p class="number">1</p>
-                            <p>Research internship</p>
-                        </div>
-
-                        <div class="statBlock">
-                            <p class="number">200+</p>
-                            <p>LeetCode problems</p>
-                        </div>
-                    </div>
-                    <a href="assets/resume/Deepinder_Singh_resume.pdf" class="cv-button buttons" target="_blank"
-                        rel="noopener noreferrer">
-                        View Resume
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-
-                    <a href="assets/resume/Deepinder_Singh_resume.pdf" class="cv-button buttons secondary" download>
-                        <i class="fa-solid fa-download"></i>
-                    </a>
-                </div>
-            </div>
         </section>
 
-        <!-- ACHIEVEMENTS -->
-        <section id="achievements" class="section-block achievements-section">
+        <!-- RESEARCH -->
+        <section id="research" class="section-block">
             <div class="section-heading">
-                <h1>Featured Achievement</h1>
-                <h4>Idea Case Study</h4>
+                <h2>Research</h2>
+                <p class="section-subtitle">Papers and ongoing work</p>
             </div>
 
-            <article class="achievement-card" aria-label="Re-ignite 2.0 2K26 Ideathon winning achievement">
-                <div class="achievement-card__glow" aria-hidden="true"></div>
-
-                <div class="achievement-card__content">
-                    <div class="achievement-kicker">
-                        <i class="fa-solid fa-trophy achievement-kicker__icon" aria-hidden="true"></i>
-                        <span>IDEA CASE STUDY • WINNING CONCEPT</span>
-                    </div>
-
-                    <h2>Re-ignite 2.0 2K26 Ideathon</h2>
-                    <p class="achievement-card__subtitle">
-                        Idea-stage winning concept for offline-first AI screening in early childhood development
+            <div class="research-layout">
+                <div class="research-intro">
+                    <p>
+                        I research how language models and AI agents behave, and apply machine learning to medical
+                        imaging. I work carefully: patient-level data splits, data-leakage audits, and checking every
+                        reported number against the source data.
                     </p>
-
-                    <span class="achievement-badge-concept">Concept • Not yet implemented</span>
-
-                    <div class="achievement-metrics" aria-label="Achievement highlights">
-                        <div class="achievement-metric">
-                            <strong>1st</strong>
-                            <span>Place</span>
-                        </div>
-                        <div class="achievement-metric">
-                            <strong>21</strong>
-                            <span>Teams</span>
-                        </div>
-                        <div class="achievement-metric team-metric">
-                            <strong>Team Shikshan</strong>
-                            <span>Winner</span>
-                        </div>
-                        <div class="achievement-metric">
-                            <strong>AI</strong>
-                            <span>For ECD</span>
-                        </div>
-                    </div>
-
-                    <div class="achievement-card__explanation">
-                        <p>
-                            Designed an offline-first AI-enabled screening concept to help identify early developmental
-                            delay risks.
-                        </p>
-                        <div class="explanation-details">
-                            <p><strong>Target:</strong> Children aged 0–6 years</p>
-                            <p><strong>Users:</strong> Anganwadi workers, caregivers</p>
-                            <p><strong>Purpose:</strong> Early risk identification (not medical diagnosis)</p>
-                            <p><strong>Environment:</strong> Rural and low-connectivity settings</p>
-                        </div>
-                    </div>
-
-                    <hr class="achievement-divider">
-
-                    <ul class="achievement-list">
-                        <li>First-level risk screening, not diagnosis</li>
-                        <li>Offline-first workflow for field workers</li>
-                        <li>On-device ML + local storage + background sync</li>
-                        <li>Designed for rural and underserved communities</li>
-                        <li>Aligned with early childhood development challenge goals</li>
-                    </ul>
+                    <p class="research-role">
+                        <strong>Research Intern, Amity University Mohali</strong>
+                        <span>Jun–Jul 2026 (45 days), with research continuing since</span>
+                    </p>
                 </div>
 
-                <div class="achievement-card__details proof-validation-section">
-                    <p class="achievement-label proof-label">Proof & Validation</p>
+                <h3 class="research-subheading">Papers</h3>
+                <div class="paper-list">
+                    <article class="paper-card" id="indiscon-paper">
+                        <span class="paper-status">Presented · proceedings forthcoming</span>
+                        <h4 class="paper-title">Information Geometry of Prompt Quality: Representation Sensitivity as a
+                            Geometric Signal for LLM Behavior</h4>
+                        <p class="paper-authors"><strong>Deepinder Singh</strong>, Abhinav Nara, Vishwanath
+                            Bijalwan*, Rajni Mohana</p>
+                        <p class="paper-venue">7th IEEE INDISCON 2026, MNIT Jaipur · Presented 12 Sept 2026</p>
+                        <p class="paper-summary">Asks whether the geometry of a language model's internal
+                            representations can signal prompt quality in a single forward pass, with no training.
+                            Tested on four open language models, eight prompt styles and 127 tasks.</p>
+                    </article>
 
-                    <div class="achievement-evidence">
-
-                        <!-- CARD 1: TEAM CERTIFICATE -->
-                        <div class="evidence-card evidence-card--proof">
-                            <div class="evidence-placeholder">
-                                <i class="fa-solid fa-users-viewfinder"></i>
-                                <span>Winning Certificate</span>
-                                <small>Official certificate confirming 1st place finish</small>
-                            </div>
-                            <a href="assets/Ideathon/Team_certificate.pdf" target="_blank" class="evidence-link">
-                                View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-
-                        <!-- CARD 2: LINKEDIN ANNOUNCEMENT -->
-                        <div class="evidence-card evidence-card--proof linkedin-card">
-                            <div class="evidence-placeholder">
-                                <i class="fa-brands fa-linkedin"></i>
-                                <span>Official Announcement</span>
-                                <small>Official winner announcement by organizers</small>
-                            </div>
-                            <a href="https://www.linkedin.com/posts/reignite2-ideathon2k26-amityuniversitypunjab-ugcPost-7431366479218032640-M7uJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF2vHNMBzs0sxt8ntp1Ke032KyWCrv2x0FM"
-                                target="_blank" class="evidence-link">
-                                View Announcement <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-
-                        <!-- CARD 3: WINNING MOMENT -->
-                        <div class="evidence-card evidence-card--visual">
-                            <div class="evidence-placeholder">
-                                <i class="fa-solid fa-trophy"></i>
-                                <span>Winning Moment</span>
-                                <small>Award ceremony highlight</small>
-                            </div>
-                            <a href="/assets/Ideathon/winners.jpg" target="_blank" class="evidence-link">
-                                View Moment <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-
-                        <!-- CARD 4: INDIVIDUAL CERTIFICATE -->
-                        <div class="evidence-card evidence-card--proof">
-                            <div class="evidence-placeholder">
-                                <i class="fa-solid fa-user-check"></i>
-                                <span>Individual Certificate</span>
-                                <small>Individual recognition for contribution</small>
-                            </div>
-                            <a href="/assets/Ideathon/Individual_certificate.jpeg" target="_blank"
-                                class="evidence-link">
-                                View Individual Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-
-                    </div>
+                    <article class="paper-card" id="ocit-paper">
+                        <span class="paper-status">Accepted</span>
+                        <h4 class="paper-title">Categorical Verification Layer for Agentic AI: A Functional Calculus for
+                            Type-Safe Workflows</h4>
+                        <p class="paper-authors">Gunakshh Sharma, <strong>Deepinder Singh</strong>, Vishwanath
+                            Bijalwan*</p>
+                        <p class="paper-venue">OCIT 2026 (24th OITS International Conference on Information
+                            Technology), NIT Kurukshetra · 17–19 Dec 2026</p>
+                        <p class="paper-summary">Proposes a verification layer that keeps security-critical decisions
+                            in typed code instead of trusting a language model's output, to protect AI agents from
+                            prompt-injection attacks.</p>
+                    </article>
                 </div>
-            </article>
+                <p class="paper-note">* Corresponding author</p>
+
+                <h3 class="research-subheading">Ongoing research</h3>
+                <div class="ongoing-list">
+                    <article class="ongoing-card">
+                        <h4>MRI-based glioma grading across hospitals</h4>
+                        <p>Classifying high- vs low-grade brain tumours from MRI across three public cohorts
+                            (BraTS2020, UCSF-PDGM, UTSW-Glioma), with patient-level splits, data-leakage audits and
+                            external validation.</p>
+                    </article>
+                    <article class="ongoing-card">
+                        <h4>TrustMI-HAR</h4>
+                        <p>Per-prediction trust scores for multimodal activity recognition: testing whether sensors
+                            that agree with each other can still be jointly wrong.</p>
+                    </article>
+                </div>
+            </div>
         </section>
 
         <!-- PROJECTS -->
         <section id="projects" class="section-block">
             <div class="section-heading">
-                <h1>Featured Projects</h1>
-                <h4>Building products that matter</h4>
+                <h2>Selected Projects</h2>
+                <p class="section-subtitle">Things I have built</p>
             </div>
             <div id="projects-container" class="projects-grid">
-                <!-- Populated by script.js -->
+                <article class="project-card" data-project-id="kaarigar" data-featured-level="primary">
+                    <div class="project-header">
+                        <h3 class="project-title">Kaarigar</h3>
+                    </div>
+                    <p class="project-meta">Aug–Sep 2026 · Smart India Hackathon 2026 · Team of six</p>
+                    <p class="project-description">A platform connecting skilled tradespeople (kaarigars) with customers. Separate customer and kaarigar apps are both working, with the interface in three languages. Shortlisted in the university round of Smart India Hackathon 2026.</p>
+                    <p class="project-note">Free hosting: the live demo may take about 30 s to wake up.</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Vite</span>
+                        <span class="tech-tag">Tailwind</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-footer__detail"></div>
+                        <div class="project-actions">
+                            <a href="https://github.com/deepindersinghbti/Kaarigar" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                                aria-label="View Code" title="View Code">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="https://kaarigar.onrender.com" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                                aria-label="Live Demo" title="Live Demo">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-project-id="fairlens">
+                    <div class="project-header">
+                        <h3 class="project-title">FairLens</h3>
+                    </div>
+                    <p class="project-meta">Apr–May 2026 · Built for an online AI hackathon</p>
+                    <p class="project-description">Identifies bias in datasets and machine learning models with visual analytics and AI-driven insights.</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Machine learning</span>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-footer__detail"><button class="project-details-btn" type="button" data-project-details="fairlens">View Details</button><a class="project-details-btn project-details-btn--secondary" href="projects/fairlens-case-study.html">Read Case Study</a></div>
+                        <div class="project-actions">
+                            <a href="https://github.com/deepindersinghbti/FairLens" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                                aria-label="View Code" title="View Code">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="https://deepinder-fairlens.vercel.app/" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                                aria-label="Live Demo" title="Live Demo">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-project-id="vibeguard-ai">
+                    <div class="project-header">
+                        <h3 class="project-title">VibeGuard AI</h3>
+                    </div>
+                    <p class="project-meta">May 2026 · Started at a hackathon, rebuilt from scratch afterwards</p>
+                    <p class="project-description">AI-powered code security scanner that detects vulnerabilities in GitHub repositories and ZIP uploads with clear explanations and severity-based results.</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">AI</span>
+                        <span class="tech-tag">Security</span>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-footer__detail"><button class="project-details-btn" type="button" data-project-details="vibeguard-ai">View Details</button></div>
+                        <div class="project-actions">
+                            <a href="https://github.com/deepindersinghbti/VibeGuard-AI" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                                aria-label="View Code" title="View Code">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="https://vibeguard-ai.vercel.app/" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                                aria-label="Live Demo" title="Live Demo">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-project-id="pixel-sankalp">
+                    <div class="project-header">
+                        <h3 class="project-title">PIXEL / SANKALP Collaboration Platform</h3>
+                    </div>
+                    <p class="project-meta">Mar–Aug 2026 · Contribution to a team platform</p>
+                    <p class="project-description">A full-stack collaboration platform for managing proposals, voting, and project workflows within a developer community. I added features and fixes to the existing platform.</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Comments &amp; replies</span>
+                        <span class="tech-tag">Proposal editing</span>
+                        <span class="tech-tag">Theme switcher</span>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-footer__detail"><button class="project-details-btn" type="button" data-project-details="pixel-sankalp">View Details</button></div>
+                        <div class="project-actions">
+                            <a href="https://github.com/S-A-N-K-A-L-P/project_collab_sankalap" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                                aria-label="View Code" title="View Code">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="https://project-syncroo.netlify.app/" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                                aria-label="Live Demo" title="Live Demo">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/company/sankalp001/" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                                aria-label="Project LinkedIn Page" title="Project LinkedIn Page">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.53V8.98H7.1v11.47ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
             </div>
+            <p class="projects-more">
+                <a href="https://github.com/deepindersinghbti?tab=repositories" target="_blank"
+                    rel="noopener noreferrer">More on GitHub <svg class="icon icon-external" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg></a>
+            </p>
         </section>
 
         <!-- SKILLS -->
         <section id="skills" class="section-block">
             <div class="section-heading">
-                <h1>Skills</h1>
-                <h4>Technologies I work with</h4>
+                <h2>Skills</h2>
+                <p class="section-subtitle">What I use, and where</p>
             </div>
 
-            <div class="skills-categories" id="skillsContainer">
-                <!-- Populated by script.js -->
+            <div class="skill-groups">
+                <section class="skill-group">
+                    <h3>ML &amp; research</h3>
+                    <ul class="skill-chips">
+                        <li>Python</li>
+                        <li>PyTorch</li>
+                        <li>scikit-learn</li>
+                        <li>Hugging Face Transformers</li>
+                    </ul>
+                    <p class="skill-where">Used in: INDISCON paper, glioma research, TrustMI-HAR</p>
+                </section>
+                <section class="skill-group">
+                    <h3>Evaluation</h3>
+                    <ul class="skill-chips">
+                        <li>Permutation tests</li>
+                        <li>Bootstrap confidence intervals</li>
+                        <li>Rank correlation</li>
+                    </ul>
+                    <p class="skill-where">Used in: Paper analyses, agent-security evaluation</p>
+                </section>
+                <section class="skill-group">
+                    <h3>LLMs &amp; agents</h3>
+                    <ul class="skill-chips">
+                        <li>OpenAI, Anthropic and Gemini APIs</li>
+                        <li>AgentDojo</li>
+                    </ul>
+                    <p class="skill-where">Used in: Agent-security experiments</p>
+                </section>
+                <section class="skill-group">
+                    <h3>Medical imaging</h3>
+                    <ul class="skill-chips">
+                        <li>nibabel (NIfTI)</li>
+                        <li>PyRadiomics</li>
+                    </ul>
+                    <p class="skill-where">Used in: Glioma research</p>
+                </section>
+                <section class="skill-group">
+                    <h3>Web</h3>
+                    <ul class="skill-chips">
+                        <li>Next.js</li>
+                        <li>React</li>
+                        <li>TypeScript</li>
+                        <li>FastAPI</li>
+                        <li>Express</li>
+                        <li>MongoDB</li>
+                        <li>Tailwind</li>
+                    </ul>
+                    <p class="skill-where">Used in: Kaarigar, FairLens, VibeGuard AI</p>
+                </section>
+                <section class="skill-group">
+                    <h3>Tools</h3>
+                    <ul class="skill-chips">
+                        <li>Linux</li>
+                        <li>CUDA GPUs</li>
+                        <li>Git</li>
+                        <li>LaTeX</li>
+                    </ul>
+                    <p class="skill-where">Used in: Research work and papers</p>
+                </section>
             </div>
         </section>
 
 
 
-        <!-- CERTIFICATIONS -->
-        <section id="certifications" class="section-block">
+        <!-- HONOURS -->
+        <section id="honours" class="section-block">
             <div class="section-heading">
-                <h1>Certifications &amp; training</h1>
-                <h4>AWS training badges</h4>
+                <h2>Honours &amp; credentials</h2>
+                <p class="section-subtitle">Competitions and training</p>
             </div>
 
-            <div class="certification-grid">
-                <article class="certification-card">
-                    <div class="credly-badge-wrap" aria-label="AWS Academy Cloud Foundations badge">
-                        <a class="credly-link"
-                            href="https://www.credly.com/badges/afa278a8-210f-4e14-813f-d5df4f74ba07/public_url"
-                            target="_blank" rel="noopener noreferrer">
-                            <img class="credly-img"
-                                src="https://images.credly.com/size/680x680/images/e3541a0c-dd4a-4820-8052-5001006efc85/blob"
-                                alt="AWS Academy Cloud Foundations badge">
-                        </a>
+            <ul class="honours-list">
+                <li class="honour-item">
+                    <div>
+                        <p class="honour-title">1st of 21 teams, Re-ignite 2.0 2K26 Ideathon</p>
+                        <p class="honour-detail">PIXEL Club × Hrfy.ai · Feb 2026 · Idea-stage concept</p>
                     </div>
-
-                    <div class="certification-content">
-                        <p class="certification-provider">Amazon Web Services</p>
-                        <h3>AWS Academy Cloud Foundations</h3>
-                        <p>Completed foundational training in cloud concepts, AWS services, security, architecture,
-                            pricing and support.</p>
-                        <a href="https://www.credly.com/badges/afa278a8-210f-4e14-813f-d5df4f74ba07/public_url"
-                            target="_blank" rel="noopener noreferrer">
-                            View Credential
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
+                    <a href="assets/Ideathon/Team_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate <svg class="icon icon-external" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg></a>
+                </li>
+                <li class="honour-item">
+                    <div>
+                        <p class="honour-title">Shortlisted, university round, Smart India Hackathon 2026</p>
+                        <p class="honour-detail">Kaarigar · Aug 2026</p>
                     </div>
-                </article>
-
-                <article class="certification-card">
-                    <div class="credly-badge-wrap" aria-label="AWS Cloud Quest Cloud Practitioner badge">
-                        <a class="credly-link"
-                            href="https://www.credly.com/badges/65886e05-ff90-48a9-b8ba-aa0cb42ad43c/public_url"
-                            target="_blank" rel="noopener noreferrer">
-                            <img class="credly-img"
-                                src="https://images.credly.com/size/680x680/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob"
-                                alt="AWS Cloud Quest: Cloud Practitioner badge">
-                        </a>
+                </li>
+                <li class="honour-item">
+                    <div>
+                        <p class="honour-title">AWS Academy Cloud Foundations</p>
+                        <p class="honour-detail">Amazon Web Services · Training badge</p>
                     </div>
-
-                    <div class="certification-content">
-                        <p class="certification-provider">Amazon Web Services</p>
-                        <h3>AWS Cloud Quest: Cloud Practitioner</h3>
-                        <p>Completed hands-on cloud practitioner learning through practical AWS scenarios and
-                            service-based tasks.</p>
-                        <a href="https://www.credly.com/badges/65886e05-ff90-48a9-b8ba-aa0cb42ad43c/public_url"
-                            target="_blank" rel="noopener noreferrer">
-                            View Credential
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
+                    <a href="https://www.credly.com/badges/afa278a8-210f-4e14-813f-d5df4f74ba07/public_url" target="_blank" rel="noopener noreferrer">View badge <svg class="icon icon-external" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg></a>
+                </li>
+                <li class="honour-item">
+                    <div>
+                        <p class="honour-title">AWS Cloud Quest: Cloud Practitioner</p>
+                        <p class="honour-detail">Amazon Web Services · Training badge</p>
                     </div>
-                </article>
-            </div>
+                    <a href="https://www.credly.com/badges/65886e05-ff90-48a9-b8ba-aa0cb42ad43c/public_url" target="_blank" rel="noopener noreferrer">View badge <svg class="icon icon-external" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg></a>
+                </li>
+            </ul>
         </section>
 
         <!-- CONTACT -->
         <section id="contact-sec" class="section-block">
             <div class="section-heading">
-                <h1>Contact Me</h1>
-                <!-- <h4>Get in touch</h4> -->
-                <h4>
-                    Got an idea or project? I’d love to hear it.
-                </h4>
+                <h2>Contact Me</h2>
+                <p class="section-subtitle">Research collaborations, internships, or questions about my papers.</p>
             </div>
 
             <div class="contact-layout">
                 <div class="social-details">
+                    <a class="social-card" href="mailto:deepinders0627@gmail.com"
+                        aria-label="Email Deepinder at deepinders0627@gmail.com">
+                        <svg class="icon icon-envelope social-icons" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                        <span>deepinders0627@gmail.com</span>
+                    </a>
+
                     <a class="social-card" href="https://github.com/deepindersinghbti" target="_blank"
                         rel="noopener noreferrer" aria-label="Open Deepinder's GitHub profile">
-                        <i class="fa-brands fa-github social-icons"></i>
+                        <svg class="icon icon-github social-icons" viewBox="0 0 496 512" aria-hidden="true" focusable="false"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
                         <span>@deepindersinghbti</span>
                     </a>
 
                     <a class="social-card" href="https://www.linkedin.com/in/deepinders0627/" target="_blank"
                         rel="noopener noreferrer" aria-label="Open Deepinder's LinkedIn profile">
-                        <i class="fa-brands fa-linkedin social-icons"></i>
+                        <svg class="icon icon-linkedin social-icons" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
                         <span>Deepinder Singh</span>
                     </a>
 
@@ -571,7 +677,7 @@
 
                     <a class="social-card" href="https://www.hackerrank.com/profile/deepindersinghb1" target="_blank"
                         rel="noopener noreferrer" aria-label="Open Deepinder's HackerRank profile">
-                        <i class="fa-brands fa-hackerrank social-icons"></i>
+                        <svg class="icon icon-hackerrank social-icons" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M477.5 128C463 103.05 285.13 0 256.16 0S49.25 102.79 34.84 128s-14.49 230.8 0 256 192.38 128 221.32 128S463 409.08 477.49 384s14.51-231 .01-256zM316.13 414.22c-4 0-40.91-35.77-38-38.69.87-.87 6.26-1.48 17.55-1.83 0-26.23.59-68.59.94-86.32 0-2-.44-3.43-.44-5.85h-79.93c0 7.1-.46 36.2 1.37 72.88.23 4.54-1.58 6-5.74 5.94-10.13 0-20.27-.11-30.41-.08-4.1 0-5.87-1.53-5.74-6.11.92-33.44 3-84-.15-212.67v-3.17c-9.67-.35-16.38-1-17.26-1.84-2.92-2.92 34.54-38.69 38.49-38.69s41.17 35.78 38.27 38.69c-.87.87-7.9 1.49-16.77 1.84v3.16c-2.42 25.75-2 79.59-2.63 105.39h80.26c0-4.55.39-34.74-1.2-83.64-.1-3.39.95-5.17 4.21-5.2 11.07-.08 22.15-.13 33.23-.06 3.46 0 4.57 1.72 4.5 5.38C333 354.64 336 341.29 336 373.69c8.87.35 16.82 1 17.69 1.84 2.88 2.91-33.62 38.69-37.58 38.69z"/></svg>
                         <span>@deepindersinghb1</span>
                     </a>
                 </div>
@@ -581,30 +687,41 @@
                     <input type="checkbox" name="botcheck" class="botcheck" style="display: none;">
                     <input type="hidden" name="subject" id="form-subject" value="">
                     <input type="hidden" name="from_name" value="Deepinder Portfolio">
-                    <input type="text" id="name-box" name="name" placeholder="Name" autocomplete="name" required>
-                    <input type="email" id="email-box" name="email" placeholder="Email" autocomplete="email" required>
-                    <textarea id="message-box" name="message" placeholder="Message" required></textarea>
+                    <div class="form-field">
+                        <label for="name-box">Name</label>
+                        <input type="text" id="name-box" name="name" autocomplete="name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="email-box">Email</label>
+                        <input type="email" id="email-box" name="email" autocomplete="email" required>
+                    </div>
+                    <div class="form-field form-field--full">
+                        <label for="message-box">Message</label>
+                        <textarea id="message-box" name="message" required></textarea>
+                    </div>
                     <button type="submit" class="send-btn">
                         Send Message
-                        <i class="fa-solid fa-paper-plane"></i>
+                        <svg class="icon icon-paper-plane" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480l0-83.6c0-4 1.5-7.8 4.2-10.8L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
                     </button>
                 </form>
 
                 <div class="contact-status-card" id="contactStatus" aria-live="polite" aria-atomic="true" hidden>
                     <div class="contact-status-card__icon" aria-hidden="true">
-                        <i class="fa-solid fa-circle-info"></i>
+                        <svg class="icon icon-circle-info" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
                     </div>
                     <div class="contact-status-card__content">
                         <p class="contact-status-card__eyebrow"></p>
-                        <h3 class="contact-status-card__title"></h3>
+                        <p class="contact-status-card__title"></p>
                         <p class="contact-status-card__text"></p>
                     </div>
                 </div>
             </div>
         </section>
 
+        </main>
+
         <footer class="site-footer" aria-label="Site footer">
-            <p class="site-footer__text">© <span id="year"></span> Deepinder Singh. Designed &amp; developed by me.</p>
+            <p class="site-footer__text">© <span id="year"></span> Deepinder Singh. Designed &amp; developed by me. Last updated Oct 2026.</p>
         </footer>
     </div>
 </body>

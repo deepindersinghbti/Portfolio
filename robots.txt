@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://deepinder-singh.pages.dev/sitemap.xml

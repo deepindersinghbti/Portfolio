@@ -1,3 +1,11 @@
+// Icons: Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com
+// License: https://fontawesome.com/license/free (icons CC BY 4.0)
+const statusIcons = {
+    loading: '<svg class="icon icon-circle-notch icon-spin" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M222.7 32.1c5 16.9-4.6 34.8-21.5 39.8C121.8 95.6 64 169.1 64 256c0 106 86 192 192 192s192-86 192-192c0-86.9-57.8-160.4-137.1-184.1c-16.9-5-26.6-22.9-21.5-39.8s22.9-26.6 39.8-21.5C434.9 42.1 512 140 512 256c0 141.4-114.6 256-256 256S0 397.4 0 256C0 140 77.1 42.1 182.9 10.6c16.9-5 34.8 4.6 39.8 21.5z"/></svg>',
+    success: '<svg class="icon icon-circle-check" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>',
+    error: '<svg class="icon icon-triangle" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>'
+};
+
 // Theme initialization
 const themeStorageKey = "portfolio-theme";
 const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -81,129 +89,6 @@ if (typeof systemThemeQuery.addEventListener === "function") {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const skillCategories = [
-        {
-            name: "Frontend",
-            skills: [
-                { name: "HTML & CSS", iconClasses: ["fa-brands fa-html5", "fa-brands fa-css3-alt"] },
-                { name: "JavaScript", iconClass: "fa-brands fa-js" },
-                { name: "Next.js", iconType: "asset", assetPath: "assets/nextjs.svg" }
-            ]
-        },
-        {
-            name: "Backend",
-            skills: [
-                { name: "Python", iconClass: "fa-brands fa-python" },
-                { name: "FastAPI", iconClass: "fa-solid fa-server", context: "Used in VibeGuard & FairLens" },
-                { name: "REST APIs", iconClass: "fa-solid fa-network-wired" }
-            ]
-        },
-        {
-            name: "Database",
-            skills: [
-                { name: "MongoDB", iconType: "asset", assetPath: "assets/mongodb.svg", context: "Used in PIXEL project" }
-            ]
-        },
-        {
-            name: "DevOps / Deployment",
-            skills: [
-                { name: "Cloud & Deployment", iconClass: "fa-solid fa-cloud-arrow-up", context: "Deployed on Cloudflare, Vercel & Render" },
-                { name: "AWS Fundamentals", iconClass: "fa-brands fa-aws" }
-            ]
-        },
-        {
-            name: "Tools",
-            skills: [
-                { name: "Git & GitHub", iconClass: "fa-brands fa-github" }
-            ]
-        }
-    ];
-
-    function createSkillIcon(skill) {
-        if (skill.iconClasses) {
-            const iconGroup = document.createElement("span");
-            iconGroup.className = "skill-icon-group";
-            iconGroup.setAttribute("aria-hidden", "true");
-
-            skill.iconClasses.forEach((iconClass) => {
-                const icon = document.createElement("i");
-                icon.className = iconClass;
-                iconGroup.appendChild(icon);
-            });
-
-            return iconGroup;
-        }
-
-        if (skill.iconType === "asset") {
-            const iconAsset = document.createElement("span");
-            iconAsset.className = "skill-asset-icon";
-            iconAsset.setAttribute("aria-hidden", "true");
-            iconAsset.style.setProperty("--skill-icon-asset", `url("${skill.assetPath}")`);
-            return iconAsset;
-        }
-
-        const icon = document.createElement("i");
-        icon.className = skill.iconClass;
-        icon.setAttribute("aria-hidden", "true");
-        return icon;
-    }
-
-    function renderSkills() {
-        const skillsContainer = document.getElementById("skillsContainer");
-        if (!skillsContainer) return;
-
-        const fragment = document.createDocumentFragment();
-
-        skillCategories.forEach((category) => {
-            const categorySection = document.createElement("section");
-            categorySection.className = "skill-category";
-
-            const headingId = `skill-category-${category.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
-            const heading = document.createElement("h2");
-            heading.className = "skill-category-title";
-            heading.id = headingId;
-            heading.textContent = category.name;
-
-            const grid = document.createElement("div");
-            grid.className = `skills-boxes skills-boxes--count-${category.skills.length}`;
-            grid.setAttribute("aria-labelledby", headingId);
-
-            category.skills.forEach((skill) => {
-                const skillCard = document.createElement("div");
-                skillCard.className = "skillBox";
-
-                const text = document.createElement("span");
-                text.className = "skill-text";
-
-                const label = document.createElement("span");
-                label.className = "skill-label";
-                label.textContent = skill.name;
-
-                text.appendChild(label);
-
-                if (skill.context) {
-                    const context = document.createElement("span");
-                    context.className = "skill-context";
-                    context.textContent = skill.context;
-                    text.appendChild(context);
-                }
-
-                skillCard.appendChild(createSkillIcon(skill));
-                skillCard.appendChild(text);
-                grid.appendChild(skillCard);
-            });
-
-            categorySection.appendChild(heading);
-            categorySection.appendChild(grid);
-            fragment.appendChild(categorySection);
-        });
-
-        skillsContainer.innerHTML = "";
-        skillsContainer.appendChild(fragment);
-    }
-
-    renderSkills();
-
     // ================= SCROLL REVEAL ANIMATIONS =================
     // Intersection Observer for scroll reveal animations
     const revealElements = () => {
@@ -236,12 +121,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add reveal class and observe elements
         const elementsToReveal = [
             '.section-heading',
-            '.about-text',
-            '.statBlock',
-            '.achievement-card',
+            '.research-intro',
+            '.paper-card',
+            '.ongoing-card',
             '.project-card',
-            '.skillBox',
-            '.certification-card',
+            '.skill-group',
+            '.honours-list',
             '.social-card',
             '.contact-form'
         ];
@@ -261,7 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ================= NAVBAR SCROLL BEHAVIOR =================
     const navbar = document.querySelector('.navbar');
-    let lastScrollTop = 0;
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -272,27 +156,31 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             navbar.classList.remove('scrolled');
         }
-
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, { passive: true });
 
     // ================= HAMBURGER MENU FUNCTIONALITY =================
     const navItems = document.getElementById("navItems");
     const navLinks = navItems.querySelectorAll("a");
+    const hamburger = document.getElementById("hamburger");
 
     function closeMenu() {
         navItems.classList.remove("active");
         hamburger.classList.remove("active");
         hamburger.setAttribute("aria-expanded", "false");
+        hamburger.setAttribute("aria-label", "Open menu");
     }
 
     function toggleMenu() {
         const isOpen = navItems.classList.toggle("active");
         hamburger.classList.toggle("active", isOpen);
         hamburger.setAttribute("aria-expanded", String(isOpen));
+        hamburger.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     }
 
     hamburger.addEventListener("click", toggleMenu);
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+    });
 
     navLinks.forEach(link => {
         link.addEventListener("click", closeMenu);
@@ -359,18 +247,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    // Details shown in the project modal; the cards themselves are written in index.html
     const projects = [
         {
             id: 'fairlens',
             title: 'FairLens',
-            description: "Identifies bias in datasets and machine learning models with visual analytics and AI-driven insights.",
-            techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
             github: 'https://github.com/deepindersinghbti/FairLens',
             liveUrl: 'https://deepinder-fairlens.vercel.app/',
             caseStudyUrl: 'projects/fairlens-case-study.html',
-            status: null,
-            featuredLabel: 'Flagship Project',
-            featuredLevel: 'primary',
             details: {
                 subtitle: 'AI-powered bias and fairness analysis platform for datasets and machine learning outputs.',
                 overview: 'FairLens is a full-stack web application that helps detect and explain bias in datasets and model predictions. It allows users to upload CSV files, choose target and sensitive columns, visualize fairness-related metrics, and generate AI-assisted insights to better understand potential unfairness in decision-making systems.',
@@ -391,13 +275,8 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: 'vibeguard-ai',
             title: 'VibeGuard AI',
-            description: 'AI-powered code security scanner that detects vulnerabilities in GitHub repositories and ZIP uploads with clear explanations and severity-based results.',
-            techs: ['Next.js', 'FastAPI', 'Python', 'AI', 'Security'],
             github: 'https://github.com/deepindersinghbti/VibeGuard-AI',
             liveUrl: 'https://vibeguard-ai.vercel.app/',
-            status: null,
-            featuredLabel: 'Featured',
-            featuredLevel: 'secondary',
             details: {
                 subtitle: 'AI-powered code security scanner for GitHub repositories and ZIP file uploads.',
                 overview: 'VibeGuard AI is a full-stack security scanning platform that helps developers detect risky code patterns, exposed secrets, insecure configurations, and common vulnerability indicators in GitHub repositories and uploaded ZIP files.',
@@ -417,13 +296,9 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: 'pixel-sankalp',
             title: 'PIXEL / SANKALP Collaboration Platform',
-            cardTitleHtml: '<span class="project-title-nowrap">PIXEL / SANKALP</span><span>Collaboration Platform</span>',
-            description: "A full-stack collaboration platform for managing proposals, voting, and project workflows within a developer community.",
-            techs: ['Next.js', 'MongoDB', 'Comments & replies', 'Proposal editing', 'Theme switcher'],
             github: 'https://github.com/S-A-N-K-A-L-P/project_collab_sankalap',
             liveUrl: 'https://project-syncroo.netlify.app/',
             linkedin: 'https://www.linkedin.com/company/sankalp001/',
-            status: 'Collaborative Project',
             actions: [
                 { label: 'GitHub', url: 'https://github.com/S-A-N-K-A-L-P/project_collab_sankalap', icon: 'github' },
                 { label: 'Live Demo', url: 'https://project-syncroo.netlify.app/', icon: 'external', primary: true },
@@ -454,92 +329,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 ]
             }
-        },
-        {
-            id: 'trackleet',
-            title: 'TrackLeet',
-            description: 'A LeetCode progress tracker to visualize your coding problem-solving journey',
-            techs: ['JavaScript', 'HTML', 'CSS', 'REST API'],
-            github: 'https://github.com/deepindersinghbti/TrackLeet',
-            liveUrl: 'https://trackleet.pages.dev/',
-            status: null,
-            details: {
-                subtitle: "Tracks and visualizes LeetCode progress with clean analytics to monitor consistency and performance.",
-                overview: 'TrackLeet is a beginner-friendly web project that allows users to enter a LeetCode username and view basic coding statistics fetched from an external API. It was built using vanilla HTML, CSS, and JavaScript as one of my early projects while learning responsive UI design, API usage, and DOM manipulation.',
-                whatItDoes: [
-                    'Takes a LeetCode username as input',
-                    'Fetches user statistics from an API',
-                    'Displays coding profile data in a simple UI',
-                    'Provides a responsive layout for different screen sizes',
-                    'Demonstrates basic frontend interaction using JavaScript'
-                ],
-                whyBuilt: 'I built TrackLeet while learning web development to practice creating a responsive interface and working with APIs. It was not intended to be a complex or production-level application, but it helped me understand how real websites can fetch data dynamically and update the UI based on user input.',
-                techStack: ['HTML', 'CSS', 'JavaScript', 'API Integration', 'Responsive Design', 'Cloudflare Pages'],
-                keyLearning: 'This project helped me strengthen my fundamentals in frontend development, especially handling user input, making API requests, updating the DOM, designing a simple responsive layout, and deploying a static website online.'
-            }
-        },
-        {
-            id: 'portfolio',
-            title: 'Portfolio Website',
-            description: 'Personal portfolio showcasing projects, skills and professional work',
-            techs: ['HTML', 'CSS', 'JavaScript'],
-            github: 'https://github.com/deepindersinghbti/Portfolio', liveUrl: 'https://deepinder-singh.pages.dev',
-            status: null,
-            details: {
-                subtitle: "A responsive developer portfolio showcasing projects, skills, and interactive UI with modern design principles.",
-                overview: 'This portfolio website is my personal space on the web, designed to showcase my projects, technical skills, learning journey, and contact information in a clean and accessible way. It was built with vanilla HTML, CSS, and JavaScript, with a strong focus on responsive design, theme support, smooth interactions, and a polished user experience.',
-                whatItDoes: [
-                    'Showcases my featured projects',
-                    'Provides GitHub and live project links',
-                    'Includes detailed project modals',
-                    'Supports light, dark, and system theme modes',
-                    'Uses a responsive layout for mobile, tablet, and desktop',
-                    'Includes a contact form for reaching out',
-                    'Presents my skills and developer profile in one place'
-                ],
-                whyBuilt: 'I built this portfolio to create a professional online presence and present my work beyond just GitHub repositories. It also became a practical project where I could improve my frontend fundamentals, experiment with UI design, polish responsive layouts, and gradually evolve the site as I build better projects.',
-                techStack: ['HTML', 'CSS', 'JavaScript', 'Responsive Design', 'Theme Switching', 'Web3Forms', 'Cloudflare Pages'],
-                keyLearning: 'This project helped me improve my understanding of layout design, responsive navigation, theme handling, accessibility, deployment, contact form integration, and presenting projects in a way that feels clean, professional, and easy to explore.'
-            }
         }
     ];
-
-    // SVG Icon Functions
-    function getSvgGithub() {
-        return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>`;
-    }
-
-    function getSvgExternalLink() {
-        return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
-        </svg>`;
-    }
-
-    function getSvgLinkedIn() {
-        return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.53V8.98H7.1v11.47ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/>
-        </svg>`;
-    }
-
-    function getSvgWrench() {
-        return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-        </svg>`;
-    }
-
-    function getProjectActionIcon(icon) {
-        if (icon === 'github') return getSvgGithub();
-        if (icon === 'linkedin') return getSvgLinkedIn();
-        return getSvgExternalLink();
-    }
-
-    function getActionTooltip(icon) {
-        if (icon === 'github') return 'View Code';
-        if (icon === 'linkedin') return 'Project LinkedIn Page';
-        return 'Live Demo';
-    }
 
     function getProjectActions(project) {
         if (project.actions) {
@@ -806,73 +597,6 @@ document.addEventListener("DOMContentLoaded", function () {
         modalCloseTimer = setTimeout(finishClose, getProjectModalTransitionDuration(dialog) + 50);
     }
 
-    // Render projects
-    function renderProjects() {
-        const container = document.getElementById('projects-container');
-        if (!container) return;
-
-        container.innerHTML = projects.map(project => {
-            const techTagsHtml = project.techs
-                .map(tech => `<span class="tech-tag">${tech}</span>`)
-                .join('');
-
-            const actionIconsHtml = project.actions
-                ? project.actions.map(action => `
-                    <a href="${action.url}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="${getActionTooltip(action.icon)}" title="${getActionTooltip(action.icon)}">
-                        ${getProjectActionIcon(action.icon)}
-                    </a>
-                `).join('')
-                : `
-                <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="View Code" title="View Code">
-                    ${getSvgGithub()}
-                </a>
-                ${project.status === 'In Progress'
-                    ? `<button class="icon-btn" disabled aria-disabled="true" title="Live demo coming soon">${getSvgWrench()}</button>`
-                    : `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Live Demo" title="Live Demo">${getSvgExternalLink()}</a>`
-                }
-            `;
-
-            const badgeIcon = project.status === 'In Progress' ? '🚧' : '🏆';
-            const badgeClass = project.status === 'Ideathon Winner'
-                ? 'project-badge project-badge--winner'
-                : project.status === 'Collaborative Project'
-                    ? 'project-badge project-badge--collaborative'
-                    : 'project-badge';
-            const badgeHtml = project.status
-                ? `<span class="${badgeClass}">${project.status === 'Collaborative Project' ? '<i class="fa-solid fa-users"></i><span>Collaborative Project</span>' : `${badgeIcon} ${project.status}`}</span>`
-                : '';
-            const featuredBadgeHtml = project.featuredLabel
-                ? `<span class="project-badge project-badge--featured">${project.featuredLabel}</span>`
-                : '';
-            const detailButtonHtml = project.details
-                ? `<button class="project-details-btn" type="button" data-project-details="${project.id}">View Details</button>`
-                : '';
-            const caseStudyButtonHtml = project.caseStudyUrl
-                ? `<a class="project-details-btn project-details-btn--secondary" href="${project.caseStudyUrl}">Read Case Study</a>`
-                : '';
-            const cardTitleHtml = project.cardTitleHtml || project.title;
-            const featuredLevelAttr = project.featuredLevel ? ` data-featured-level="${project.featuredLevel}"` : '';
-
-            return `
-                <article class="project-card" data-project-id="${project.id}"${featuredLevelAttr}>
-                    <div class="project-header">
-                        <h3 class="project-title">${cardTitleHtml}</h3>
-                        ${featuredBadgeHtml}
-                        ${badgeHtml}
-                    </div>
-                    <p class="project-description">${project.description}</p>
-                    <div class="project-techs">${techTagsHtml}</div>
-                    <div class="project-footer">
-                        <div class="project-footer__detail">${detailButtonHtml}${caseStudyButtonHtml}</div>
-                        <div class="project-actions">${actionIconsHtml}</div>
-                    </div>
-                </article>
-            `;
-        }).join('');
-    }
-
-    // Call render on DOM ready
-    renderProjects();
     createProjectModal();
     window.addEventListener('pagehide', cleanupProjectModalState);
     window.addEventListener('beforeunload', cleanupProjectModalState);
@@ -884,7 +608,7 @@ document.addEventListener("DOMContentLoaded", function () {
         openProjectModal(detailsButton.dataset.projectDetails, detailsButton);
     });
 
-    // Apply reveal animations to dynamically rendered project cards
+    // Apply reveal animations to project cards
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!prefersReducedMotion) {
         const projectCards = document.querySelectorAll('.project-card');
@@ -937,7 +661,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let hideStatusTimer;
         let buttonResetTimer;
 
-        const statusIcon = contactStatus.querySelector(".contact-status-card__icon i");
+        const statusIcon = contactStatus.querySelector(".contact-status-card__icon");
         const statusEyebrow = contactStatus.querySelector(".contact-status-card__eyebrow");
         const statusTitle = contactStatus.querySelector(".contact-status-card__title");
         const statusText = contactStatus.querySelector(".contact-status-card__text");
@@ -975,7 +699,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setStatusVisible(true);
 
             if (type === "loading") {
-                statusIcon.className = "fa-solid fa-circle-notch fa-spin";
+                statusIcon.innerHTML = statusIcons.loading;
                 statusEyebrow.textContent = "Sending";
                 statusTitle.textContent = "Sending your message";
                 statusText.textContent = "Please wait while we deliver it securely.";
@@ -983,14 +707,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (type === "success") {
-                statusIcon.className = "fa-solid fa-circle-check";
+                statusIcon.innerHTML = statusIcons.success;
                 statusEyebrow.textContent = "Success";
-                statusTitle.textContent = "Message sent successfully 🚀";
+                statusTitle.textContent = "Message sent successfully";
                 statusText.textContent = "Thanks for reaching out! I’ll get back to you soon.";
                 return;
             }
 
-            statusIcon.className = "fa-solid fa-triangle-exclamation";
+            statusIcon.innerHTML = statusIcons.error;
             statusEyebrow.textContent = "Error";
             statusTitle.textContent = "Something went wrong";
             statusText.textContent = "Please try again. Your message is still saved in the form.";
@@ -1030,7 +754,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setButtonState({
                 disabled: true,
-                html: '<i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> Sending...'
+                html: `${statusIcons.loading} Sending...`
             });
 
             try {
@@ -1051,7 +775,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Temporarily show 'Sent' on the button, then restore
                 setButtonState({
                     disabled: true,
-                    html: '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Sent'
+                    html: `${statusIcons.success} Sent`
                 });
                 // Auto-hide success card after ~3.8s
                 scheduleHideStatus(3800);
