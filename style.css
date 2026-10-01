@@ -476,9 +476,12 @@ html.theme-transition *::after {
 }
 
 .leftCol h2 {
-    margin-top: 0.7rem;
+    margin-top: 0.9rem;
+    max-width: 34rem;
     color: var(--muted);
-    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+    font-weight: 600;
+    line-height: 1.45;
     overflow-wrap: anywhere;
 }
 
@@ -2430,6 +2433,10 @@ textarea:focus-visible {
 
     .hero-focus {
         justify-content: center;
+    }
+
+    .leftCol h2 {
+        margin-inline: auto;
     }
 
     .hero-actions {
