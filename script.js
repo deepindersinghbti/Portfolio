@@ -1,3 +1,11 @@
+// Icons: Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com
+// License: https://fontawesome.com/license/free (icons CC BY 4.0)
+const statusIcons = {
+    loading: '<svg class="icon icon-circle-notch icon-spin" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M222.7 32.1c5 16.9-4.6 34.8-21.5 39.8C121.8 95.6 64 169.1 64 256c0 106 86 192 192 192s192-86 192-192c0-86.9-57.8-160.4-137.1-184.1c-16.9-5-26.6-22.9-21.5-39.8s22.9-26.6 39.8-21.5C434.9 42.1 512 140 512 256c0 141.4-114.6 256-256 256S0 397.4 0 256C0 140 77.1 42.1 182.9 10.6c16.9-5 34.8 4.6 39.8 21.5z"/></svg>',
+    success: '<svg class="icon icon-circle-check" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>',
+    error: '<svg class="icon icon-triangle" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>'
+};
+
 // Theme initialization
 const themeStorageKey = "portfolio-theme";
 const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -656,7 +664,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let hideStatusTimer;
         let buttonResetTimer;
 
-        const statusIcon = contactStatus.querySelector(".contact-status-card__icon i");
+        const statusIcon = contactStatus.querySelector(".contact-status-card__icon");
         const statusEyebrow = contactStatus.querySelector(".contact-status-card__eyebrow");
         const statusTitle = contactStatus.querySelector(".contact-status-card__title");
         const statusText = contactStatus.querySelector(".contact-status-card__text");
@@ -694,7 +702,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setStatusVisible(true);
 
             if (type === "loading") {
-                statusIcon.className = "fa-solid fa-circle-notch fa-spin";
+                statusIcon.innerHTML = statusIcons.loading;
                 statusEyebrow.textContent = "Sending";
                 statusTitle.textContent = "Sending your message";
                 statusText.textContent = "Please wait while we deliver it securely.";
@@ -702,14 +710,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (type === "success") {
-                statusIcon.className = "fa-solid fa-circle-check";
+                statusIcon.innerHTML = statusIcons.success;
                 statusEyebrow.textContent = "Success";
                 statusTitle.textContent = "Message sent successfully 🚀";
                 statusText.textContent = "Thanks for reaching out! I’ll get back to you soon.";
                 return;
             }
 
-            statusIcon.className = "fa-solid fa-triangle-exclamation";
+            statusIcon.innerHTML = statusIcons.error;
             statusEyebrow.textContent = "Error";
             statusTitle.textContent = "Something went wrong";
             statusText.textContent = "Please try again. Your message is still saved in the form.";
@@ -749,7 +757,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setButtonState({
                 disabled: true,
-                html: '<i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> Sending...'
+                html: `${statusIcons.loading} Sending...`
             });
 
             try {
@@ -770,7 +778,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Temporarily show 'Sent' on the button, then restore
                 setButtonState({
                     disabled: true,
-                    html: '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Sent'
+                    html: `${statusIcons.success} Sent`
                 });
                 // Auto-hide success card after ~3.8s
                 scheduleHideStatus(3800);

@@ -95,6 +95,27 @@ a {
     color: inherit;
 }
 
+/* Inline SVG icons (replace the Font Awesome kit); sized like the font icons */
+.icon {
+    display: inline-block;
+    flex-shrink: 0;
+    height: 1em;
+    width: auto;
+    overflow: visible;
+    fill: currentColor;
+    vertical-align: -0.125em;
+}
+
+.icon-spin {
+    animation: icon-spin 1s linear infinite;
+}
+
+@keyframes icon-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .container {
     width: min(88%, 1200px);
     margin: 0 auto;
@@ -349,7 +370,7 @@ a {
     will-change: transform, opacity;
 }
 
-.theme-btn i {
+.theme-btn .icon {
     pointer-events: none;
 }
 
@@ -408,7 +429,7 @@ a {
     --theme-selector-thumb-x: 3.9rem;
 }
 
-.theme-selector .fa-display {
+.theme-selector .icon-display {
     transform: translateX(1px) translateY(1px);
 }
 
@@ -970,7 +991,7 @@ html.theme-transition *::after {
     text-decoration: underline;
 }
 
-.honour-item a i {
+.honour-item a .icon {
     font-size: 0.75rem;
 }
 
@@ -1048,6 +1069,7 @@ html.theme-transition *::after {
 }
 
 .social-icons {
+    width: 2rem;
     font-size: 2rem;
     flex: 0 0 auto;
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
