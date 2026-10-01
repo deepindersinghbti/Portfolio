@@ -146,7 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ================= NAVBAR SCROLL BEHAVIOR =================
     const navbar = document.querySelector('.navbar');
-    let lastScrollTop = 0;
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -157,8 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             navbar.classList.remove('scrolled');
         }
-
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, { passive: true });
 
     // ================= HAMBURGER MENU FUNCTIONALITY =================
@@ -712,7 +709,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (type === "success") {
                 statusIcon.innerHTML = statusIcons.success;
                 statusEyebrow.textContent = "Success";
-                statusTitle.textContent = "Message sent successfully 🚀";
+                statusTitle.textContent = "Message sent successfully";
                 statusText.textContent = "Thanks for reaching out! I’ll get back to you soon.";
                 return;
             }
