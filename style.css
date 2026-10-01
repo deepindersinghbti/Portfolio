@@ -246,6 +246,21 @@ a {
     transform: scaleX(1);
 }
 
+.nav-items a.nav-cv {
+    padding: 0.3rem 0.85rem;
+    color: var(--primary);
+    border: 1px solid rgba(108, 85, 224, 0.3);
+    border-radius: 999px;
+}
+
+.nav-items a.nav-cv::after {
+    display: none;
+}
+
+.nav-items a.nav-cv:hover {
+    background: rgba(108, 85, 224, 0.1);
+}
+
 /* THEME TOGGLE */
 .nav-actions {
     display: flex;
