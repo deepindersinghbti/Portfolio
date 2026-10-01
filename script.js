@@ -359,18 +359,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    // Details shown in the project modal; the cards themselves are written in index.html
     const projects = [
         {
             id: 'fairlens',
             title: 'FairLens',
-            description: "Identifies bias in datasets and machine learning models with visual analytics and AI-driven insights.",
-            techs: ['Python', 'FastAPI', 'Next.js', 'Machine learning'],
             github: 'https://github.com/deepindersinghbti/FairLens',
             liveUrl: 'https://deepinder-fairlens.vercel.app/',
             caseStudyUrl: 'projects/fairlens-case-study.html',
-            status: null,
-            featuredLabel: 'Flagship Project',
-            featuredLevel: 'primary',
             details: {
                 subtitle: 'AI-powered bias and fairness analysis platform for datasets and machine learning outputs.',
                 overview: 'FairLens is a full-stack web application that helps detect and explain bias in datasets and model predictions. It allows users to upload CSV files, choose target and sensitive columns, visualize fairness-related metrics, and generate AI-assisted insights to better understand potential unfairness in decision-making systems.',
@@ -391,13 +387,8 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: 'vibeguard-ai',
             title: 'VibeGuard AI',
-            description: 'AI-powered code security scanner that detects vulnerabilities in GitHub repositories and ZIP uploads with clear explanations and severity-based results.',
-            techs: ['Next.js', 'FastAPI', 'Python', 'AI', 'Security'],
             github: 'https://github.com/deepindersinghbti/VibeGuard-AI',
             liveUrl: 'https://vibeguard-ai.vercel.app/',
-            status: null,
-            featuredLabel: 'Featured',
-            featuredLevel: 'secondary',
             details: {
                 subtitle: 'AI-powered code security scanner for GitHub repositories and ZIP file uploads.',
                 overview: 'VibeGuard AI is a full-stack security scanning platform that helps developers detect risky code patterns, exposed secrets, insecure configurations, and common vulnerability indicators in GitHub repositories and uploaded ZIP files.',
@@ -417,13 +408,9 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: 'pixel-sankalp',
             title: 'PIXEL / SANKALP Collaboration Platform',
-            cardTitleHtml: '<span class="project-title-nowrap">PIXEL / SANKALP</span><span>Collaboration Platform</span>',
-            description: "A full-stack collaboration platform for managing proposals, voting, and project workflows within a developer community.",
-            techs: ['Next.js', 'MongoDB', 'Comments & replies', 'Proposal editing', 'Theme switcher'],
             github: 'https://github.com/S-A-N-K-A-L-P/project_collab_sankalap',
             liveUrl: 'https://project-syncroo.netlify.app/',
             linkedin: 'https://www.linkedin.com/company/sankalp001/',
-            status: 'Collaborative Project',
             actions: [
                 { label: 'GitHub', url: 'https://github.com/S-A-N-K-A-L-P/project_collab_sankalap', icon: 'github' },
                 { label: 'Live Demo', url: 'https://project-syncroo.netlify.app/', icon: 'external', primary: true },
@@ -454,92 +441,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 ]
             }
-        },
-        {
-            id: 'trackleet',
-            title: 'TrackLeet',
-            description: 'A LeetCode progress tracker to visualize your coding problem-solving journey',
-            techs: ['JavaScript', 'HTML', 'CSS', 'REST API'],
-            github: 'https://github.com/deepindersinghbti/TrackLeet',
-            liveUrl: 'https://trackleet.pages.dev/',
-            status: null,
-            details: {
-                subtitle: "Tracks and visualizes LeetCode progress with clean analytics to monitor consistency and performance.",
-                overview: 'TrackLeet is a beginner-friendly web project that allows users to enter a LeetCode username and view basic coding statistics fetched from an external API. It was built using vanilla HTML, CSS, and JavaScript as one of my early projects while learning responsive UI design, API usage, and DOM manipulation.',
-                whatItDoes: [
-                    'Takes a LeetCode username as input',
-                    'Fetches user statistics from an API',
-                    'Displays coding profile data in a simple UI',
-                    'Provides a responsive layout for different screen sizes',
-                    'Demonstrates basic frontend interaction using JavaScript'
-                ],
-                whyBuilt: 'I built TrackLeet while learning web development to practice creating a responsive interface and working with APIs. It was not intended to be a complex or production-level application, but it helped me understand how real websites can fetch data dynamically and update the UI based on user input.',
-                techStack: ['HTML', 'CSS', 'JavaScript', 'API Integration', 'Responsive Design', 'Cloudflare Pages'],
-                keyLearning: 'This project helped me strengthen my fundamentals in frontend development, especially handling user input, making API requests, updating the DOM, designing a simple responsive layout, and deploying a static website online.'
-            }
-        },
-        {
-            id: 'portfolio',
-            title: 'Portfolio Website',
-            description: 'Personal portfolio showcasing projects, skills and professional work',
-            techs: ['HTML', 'CSS', 'JavaScript'],
-            github: 'https://github.com/deepindersinghbti/Portfolio', liveUrl: 'https://deepinder-singh.pages.dev',
-            status: null,
-            details: {
-                subtitle: "A responsive developer portfolio showcasing projects, skills, and interactive UI with modern design principles.",
-                overview: 'This portfolio website is my personal space on the web, designed to showcase my projects, technical skills, learning journey, and contact information in a clean and accessible way. It was built with vanilla HTML, CSS, and JavaScript, with a strong focus on responsive design, theme support, smooth interactions, and a polished user experience.',
-                whatItDoes: [
-                    'Showcases my featured projects',
-                    'Provides GitHub and live project links',
-                    'Includes detailed project modals',
-                    'Supports light, dark, and system theme modes',
-                    'Uses a responsive layout for mobile, tablet, and desktop',
-                    'Includes a contact form for reaching out',
-                    'Presents my skills and developer profile in one place'
-                ],
-                whyBuilt: 'I built this portfolio to create a professional online presence and present my work beyond just GitHub repositories. It also became a practical project where I could improve my frontend fundamentals, experiment with UI design, polish responsive layouts, and gradually evolve the site as I build better projects.',
-                techStack: ['HTML', 'CSS', 'JavaScript', 'Responsive Design', 'Theme Switching', 'Web3Forms', 'Cloudflare Pages'],
-                keyLearning: 'This project helped me improve my understanding of layout design, responsive navigation, theme handling, accessibility, deployment, contact form integration, and presenting projects in a way that feels clean, professional, and easy to explore.'
-            }
         }
     ];
-
-    // SVG Icon Functions
-    function getSvgGithub() {
-        return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>`;
-    }
-
-    function getSvgExternalLink() {
-        return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
-        </svg>`;
-    }
-
-    function getSvgLinkedIn() {
-        return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.53V8.98H7.1v11.47ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/>
-        </svg>`;
-    }
-
-    function getSvgWrench() {
-        return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-        </svg>`;
-    }
-
-    function getProjectActionIcon(icon) {
-        if (icon === 'github') return getSvgGithub();
-        if (icon === 'linkedin') return getSvgLinkedIn();
-        return getSvgExternalLink();
-    }
-
-    function getActionTooltip(icon) {
-        if (icon === 'github') return 'View Code';
-        if (icon === 'linkedin') return 'Project LinkedIn Page';
-        return 'Live Demo';
-    }
 
     function getProjectActions(project) {
         if (project.actions) {
@@ -806,73 +709,6 @@ document.addEventListener("DOMContentLoaded", function () {
         modalCloseTimer = setTimeout(finishClose, getProjectModalTransitionDuration(dialog) + 50);
     }
 
-    // Render projects
-    function renderProjects() {
-        const container = document.getElementById('projects-container');
-        if (!container) return;
-
-        container.innerHTML = projects.map(project => {
-            const techTagsHtml = project.techs
-                .map(tech => `<span class="tech-tag">${tech}</span>`)
-                .join('');
-
-            const actionIconsHtml = project.actions
-                ? project.actions.map(action => `
-                    <a href="${action.url}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="${getActionTooltip(action.icon)}" title="${getActionTooltip(action.icon)}">
-                        ${getProjectActionIcon(action.icon)}
-                    </a>
-                `).join('')
-                : `
-                <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="View Code" title="View Code">
-                    ${getSvgGithub()}
-                </a>
-                ${project.status === 'In Progress'
-                    ? `<button class="icon-btn" disabled aria-disabled="true" title="Live demo coming soon">${getSvgWrench()}</button>`
-                    : `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Live Demo" title="Live Demo">${getSvgExternalLink()}</a>`
-                }
-            `;
-
-            const badgeIcon = project.status === 'In Progress' ? '🚧' : '🏆';
-            const badgeClass = project.status === 'Ideathon Winner'
-                ? 'project-badge project-badge--winner'
-                : project.status === 'Collaborative Project'
-                    ? 'project-badge project-badge--collaborative'
-                    : 'project-badge';
-            const badgeHtml = project.status
-                ? `<span class="${badgeClass}">${project.status === 'Collaborative Project' ? '<i class="fa-solid fa-users"></i><span>Collaborative Project</span>' : `${badgeIcon} ${project.status}`}</span>`
-                : '';
-            const featuredBadgeHtml = project.featuredLabel
-                ? `<span class="project-badge project-badge--featured">${project.featuredLabel}</span>`
-                : '';
-            const detailButtonHtml = project.details
-                ? `<button class="project-details-btn" type="button" data-project-details="${project.id}">View Details</button>`
-                : '';
-            const caseStudyButtonHtml = project.caseStudyUrl
-                ? `<a class="project-details-btn project-details-btn--secondary" href="${project.caseStudyUrl}">Read Case Study</a>`
-                : '';
-            const cardTitleHtml = project.cardTitleHtml || project.title;
-            const featuredLevelAttr = project.featuredLevel ? ` data-featured-level="${project.featuredLevel}"` : '';
-
-            return `
-                <article class="project-card" data-project-id="${project.id}"${featuredLevelAttr}>
-                    <div class="project-header">
-                        <h3 class="project-title">${cardTitleHtml}</h3>
-                        ${featuredBadgeHtml}
-                        ${badgeHtml}
-                    </div>
-                    <p class="project-description">${project.description}</p>
-                    <div class="project-techs">${techTagsHtml}</div>
-                    <div class="project-footer">
-                        <div class="project-footer__detail">${detailButtonHtml}${caseStudyButtonHtml}</div>
-                        <div class="project-actions">${actionIconsHtml}</div>
-                    </div>
-                </article>
-            `;
-        }).join('');
-    }
-
-    // Call render on DOM ready
-    renderProjects();
     createProjectModal();
     window.addEventListener('pagehide', cleanupProjectModalState);
     window.addEventListener('beforeunload', cleanupProjectModalState);
@@ -884,7 +720,7 @@ document.addEventListener("DOMContentLoaded", function () {
         openProjectModal(detailsButton.dataset.projectDetails, detailsButton);
     });
 
-    // Apply reveal animations to dynamically rendered project cards
+    // Apply reveal animations to project cards
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!prefersReducedMotion) {
         const projectCards = document.querySelectorAll('.project-card');
