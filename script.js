@@ -156,20 +156,26 @@ document.addEventListener("DOMContentLoaded", function () {
     // ================= HAMBURGER MENU FUNCTIONALITY =================
     const navItems = document.getElementById("navItems");
     const navLinks = navItems.querySelectorAll("a");
+    const hamburger = document.getElementById("hamburger");
 
     function closeMenu() {
         navItems.classList.remove("active");
         hamburger.classList.remove("active");
         hamburger.setAttribute("aria-expanded", "false");
+        hamburger.setAttribute("aria-label", "Open menu");
     }
 
     function toggleMenu() {
         const isOpen = navItems.classList.toggle("active");
         hamburger.classList.toggle("active", isOpen);
         hamburger.setAttribute("aria-expanded", String(isOpen));
+        hamburger.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     }
 
     hamburger.addEventListener("click", toggleMenu);
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+    });
 
     navLinks.forEach(link => {
         link.addEventListener("click", closeMenu);
